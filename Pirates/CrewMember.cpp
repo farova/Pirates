@@ -1,15 +1,32 @@
 #include "CrewMember.h"
 
-CrewMember::CrewMember(sf::Texture *texture ,string name, int strength, int intelligence, int speed, int healthMax)
+CrewMember::CrewMember(sf::Texture *texture, sf::Texture *selected,string name, int strength, int intelligence, float speed, int healthMax)
 	: MovableObject(texture, speed, healthMax, healthMax),
-	name(name), strength(strength), intelligence(intelligence)
+	name(name), strength(strength), intelligence(intelligence), selected(false)
 {
-
+	selectedOverlay.setTexture(*selected);
 }
 
 CrewMember::~CrewMember()
 {
 
+}
+
+void CrewMember::draw(sf::RenderWindow &window)
+{
+	Object::draw(window);	//call parent implementation of function
+	
+	if(isCharacterSelected())
+		window.draw(selectedOverlay);
+}
+
+void CrewMember::move(float x, float y)
+{
+	if(isDead())
+		return;
+	
+	MovableObject::move(x,y);
+	selectedOverlay.move(x,y);
 }
 
 int CrewMember::getStrength()
@@ -30,4 +47,15 @@ void CrewMember::setStrength(int amount)
 void CrewMember::setIntelligence(int amount)
 {
 	intelligence = amount;
+}
+
+
+bool CrewMember::isCharacterSelected()
+{
+	return selected;
+}
+
+void CrewMember::toggleSelectCharacter()
+{
+	selected = !selected;
 }

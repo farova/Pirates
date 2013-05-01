@@ -28,7 +28,7 @@ class EncounterGenerator {
 		MapBlock mapBlock;
 		int hitNumber;
 
-		thor::ResourceCache<sf::Texture> * textureCache;
+		thor::ResourceCache<sf::Texture> * resourceCache;
 
 
 };

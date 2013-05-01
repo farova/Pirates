@@ -33,11 +33,21 @@ void ShipView::initialize()
 		return;
 	
 	thor::ResourceKey<sf::Texture> bgTextureResource = thor::Resources::fromFile<sf::Texture>("shipViewBackground.jpg");
-	std::shared_ptr<sf::Texture> bgTexturePtr = textureCache->acquire(bgTextureResource);
+	std::shared_ptr<sf::Texture> bgTexturePtr = resourceCache->acquire(bgTextureResource);
 	backgroundSprite.setTexture(*bgTexturePtr);
 	backgroundSprite.setPosition(0,0);
 
 	playerShip->getLargeShipSprite().setPosition(50,200);
+
+	std::list<CrewMember*> playerCrew = playerShip->getCrew();
+	float offset = 180;
+
+	std::list<CrewMember *>::iterator crewIterator;
+	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
+	{
+		(*crewIterator)->setPosition(offset = offset+40, 430);
+	}
+
 
 	initialized = true;
 }
@@ -48,7 +58,7 @@ void ShipView::handleMouseClick(int x, int y)
 	if (!isInitialized())
 		return;
 
-	fightFinished = true;
+	// fightFinished = true;
 
 }
 
@@ -108,8 +118,8 @@ void ShipView::setEnemyShip(Ship *ship)
 	fightFinished = false;
 }
 
-void ShipView::loadTextureCache(thor::ResourceCache<sf::Texture> * cache)
+void ShipView::loadCache(thor::ResourceCache<sf::Texture> * cache)
 {
-	textureCache = cache;
+	resourceCache = cache;
 	cacheLoaded = true;
 }

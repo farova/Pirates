@@ -9,7 +9,7 @@ class Object {
 		Object(sf::Texture *);
 		~Object();
 
-		void draw(sf::RenderWindow &);
+		virtual void draw(sf::RenderWindow &);
 		
 		sf::Sprite & getSprite();
 		void setSprite(sf::Sprite);

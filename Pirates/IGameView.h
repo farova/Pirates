@@ -10,7 +10,7 @@ class IGameView {
 		
 		virtual void drawAll(sf::RenderWindow &) = 0;
 		
-		virtual void loadTextureCache(thor::ResourceCache<sf::Texture> *) = 0;
+		virtual void loadCache(thor::ResourceCache<sf::Texture> *) = 0;
 		virtual void initialize() = 0;
 		virtual bool isInitialized() = 0;
 

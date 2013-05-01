@@ -1,9 +1,5 @@
 #include "Ship.h"
 
-#include <iostream>
-
-
-
 
 Ship::Ship(sf::Texture * textureSmall, int healthMax, int healthCurrent, int speed, ShipAlliance alliance, ShipType type, sf::Texture * textureLarge)
 	: MovableObject(textureSmall, healthMax, healthCurrent, speed),
@@ -25,12 +21,8 @@ void Ship::drawShip(sf::RenderWindow &window)
 	std::list<CrewMember *>::iterator crewIterator;
 	for ( crewIterator = crew.begin(); crewIterator != crew.end(); ++crewIterator)
 	{
-		std::cout << ' ' << *crewIterator;
+		(*crewIterator)->draw(window);
 	}
-
-
-
-
 }
 
 ShipAlliance Ship::getShipAlliance()

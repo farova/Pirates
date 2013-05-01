@@ -14,7 +14,7 @@ class MapView : public IGameView {
 		
 		void drawAll(sf::RenderWindow &);
 		void initialize();
-		void loadTextureCache(thor::ResourceCache<sf::Texture> *);
+		void loadCache(thor::ResourceCache<sf::Texture> *);
 
 		void handleMouseClick(int, int);
 		void handleKeyPress();
@@ -41,7 +41,7 @@ class MapView : public IGameView {
 		
 		Ship *playerShip;
 		
-		thor::ResourceCache<sf::Texture> * textureCache;
+		thor::ResourceCache<sf::Texture> * resourceCache;
 
 };
 

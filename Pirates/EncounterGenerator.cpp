@@ -1,7 +1,7 @@
 #include "EncounterGenerator.h"
 
 EncounterGenerator::EncounterGenerator(MapBlock &mapBlock, thor::ResourceCache<sf::Texture> * cache)
-	: mapBlock(mapBlock), textureCache(cache)
+	: mapBlock(mapBlock), resourceCache(cache)
 {
 
 }
@@ -59,7 +59,7 @@ Ship* EncounterGenerator::generateShip()
 Ship * EncounterGenerator::generatePirateShip()
 {
 	thor::ResourceKey<sf::Texture> shipTextureResource = thor::Resources::fromFile<sf::Texture>("ship_pirate.png");
-	std::shared_ptr<sf::Texture> shipTexturePtr = textureCache->acquire(shipTextureResource);
+	std::shared_ptr<sf::Texture> shipTexturePtr = resourceCache->acquire(shipTextureResource);
 
 	return new Ship(shipTexturePtr.get(), 20,20,10, pirate, Fighter, shipTexturePtr.get());
 }
@@ -67,7 +67,7 @@ Ship * EncounterGenerator::generatePirateShip()
 Ship * EncounterGenerator::generateNavyShip()
 {
 	thor::ResourceKey<sf::Texture> shipTextureResource = thor::Resources::fromFile<sf::Texture>("ship_navy.png");
-	std::shared_ptr<sf::Texture> shipTexturePtr = textureCache->acquire(shipTextureResource);
+	std::shared_ptr<sf::Texture> shipTexturePtr = resourceCache->acquire(shipTextureResource);
 
 	return new Ship(shipTexturePtr.get(), 20,20,10, navy, Fighter, shipTexturePtr.get());
 }
@@ -75,7 +75,7 @@ Ship * EncounterGenerator::generateNavyShip()
 Ship * EncounterGenerator::generateNeutralShip()
 {
 	thor::ResourceKey<sf::Texture> shipTextureResource = thor::Resources::fromFile<sf::Texture>("ship_neutral.png");
-	std::shared_ptr<sf::Texture> shipTexturePtr = textureCache->acquire(shipTextureResource);
+	std::shared_ptr<sf::Texture> shipTexturePtr = resourceCache->acquire(shipTextureResource);
 
 	return new Ship(shipTexturePtr.get(), 20,20,10, neutral, TransportShip, shipTexturePtr.get());
 }

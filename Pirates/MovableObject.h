@@ -7,17 +7,17 @@
 class MovableObject : public Object {
 
 	public:
-		MovableObject(sf::Texture *, int, int, int);
+		MovableObject(sf::Texture *, float, int, int);
 		
 		bool isDead();
 
-		void move(float, float);
+		virtual void move(float, float);
 		void takeDamage(int);
 		void restoreHealth(int);
 		void restoreFullHealth();
 
 	private:
-		int speed;
+		float speed;
 		int healthMax;
 		int healthCurrent;
 

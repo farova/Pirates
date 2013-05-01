@@ -10,11 +10,18 @@ class CrewMember : public MovableObject {
 
 	public:
 		
-		CrewMember(sf::Texture *, string, int, int, int, int);
+		CrewMember(sf::Texture *, sf::Texture *, string, int, int, float, int);
 		~CrewMember();
+		
+		// overwritten functions 
+		void draw(sf::RenderWindow &);
+		void move(float, float);
 
 		int getStrength();
 		int getIntelligence();
+
+		bool isCharacterSelected();
+		void toggleSelectCharacter();
 
 		void setStrength(int);
 		void setIntelligence(int);
@@ -22,6 +29,10 @@ class CrewMember : public MovableObject {
 	private:
 		string name;
 		MeleeWeapon * weapon;
+
+		sf::Sprite selectedOverlay;
+
+		bool selected;
 
 		// stats
 		int strength;

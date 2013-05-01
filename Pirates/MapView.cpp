@@ -31,9 +31,9 @@ void MapView::initialize()
 	thor::ResourceKey<sf::Texture> sandBlockResource =  thor::Resources::fromFile<sf::Texture>("sand.jpg");
 	thor::ResourceKey<sf::Texture> waterBlockResource =  thor::Resources::fromFile<sf::Texture>("water.jpg");
 	
-	std::shared_ptr<sf::Texture> landBLockPtr = textureCache->acquire(landBlockResource);
-	std::shared_ptr<sf::Texture> sandBLockPtr = textureCache->acquire(sandBlockResource);
-	std::shared_ptr<sf::Texture> waterBLockPtr = textureCache->acquire(waterBlockResource);
+	std::shared_ptr<sf::Texture> landBLockPtr = resourceCache->acquire(landBlockResource);
+	std::shared_ptr<sf::Texture> sandBLockPtr = resourceCache->acquire(sandBlockResource);
+	std::shared_ptr<sf::Texture> waterBLockPtr = resourceCache->acquire(waterBlockResource);
 
 	squareSize = 50;
 	int size = 16;
@@ -154,8 +154,8 @@ void MapView::setWindowSize(int w, int h)
 	windowWidth = w;
 }
 
-void MapView::loadTextureCache(thor::ResourceCache<sf::Texture> * cache)
+void MapView::loadCache(thor::ResourceCache<sf::Texture> * cache)
 {
-	textureCache = cache;
+	resourceCache = cache;
 	cacheLoaded = true;
 }

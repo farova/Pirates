@@ -12,7 +12,7 @@ class ShipView : public IGameView {
 		
 		void drawAll(sf::RenderWindow &);
 		void initialize();
-		void loadTextureCache(thor::ResourceCache<sf::Texture> *);
+		void loadCache(thor::ResourceCache<sf::Texture> *);
 		void cleanUp();
 
 		void handleMouseClick(int, int);
@@ -39,7 +39,7 @@ class ShipView : public IGameView {
 		Ship *playerShip;
 		Ship *enemyShip;
 
-		thor::ResourceCache<sf::Texture> * textureCache;
+		thor::ResourceCache<sf::Texture> * resourceCache;
 		
 		// graphics 
 		sf::Sprite backgroundSprite;

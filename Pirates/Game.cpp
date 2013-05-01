@@ -15,7 +15,7 @@ Game::~Game()
 {
 	delete mapView;
 	delete playerShip;
-	delete textureCache;
+	delete resourceCache;
 }
 
 void Game::drawAll(sf::RenderWindow &window)
@@ -103,7 +103,7 @@ void Game::handleMouseClick(int x, int y)
 
 void Game::determineEncounter(MapBlock * mapBlock)
 {
-	EncounterGenerator encounterGenerator(*mapBlock, textureCache);
+	EncounterGenerator encounterGenerator(*mapBlock, resourceCache);
 
 	switch(encounterGenerator.getEncounterType())
 	{
@@ -118,23 +118,6 @@ void Game::determineEncounter(MapBlock * mapBlock)
 				this->setGameState(shipViewState);
 
 				shipView->setEnemyShip(enemy);
-
-
-				// TAKEOUT
-				cout << " - ";
-				switch(enemy->getShipAlliance())
-				{
-				case neutral:	cout << "neutral" << endl;		break;
-				case pirate:	cout << "pirate" << endl;		break;
-				case navy:		cout << "navy" << endl;			break;
-				}
-				cout << " - ";
-				switch(enemy->getShipType())
-				{
-				case Fighter:	cout << "Fighter" << endl;		break;
-				case TransportShip:		cout << "TransportShip" << endl;	break;
-				}
-				// TAKEOUT
 			}
 
 			break;
@@ -185,7 +168,7 @@ void Game::setGameState(GameState state)
 
 void Game::initialize()
 {
-	textureCache = new thor::ResourceCache<sf::Texture>();
+	resourceCache = new thor::ResourceCache<sf::Texture>();
 	cacheLoaded = true;
 
 	// create keys to load resources
@@ -200,45 +183,46 @@ void Game::initialize()
 
 	thor::ResourceKey<sf::Texture> crewTextureB = thor::Resources::fromFile<sf::Texture>("crew_b.png");
 	thor::ResourceKey<sf::Texture> crewTextureG = thor::Resources::fromFile<sf::Texture>("crew_g.png");
-	thor::ResourceKey<sf::Texture> crewTextureP = thor::Resources::fromFile<sf::Texture>("crew_p.png");
-	thor::ResourceKey<sf::Texture> crewTextureR = thor::Resources::fromFile<sf::Texture>("crew_r.png");
 	thor::ResourceKey<sf::Texture> crewTextureY = thor::Resources::fromFile<sf::Texture>("crew_y.png");
 
 	// load into cache
-	textureCache->acquire(shipPirateTexture);
-	textureCache->acquire(shipNeutralTexture);
-	textureCache->acquire(shipNavyTexture);
-	std::shared_ptr<sf::Texture> splashScreenPtr = textureCache->acquire(splashScreenTexture);
-	std::shared_ptr<sf::Texture> playerSmallTexturePtr = textureCache->acquire(shipSmallTexture);
-	std::shared_ptr<sf::Texture> playerLargeTexturePtr = textureCache->acquire(shipLargeTexture);
+	std::shared_ptr<sf::Texture> crewTextureBPtr = resourceCache->acquire(crewTextureB);
+	std::shared_ptr<sf::Texture> crewTextureYPtr = resourceCache->acquire(crewTextureY);
+	std::shared_ptr<sf::Texture> crewTextureGPtr = resourceCache->acquire(crewTextureG);
+	resourceCache->acquire(shipPirateTexture);
+	resourceCache->acquire(shipNeutralTexture);
+	resourceCache->acquire(shipNavyTexture);
+	std::shared_ptr<sf::Texture> splashScreenPtr = resourceCache->acquire(splashScreenTexture);
+	std::shared_ptr<sf::Texture> playerSmallTexturePtr = resourceCache->acquire(shipSmallTexture);
+	std::shared_ptr<sf::Texture> playerLargeTexturePtr = resourceCache->acquire(shipLargeTexture);
 	
+
 	//initialize splashscreen
 	splashScreenSprite.setTexture(*splashScreenPtr);
+
 
 	// initialize playerShip
 	playerShip = new Ship(playerSmallTexturePtr.get(), 20, 20, 10, neutral, Fighter, playerLargeTexturePtr.get());
 	playerShip->setPosition(0,0);
 
+	CrewMember *crewA = new CrewMember(crewTextureYPtr.get(), crewTextureGPtr.get(), "Michaela", 10, 10, 1, 15);
+	CrewMember *crewB = new CrewMember(crewTextureBPtr.get(), crewTextureGPtr.get(), "Victor", 10, 10, 1, 15);
+	
+	playerShip->addCrewMember(crewA);
+	playerShip->addCrewMember(crewB);
 
 
-	// CrewMember crewA = new CrewMember(
-
-
-
-
-
-
-
+	// initialize different game views
 	mapView = new MapView();
 	mapView->setWindowSize(windowWidth, windowHeight);
 	mapView->setPlayerShip(playerShip);
-	mapView->loadTextureCache(textureCache);
+	mapView->loadCache(resourceCache);
 	mapView->initialize();
 
 	shipView = new ShipView();
 	shipView->setWindowSize(windowWidth, windowHeight);
 	shipView->setPlayerShip(playerShip);
-	shipView->loadTextureCache(textureCache);
+	shipView->loadCache(resourceCache);
 	shipView->initialize();
 
 
@@ -257,7 +241,7 @@ void Game::setPlayerShip(Ship *ship)
 	playerShip = ship;
 }
 
-void Game::loadTextureCache(thor::ResourceCache<sf::Texture> * cache)
+void Game::loadCache(thor::ResourceCache<sf::Texture> * cache)
 {
-	textureCache = cache;
+	resourceCache = cache;
 }
