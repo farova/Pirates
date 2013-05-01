@@ -1,14 +1,29 @@
-﻿  CrewMember.cpp
-  Generating Code...
-  Compiling...
-  main.cpp
+﻿  main.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
   ShipView.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
 c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(69): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
   Ship.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
 c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\ship.cpp(7): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-  Object.cpp
-  MovableObject.cpp
   MapView.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
 c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(88): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
 c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(89): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
 c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(97): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
@@ -17,12 +32,25 @@ c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cp
 c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(112): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
 c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(113): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
   MapBlock.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
 c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapblock.cpp(18): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-  LandEncounter.cpp
   Game.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
   EncounterGenerator.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
 c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\encountergenerator.cpp(34): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
 c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\encountergenerator.cpp(35): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
 c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\encountergenerator.cpp(36): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
   Generating Code...
-  Pirates.vcxproj -> C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\Pirates.exe

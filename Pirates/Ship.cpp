@@ -10,7 +10,12 @@ Ship::Ship(sf::Texture * textureSmall, int healthMax, int healthCurrent, int spe
 
 Ship::~Ship()
 {
-	// nothing
+
+
+
+
+
+
 }
 
 void Ship::drawShip(sf::RenderWindow &window)
@@ -69,4 +74,9 @@ std::list<Cannon*> & Ship::getCannons()
 std::list<MeleeWeapon*> & Ship::getArmory()
 {
 	return armory;
+}
+
+ShipMovementManager & Ship::getMovementManager()
+{
+	return movementManager;
 }

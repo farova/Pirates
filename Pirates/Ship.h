@@ -5,6 +5,9 @@
 #include "Cannon.h"
 #include "CrewMember.h"
 #include "MeleeWeapon.h"
+#include "ShipBlock.h"
+#include "ShipBlockPath.h"
+#include "ShipMovementManager.h"
 #include <list>
 
 // some enums
@@ -29,8 +32,9 @@ class Ship : public MovableObject {
 		std::list<CrewMember*> & getCrew();
 		std::list<Cannon*> & getCannons();
 		std::list<MeleeWeapon*> & getArmory();
-
+		
 		sf::Sprite & getLargeShipSprite();
+		ShipMovementManager & getMovementManager();
 
 	private:
 		//general ship properties
@@ -48,6 +52,9 @@ class Ship : public MovableObject {
 		// ship storage
 		int gold;
 		int repairMaterial;
+
+		// Ship movement management
+		ShipMovementManager movementManager;
 
 };
 
