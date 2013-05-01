@@ -17,7 +17,7 @@ class ShipView : public IGameView {
 
 		void handleMouseClick(int, int);
 		void handleKeyPress();
-		
+
 		void setWindowSize(int, int);
 		void setPlayerShip(Ship *);
 		void setEnemyShip(Ship *);
@@ -25,6 +25,7 @@ class ShipView : public IGameView {
 		bool isInitialized();
 		bool isEnemyLoaded();
 		bool isFightFinished();
+		bool isSpriteClicked(sf::Sprite &, float, float);
 
 	private:
 		

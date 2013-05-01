@@ -14,14 +14,16 @@ class CrewMember : public MovableObject {
 		~CrewMember();
 		
 		// overwritten functions 
-		void draw(sf::RenderWindow &);
-		void move(float, float);
+		virtual void draw(sf::RenderWindow &);
+		virtual void move(float, float);
+		virtual void setPosition(float, float);
 
 		int getStrength();
 		int getIntelligence();
+		string getName();
 
 		bool isCharacterSelected();
-		void toggleSelectCharacter();
+		void toggleSelect();
 
 		void setStrength(int);
 		void setIntelligence(int);

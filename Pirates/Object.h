@@ -10,11 +10,11 @@ class Object {
 		~Object();
 
 		virtual void draw(sf::RenderWindow &);
+		virtual void setPosition(float, float);
 		
 		sf::Sprite & getSprite();
-		void setSprite(sf::Sprite);
-		void setPosition(float, float);
 		sf::Vector2f getPosition();
+		void setSprite(sf::Sprite);
 
 	private:
 		sf::Sprite objectSprite;

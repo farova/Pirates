@@ -1,48 +1,28 @@
-﻿Build started 2013-04-30 10:24:27 PM.
-     1>Project "C:\Users\victawr\Documents\Visual Studio 2012\Projects\Pirates\Pirates\Pirates.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /I"c:\Users\victawr\Documents\Visual Studio 2012\Projects\VS11x32\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D SFML_STATIC /D _MBCS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt CrewMember.cpp EncounterGenerator.cpp Game.cpp LandEncounter.cpp MapBlock.cpp MapView.cpp MovableObject.cpp Ship.cpp ShipView.cpp main.cpp
-         MovableObject.cpp
-         CrewMember.cpp
-         Generating Code...
-         Compiling...
-         main.cpp
-         ShipView.cpp
-         Ship.cpp
-     1>c:\users\victawr\documents\visual studio 2012\projects\pirates\pirates\ship.cpp(7): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-         MapView.cpp
-     1>c:\users\victawr\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(88): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\victawr\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(89): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-     1>c:\users\victawr\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(97): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\victawr\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(98): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\victawr\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(104): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-     1>c:\users\victawr\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(112): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\victawr\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(113): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-         MapBlock.cpp
-     1>c:\users\victawr\documents\visual studio 2012\projects\pirates\pirates\mapblock.cpp(18): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-         LandEncounter.cpp
-         Game.cpp
-         EncounterGenerator.cpp
-     1>c:\users\victawr\documents\visual studio 2012\projects\pirates\pirates\encountergenerator.cpp(34): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\victawr\documents\visual studio 2012\projects\pirates\pirates\encountergenerator.cpp(35): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\victawr\documents\visual studio 2012\projects\pirates\pirates\encountergenerator.cpp(36): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-         Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\victawr\Documents\Visual Studio 2012\Projects\Pirates\Debug\Pirates.exe" /INCREMENTAL /NOLOGO /LIBPATH:"c:\Users\victawr\Documents\Visual Studio 2012\Projects\VS11x32\lib" "thor-s-d.lib" "sfml-graphics-s-d.lib" "sfml-window-s-d.lib" "sfml-system-s-d.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\victawr\Documents\Visual Studio 2012\Projects\Pirates\Debug\Pirates.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\victawr\Documents\Visual Studio 2012\Projects\Pirates\Debug\Pirates.lib" /MACHINE:X86 Debug\BuyView.obj
-         Debug\CrewMember.obj
-         Debug\EncounterGenerator.obj
-         Debug\Game.obj
-         Debug\LandEncounter.obj
-         Debug\main.obj
-         Debug\MapBlock.obj
-         Debug\MapView.obj
-         Debug\MovableObject.obj
-         Debug\Object.obj
-         Debug\Ship.obj
-         Debug\ShipView.obj
-         Pirates.vcxproj -> C:\Users\victawr\Documents\Visual Studio 2012\Projects\Pirates\Debug\Pirates.exe
-     1>Done Building Project "C:\Users\victawr\Documents\Visual Studio 2012\Projects\Pirates\Pirates\Pirates.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:08.75
+﻿  CrewMember.cpp
+  Generating Code...
+  Compiling...
+  main.cpp
+  ShipView.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(69): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+  Ship.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\ship.cpp(7): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+  Object.cpp
+  MovableObject.cpp
+  MapView.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(88): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(89): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(97): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(98): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(104): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(112): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(113): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+  MapBlock.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapblock.cpp(18): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+  LandEncounter.cpp
+  Game.cpp
+  EncounterGenerator.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\encountergenerator.cpp(34): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\encountergenerator.cpp(35): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\encountergenerator.cpp(36): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  Pirates.vcxproj -> C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\Pirates.exe

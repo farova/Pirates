@@ -29,9 +29,20 @@ void CrewMember::move(float x, float y)
 	selectedOverlay.move(x,y);
 }
 
+void CrewMember::setPosition(float x, float y)
+{
+	Object::setPosition(x,y);
+	selectedOverlay.setPosition(x,y);
+}
+
 int CrewMember::getStrength()
 {
 	return strength;
+}
+
+string CrewMember::getName()
+{
+	return name;
 }
 
 int CrewMember::getIntelligence()
@@ -55,7 +66,7 @@ bool CrewMember::isCharacterSelected()
 	return selected;
 }
 
-void CrewMember::toggleSelectCharacter()
+void CrewMember::toggleSelect()
 {
 	selected = !selected;
 }

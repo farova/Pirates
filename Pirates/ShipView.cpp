@@ -1,5 +1,8 @@
 #include "ShipView.h"
 
+#include <iostream>
+
+
 ShipView::ShipView()
 	: initialized(false), enemyLoaded(false), fightFinished(false), cacheLoaded(false)
 {
@@ -39,9 +42,9 @@ void ShipView::initialize()
 
 	playerShip->getLargeShipSprite().setPosition(50,200);
 
-	std::list<CrewMember*> playerCrew = playerShip->getCrew();
 	float offset = 180;
 
+	std::list<CrewMember*> playerCrew = playerShip->getCrew();
 	std::list<CrewMember *>::iterator crewIterator;
 	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
 	{
@@ -58,8 +61,30 @@ void ShipView::handleMouseClick(int x, int y)
 	if (!isInitialized())
 		return;
 
-	// fightFinished = true;
+	// determine if clicked on sprite - toggle selected if did
+	std::list<CrewMember*> playerCrew = playerShip->getCrew();
+	std::list<CrewMember *>::iterator crewIterator;
+	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
+	{
+		if(isSpriteClicked((*crewIterator)->getSprite(), x,y))
+		{
+			(*crewIterator)->toggleSelect();
+		}
+	}
 
+
+
+
+
+
+
+
+	// fightFinished = true;
+}
+
+bool ShipView::isSpriteClicked(sf::Sprite &sprite, float x, float y)
+{
+	return sprite.getGlobalBounds().contains(x,y);
 }
 
 void ShipView::handleKeyPress()
