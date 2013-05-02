@@ -2,6 +2,7 @@
 #define _SHIPVIEW_H
 
 #include "Ship.h"
+#include "ShipMovementManager.h"
 #include "IGameView.h"
 
 class ShipView : public IGameView {
@@ -17,7 +18,7 @@ class ShipView : public IGameView {
 
 		void handleMouseClick(int, int);
 		void handleKeyPress();
-
+		
 		void setWindowSize(int, int);
 		void setPlayerShip(Ship *);
 		void setEnemyShip(Ship *);
@@ -25,10 +26,14 @@ class ShipView : public IGameView {
 		bool isInitialized();
 		bool isEnemyLoaded();
 		bool isFightFinished();
-		bool isSpriteClicked(sf::Sprite &, float, float);
 
 	private:
 		
+		bool handleCrewClick(int,int);
+		void handleShipBlockClick(int,int);
+
+		bool isSpriteClicked(sf::Sprite &, float, float);
+
 		bool initialized;
 		bool enemyLoaded;
 		bool fightFinished;
@@ -44,6 +49,9 @@ class ShipView : public IGameView {
 		
 		// graphics 
 		sf::Sprite backgroundSprite;
+		
+		// Ship movement management
+		ShipMovementManager movementManager;
 
 };
 

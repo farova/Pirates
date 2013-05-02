@@ -7,24 +7,21 @@
 class ShipMovement {
 
 	public:
-		ShipMovement(CrewMember*, ShipBlock*, ShipBlock*);
+		ShipMovement(CrewMember*, float, float);
 		~ShipMovement();
 		
-		bool reachedNextDestination();
-		bool reachedFinalDestination();
+		void setMovementVector(float, float);
 
-		void setNextDestination(ShipBlock *);
-
-		sf::Vector2f getnextDestinationDirection();
+		CrewMember * getCrewMember();
+		sf::Vector2f getFinalDestination();
+		sf::Vector2f getMovementVector();
 
 	private:
 
-		bool onPath; // determine if following the path, or still finding the start of the path
-
 		CrewMember * crewMember;
 
-		ShipBlock * nextDestination;
-		ShipBlock * finalDestination;
+		sf::Vector2f movementVector;
+		sf::Vector2f finalDestination;
 
 };
 

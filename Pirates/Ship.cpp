@@ -75,8 +75,3 @@ std::list<MeleeWeapon*> & Ship::getArmory()
 {
 	return armory;
 }
-
-ShipMovementManager & Ship::getMovementManager()
-{
-	return movementManager;
-}

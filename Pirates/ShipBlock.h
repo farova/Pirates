@@ -1,9 +1,10 @@
 #if !defined(_SHIPBLOCK_H)
 #define _SHIPBLOCK_H
 
-#include "ShipBlockPath.h"
 #include <SFML/Graphics.hpp>
 #include <list>
+
+enum ShipBlockType{};
 
 class ShipBlock {
 
@@ -11,20 +12,22 @@ class ShipBlock {
 		ShipBlock();
 		~ShipBlock();
 
-		bool isPointInBounds(float, float);
+		void initialize(int, ShipBlockType, bool, bool);
+
 		int getLevel();
+		ShipBlockType getBlockType();
 
-		// virtual void performBlockAction();
-
+		bool isLadder();
+		bool isBlocked();
 
 	private:
 
+		bool blocked;
+		bool ladder;
+
 		int level;
 
-		sf::FloatRect bounds;
-
-		std::list<ShipBlockPath *> lowerPaths;
-		std::list<ShipBlockPath *> higherPaths;
+		ShipBlockType type;
 
 };
 

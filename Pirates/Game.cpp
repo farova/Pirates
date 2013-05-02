@@ -212,6 +212,20 @@ void Game::initialize()
 	playerShip->addCrewMember(crewB);
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	// initialize different game views
 	mapView = new MapView();
 	mapView->setWindowSize(windowWidth, windowHeight);

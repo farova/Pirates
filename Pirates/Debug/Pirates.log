@@ -1,56 +1,41 @@
-﻿  main.cpp
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  ShipView.cpp
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(69): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-  Ship.cpp
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\ship.cpp(7): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-  MapView.cpp
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(88): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(89): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(97): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(98): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(104): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(112): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapview.cpp(113): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-  MapBlock.cpp
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\mapblock.cpp(18): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-  Game.cpp
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-  EncounterGenerator.cpp
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(10): error C2061: syntax error : identifier 'ShipBlock'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(20): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C2143: syntax error : missing ';' before '*'
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipblockpath.h(21): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\encountergenerator.cpp(34): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\encountergenerator.cpp(35): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\encountergenerator.cpp(36): warning C4244: '+=' : conversion from 'float' to 'int', possible loss of data
-  Generating Code...
+﻿  ShipMovementManager.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipmovementmanager.cpp(19): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipmovementmanager.cpp(56): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+sfml-graphics-s-d.lib(Color.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Color.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(GLCheck.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(GLCheck.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(Image.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Image.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(ImageLoader.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(ImageLoader.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(RenderStates.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(RenderStates.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(RenderTarget.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(RenderTarget.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(RenderWindow.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(RenderWindow.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(Shader.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Shader.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(Texture.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Texture.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(TextureSaver.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(TextureSaver.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(Transform.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Transform.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(Transformable.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Transformable.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(View.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(View.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(Vertex.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Vertex.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-graphics-s-d.lib(Sprite.cpp.obj) : warning LNK4099: PDB 'sfml-graphics-s-d.pdb' was not found with 'sfml-graphics-s-d.lib(Sprite.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-graphics-s-d.pdb'; linking object as if no debug info
+sfml-window-s-d.lib(GlContext.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(GlContext.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
+sfml-window-s-d.lib(GlResource.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(GlResource.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
+sfml-window-s-d.lib(JoystickManager.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(JoystickManager.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
+sfml-window-s-d.lib(VideoMode.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(VideoMode.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
+sfml-window-s-d.lib(Window.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(Window.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
+sfml-window-s-d.lib(WindowImpl.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(WindowImpl.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
+sfml-window-s-d.lib(WglContext.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(WglContext.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
+sfml-window-s-d.lib(JoystickImpl.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(JoystickImpl.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
+sfml-window-s-d.lib(VideoModeImpl.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(VideoModeImpl.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
+sfml-window-s-d.lib(WindowImplWin32.cpp.obj) : warning LNK4099: PDB 'sfml-window-s-d.pdb' was not found with 'sfml-window-s-d.lib(WindowImplWin32.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-window-s-d.pdb'; linking object as if no debug info
+sfml-system-s-d.lib(Clock.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(Clock.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
+sfml-system-s-d.lib(Err.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(Err.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
+sfml-system-s-d.lib(Lock.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(Lock.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
+sfml-system-s-d.lib(Mutex.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(Mutex.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
+sfml-system-s-d.lib(Sleep.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(Sleep.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
+sfml-system-s-d.lib(String.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(String.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
+sfml-system-s-d.lib(ThreadLocal.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(ThreadLocal.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
+sfml-system-s-d.lib(Time.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(Time.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
+sfml-system-s-d.lib(ClockImpl.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(ClockImpl.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
+sfml-system-s-d.lib(MutexImpl.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(MutexImpl.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
+sfml-system-s-d.lib(SleepImpl.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(SleepImpl.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
+sfml-system-s-d.lib(ThreadLocalImpl.cpp.obj) : warning LNK4099: PDB 'sfml-system-s-d.pdb' was not found with 'sfml-system-s-d.lib(ThreadLocalImpl.cpp.obj)' or at 'C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\sfml-system-s-d.pdb'; linking object as if no debug info
+  Pirates.vcxproj -> C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\Pirates.exe

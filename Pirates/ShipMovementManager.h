@@ -3,6 +3,7 @@
 
 #include "CrewMember.h"
 #include "ShipBlock.h"
+#include "Ship.h"
 #include "ShipMovement.h"
 
 class ShipMovementManager {
@@ -11,17 +12,21 @@ class ShipMovementManager {
 		ShipMovementManager();
 		~ShipMovementManager();
 		
-		void addShipBlock(ShipBlock *);
-		void addShipBlockPath(ShipBlockPath *);
+		void initialize(Ship *);
 
-		void addNewMovement(CrewMember *, ShipBlock *);
+		void addNewMovement(CrewMember *, int, int);
 		void move(sf::RenderWindow &);
 
 	private:
-		std::list<ShipMovement *> currentShipMovements;
+		
+		Ship * playerShip;
+		ShipBlock * getCurrentBlock(CrewMember *);
 
-		std::list<ShipBlock*> shipBlocks;
-		std::list<ShipBlockPath*> shipPaths;
+		std::list<ShipMovement *> currentShipMovements;
+		ShipBlock** shipBlocks;
+
+		int blockWidth;
+		int blockHeight;
 
 };
 

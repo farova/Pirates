@@ -28,6 +28,8 @@ void ShipView::drawAll(sf::RenderWindow &window)
 		enemyShip->getLargeShipSprite().setPosition(580,300);
 		window.draw(enemyShip->getLargeShipSprite());
 	}
+
+	movementManager.move(window);
 }
 
 void ShipView::initialize()
@@ -51,15 +53,14 @@ void ShipView::initialize()
 		(*crewIterator)->setPosition(offset = offset+40, 430);
 	}
 
+	movementManager.initialize(playerShip);
 
 	initialized = true;
 }
 
-
-void ShipView::handleMouseClick(int x, int y)
+bool ShipView::handleCrewClick(int x, int y)
 {
-	if (!isInitialized())
-		return;
+	bool spriteClicked = false;
 
 	// determine if clicked on sprite - toggle selected if did
 	std::list<CrewMember*> playerCrew = playerShip->getCrew();
@@ -69,15 +70,34 @@ void ShipView::handleMouseClick(int x, int y)
 		if(isSpriteClicked((*crewIterator)->getSprite(), x,y))
 		{
 			(*crewIterator)->toggleSelect();
+			spriteClicked = true;
 		}
 	}
 
+	return spriteClicked;
+}
 
+void ShipView::handleShipBlockClick(int x, int y)
+{
+	std::list<CrewMember*> playerCrew = playerShip->getCrew();
+	std::list<CrewMember *>::iterator crewIterator;
+	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
+	{
+		if((*crewIterator)->isCharacterSelected())
+			movementManager.addNewMovement(*crewIterator, x, y);
+	}
+}
 
+void ShipView::handleMouseClick(int x, int y)
+{
+	if (!isInitialized())
+		return;
 
+	// if click on crew member, no other action preformed
+	if(handleCrewClick(x,y))
+		return;
 
-
-
+	handleShipBlockClick(x,y);
 
 	// fightFinished = true;
 }
