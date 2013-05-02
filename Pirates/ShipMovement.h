@@ -11,13 +11,20 @@ class ShipMovement {
 		~ShipMovement();
 		
 		void setMovementVector(float, float);
+		void setMovementVector(sf::Vector2f);
 		void setShortestPath(std::list<ShipBlock *>);
+		void setFinished(bool);
+
+		bool isFinished();
 
 		CrewMember * getCrewMember();
 		sf::Vector2f getFinalDestination();
 		sf::Vector2f getMovementVector();
+		std::list<ShipBlock *> & getShortestPath();
 
 	private:
+
+		bool finished;
 
 		CrewMember * crewMember;
 

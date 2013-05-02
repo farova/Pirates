@@ -205,8 +205,8 @@ void Game::initialize()
 	playerShip = new Ship(playerSmallTexturePtr.get(), 20, 20, 10, neutral, Fighter, playerLargeTexturePtr.get());
 	playerShip->setPosition(0,0);
 
-	CrewMember *crewA = new CrewMember(crewTextureYPtr.get(), crewTextureGPtr.get(), "Michaela", 10, 10, 1, 15);
-	CrewMember *crewB = new CrewMember(crewTextureBPtr.get(), crewTextureGPtr.get(), "Victor", 10, 10, 1, 15);
+	CrewMember *crewA = new CrewMember(crewTextureYPtr.get(), crewTextureGPtr.get(), "Michaela", 10, 10, 0.5, 15);
+	CrewMember *crewB = new CrewMember(crewTextureBPtr.get(), crewTextureGPtr.get(), "Victor", 10, 10, 0.5, 15);
 	
 	playerShip->addCrewMember(crewA);
 	playerShip->addCrewMember(crewB);

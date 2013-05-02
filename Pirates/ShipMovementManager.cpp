@@ -10,7 +10,14 @@ ShipMovementManager::ShipMovementManager()
 
 ShipMovementManager::~ShipMovementManager()
 {
+	int xBlocks = 800/50;
+	int yBlocks = 800/81;
 
+	for(int i = 0; i < xBlocks; i+=1)
+	{
+		delete [] shipBlocks;
+	}
+	delete [] shipBlocks;
 }
 
 void ShipMovementManager::initialize(Ship * ship)
@@ -55,7 +62,6 @@ void ShipMovementManager::initialize(Ship * ship)
 		cout << endl;
 	}
 
-
 }
 
 void ShipMovementManager::addNewMovement(CrewMember * crew, int x, int y)
@@ -67,6 +73,7 @@ void ShipMovementManager::addNewMovement(CrewMember * crew, int x, int y)
 		next = movementIterator; next++;
 		if((*movementIterator)->getCrewMember() == crew)
 		{
+			delete *movementIterator;
 			currentShipMovements.erase(movementIterator);
 			break;
 		}
@@ -74,9 +81,6 @@ void ShipMovementManager::addNewMovement(CrewMember * crew, int x, int y)
 	}
 
 	ShipMovement *movement = new ShipMovement(crew, x, y);
-
-	sf::Vector2f movementVector = getNewMovementVector(movement);
-	movement->setMovementVector(movementVector.x, movementVector.y);
 
 	// if we cannot generate a path, cannot create new movement
 	if(!generateShortestPath(movement))
@@ -125,16 +129,15 @@ bool ShipMovementManager::DFSSearch( pair<sf::Vector2i, bool> ** matrix, sf::Vec
 
 bool ShipMovementManager::generateShortestPath(ShipMovement * movement)
 {
-	
+	const int xBlocks = 800/50;
+	const int yBlocks = 800/81;
+
 	sf::Vector2i destination = getCurrentBlock(movement->getFinalDestination().x, movement->getFinalDestination().y)->getBlockMatrixPosition();
 	sf::Vector2i start = getCurrentBlock(movement->getCrewMember())->getBlockMatrixPosition();
 
 	// if the block we want to get to is blocked, cant move to it
-	if(shipBlocks[destination.x][destination.y].isBlocked() || shipBlocks[start.x][start.y].isBlocked())
+	if(shipBlocks[destination.x][destination.y].isBlocked() || shipBlocks[destination.x][destination.y].isLadder() || shipBlocks[start.x][start.y].isBlocked())
 		return false;
-
-	const int xBlocks = 800/50;
-	const int yBlocks = 800/81;
 	
 	typedef pair<sf::Vector2i, bool> BlockParentPair; // <block, parent block>
 
@@ -185,37 +188,77 @@ ShipBlock * ShipMovementManager::getCurrentBlock(float xPos, float yPos)
 
 sf::Vector2f ShipMovementManager::getNewMovementVector(ShipMovement * movement)
 {
+	sf::Vector2f spritePosition = movement->getCrewMember()->getPosition();
+	sf::Vector2f finalPosition = movement->getFinalDestination();
 
+	// reach final destination
+	if(spritePosition.x == finalPosition.x && (spritePosition.y >= finalPosition.y && spritePosition.y - BLOCK_HEIGHT < finalPosition.y) )
+	{
+		movement->setFinished(true);
+		return sf::Vector2f(0,0);
+	}
 
-	return sf::Vector2f(1,0);
+	sf::Vector2i nextBlock = movement->getShortestPath().front()->getBlockMatrixPosition();
 
+	bool initialMove = (movement->getMovementVector().x == 0 && movement->getMovementVector().y == 0);
+
+	// if completely in next path block, determine direction of next movement, otherwise contine until hit next block on path
+	if((spritePosition.x == nextBlock.x*BLOCK_WIDTH && spritePosition.y == nextBlock.y*BLOCK_HEIGHT) || initialMove)
+	{
+		// pop off the block
+		if(!initialMove)
+			movement->getShortestPath().pop_front();
+
+		//get coordinates for next movement
+		int xDir, yDir;
+
+		if((nextBlock.x*BLOCK_WIDTH - spritePosition.x) < 0)
+			xDir = -1;
+		else if((nextBlock.x*BLOCK_WIDTH - spritePosition.x) == 0)
+			xDir = 0;
+		else
+			xDir = 1;
+		
+		if((nextBlock.y*BLOCK_HEIGHT - spritePosition.y) < 0)
+			yDir = -1;
+		else if((nextBlock.y*BLOCK_HEIGHT - spritePosition.y) == 0)
+			yDir = 0;
+		else
+			yDir = 1;
+
+		return sf::Vector2f(xDir, yDir);
+	}
+	else
+	{
+		return movement->getMovementVector();
+	}
 }
 
 void ShipMovementManager::move()
 {
-	
-	std::list<ShipMovement *>::iterator movementIterator;
-
-	for( movementIterator = currentShipMovements.begin(); movementIterator != currentShipMovements.end(); ++movementIterator )
+	std::list<ShipMovement*>::iterator i = currentShipMovements.begin();
+	while (i != currentShipMovements.end())
 	{
-		float xMovement = (*movementIterator)->getMovementVector().x * 0.5; // * (*movementIterator)->getCrewMember()->getSpeed();
-		float yMovement = (*movementIterator)->getMovementVector().y * 0.5; // * (*movementIterator)->getCrewMember()->getSpeed();
+		if ((*i)->isFinished())
+		{
+			// if movement finished, delete object
+			delete *i;
+			i = currentShipMovements.erase(i);
+		}
+		else
+		{
+			(*i)->setMovementVector(getNewMovementVector(*i));
 
-		(*movementIterator)->getCrewMember()->move(xMovement, yMovement);
+			float xMovement = (*i)->getMovementVector().x * (*i)->getCrewMember()->getSpeed();
+			float yMovement = (*i)->getMovementVector().y * (*i)->getCrewMember()->getSpeed();
 
+			cout << xMovement << " " << yMovement << endl;
 
+			(*i)->getCrewMember()->move(xMovement, yMovement);
 
-
-
+			++i;
+		}
 	}
-
-
-
-
-	// if movement finished, delete movement object
-
-
-
 }
 
 

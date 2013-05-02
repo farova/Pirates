@@ -19,6 +19,21 @@ void MovableObject::move(float x, float y)
 	getSprite().move(x,y);
 }
 
+float MovableObject::getSpeed()
+{
+	return speed;
+}
+
+int MovableObject::getCurrentHealth()
+{
+	return healthCurrent;
+}
+
+int MovableObject::getMaxHealth()
+{
+	return healthMax;
+}
+
 void MovableObject::takeDamage(int amount)
 {
 	healthCurrent -= amount;

@@ -12,6 +12,11 @@ class MovableObject : public Object {
 		bool isDead();
 
 		virtual void move(float, float);
+		
+		float getSpeed();
+		int getCurrentHealth();
+		int getMaxHealth();
+
 		void takeDamage(int);
 		void restoreHealth(int);
 		void restoreFullHealth();
