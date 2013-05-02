@@ -15,18 +15,24 @@ class ShipMovementManager {
 		void initialize(Ship *);
 
 		void addNewMovement(CrewMember *, int, int);
-		void move(sf::RenderWindow &);
+		void move();
+		
+		const int BLOCK_HEIGHT;
+		const int BLOCK_WIDTH;
 
 	private:
 		
-		Ship * playerShip;
+		bool DFSSearch(pair<sf::Vector2i, bool> **, sf::Vector2i, sf::Vector2i);
+
 		ShipBlock * getCurrentBlock(CrewMember *);
+		ShipBlock * getCurrentBlock(float, float);
+		sf::Vector2f getNewMovementVector(ShipMovement *);
+		bool generateShortestPath(ShipMovement *);
+
+		Ship * playerShip;
 
 		std::list<ShipMovement *> currentShipMovements;
 		ShipBlock** shipBlocks;
-
-		int blockWidth;
-		int blockHeight;
 
 };
 

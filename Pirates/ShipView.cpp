@@ -21,15 +21,19 @@ void ShipView::drawAll(sf::RenderWindow &window)
 
 	window.draw(backgroundSprite);
 
+	//move all characters on screen
+	movementManager.move();
+
+	// draw player characters
 	playerShip->drawShip(window);
 
-	if(enemyLoaded)	// draw enemy ship
+	// draw enemy ship
+	if(enemyLoaded)	
 	{
 		enemyShip->getLargeShipSprite().setPosition(580,300);
 		window.draw(enemyShip->getLargeShipSprite());
 	}
 
-	movementManager.move(window);
 }
 
 void ShipView::initialize()
@@ -42,18 +46,19 @@ void ShipView::initialize()
 	backgroundSprite.setTexture(*bgTexturePtr);
 	backgroundSprite.setPosition(0,0);
 
-	playerShip->getLargeShipSprite().setPosition(50,200);
+	movementManager.initialize(playerShip);
 
-	float offset = 180;
+	playerShip->getLargeShipSprite().setPosition(movementManager.BLOCK_WIDTH,movementManager.BLOCK_HEIGHT*3);
+
+	float offset = movementManager.BLOCK_WIDTH*3;
 
 	std::list<CrewMember*> playerCrew = playerShip->getCrew();
 	std::list<CrewMember *>::iterator crewIterator;
 	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
 	{
-		(*crewIterator)->setPosition(offset = offset+40, 430);
+		(*crewIterator)->setPosition(offset = offset+movementManager.BLOCK_WIDTH*2, movementManager.BLOCK_HEIGHT*6);
 	}
 
-	movementManager.initialize(playerShip);
 
 	initialized = true;
 }
@@ -84,7 +89,9 @@ void ShipView::handleShipBlockClick(int x, int y)
 	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
 	{
 		if((*crewIterator)->isCharacterSelected())
+		{
 			movementManager.addNewMovement(*crewIterator, x, y);
+		}
 	}
 }
 

@@ -4,7 +4,7 @@ ShipMovement::ShipMovement(CrewMember * crew, float finalX, float finalY)
 	: crewMember(crew)
 {
 	finalDestination.x = finalX;
-	finalDestination.y = finalX;
+	finalDestination.y = finalY;
 }
 
 ShipMovement::~ShipMovement()
@@ -31,4 +31,9 @@ sf::Vector2f ShipMovement::getFinalDestination()
 sf::Vector2f ShipMovement::getMovementVector()
 {
 	 return movementVector;
+}
+
+void ShipMovement::setShortestPath(std::list<ShipBlock *> path)
+{
+	shortestPath = path;
 }

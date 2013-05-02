@@ -22,7 +22,6 @@ void Ship::drawShip(sf::RenderWindow &window)
 {
 	window.draw(getLargeShipSprite());
 
-
 	std::list<CrewMember *>::iterator crewIterator;
 	for ( crewIterator = crew.begin(); crewIterator != crew.end(); ++crewIterator)
 	{

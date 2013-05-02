@@ -14,6 +14,7 @@ int main()
 	gameController->initialize();
 
 	
+	srand(time(NULL));
 	sf::Clock frameClock;
 
     while (window.isOpen())

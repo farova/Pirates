@@ -11,12 +11,22 @@ ShipBlock::~ShipBlock()
 
 }
 
-void ShipBlock::initialize(int level, ShipBlockType type, bool ladder, bool blocked)
+void ShipBlock::initialize(int level, bool ladder, bool blocked)
 {
 	this->level = level;
-	this->type = type;
 	this->ladder = ladder;
 	this->blocked = blocked;
+}
+
+void ShipBlock::setBlockMatrixPosition(int x, int y)
+{
+	matrixPosition.x = x;
+	matrixPosition.y = y;
+}
+
+sf::Vector2i ShipBlock::getBlockMatrixPosition()
+{
+	return matrixPosition;
 }
 
 bool ShipBlock::isLadder()
@@ -32,9 +42,4 @@ bool ShipBlock::isBlocked()
 int ShipBlock::getLevel()
 {
 	return level;
-}
-
-ShipBlockType ShipBlock::getBlockType()
-{
-	return type;
 }

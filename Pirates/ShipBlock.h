@@ -4,30 +4,29 @@
 #include <SFML/Graphics.hpp>
 #include <list>
 
-enum ShipBlockType{};
-
 class ShipBlock {
 
 	public:
 		ShipBlock();
 		~ShipBlock();
-
-		void initialize(int, ShipBlockType, bool, bool);
+		
+		void initialize(int, bool, bool);
+		void setBlockMatrixPosition(int, int);
 
 		int getLevel();
-		ShipBlockType getBlockType();
+		sf::Vector2i getBlockMatrixPosition();
 
 		bool isLadder();
 		bool isBlocked();
 
 	private:
+		
+		sf::Vector2i matrixPosition;
 
 		bool blocked;
 		bool ladder;
 
 		int level;
-
-		ShipBlockType type;
 
 };
 
