@@ -1,5 +1,7 @@
 ﻿  ShipMovementManager.cpp
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipmovementmanager.cpp(83): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipmovementmanager.cpp(229): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipmovementmanager.cpp(128): warning C4715: 'ShipMovementManager::DFSSearch' : not all control paths return a value
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipmovementmanager.cpp(72): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipmovementmanager.cpp(92): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipmovementmanager.cpp(202): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipmovementmanager.cpp(272): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipmovementmanager.cpp(137): warning C4715: 'ShipMovementManager::DFSSearch' : not all control paths return a value
   Pirates.vcxproj -> C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\Pirates.exe

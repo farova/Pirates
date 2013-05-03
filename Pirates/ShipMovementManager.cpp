@@ -42,9 +42,9 @@ void ShipMovementManager::initialize(Ship * ship)
 		}
 	}
 	
-	shipBlocks[4][5].initialize(1,false,false);
-	shipBlocks[4][4].initialize(1,false,false);
-	shipBlocks[4][3].initialize(1,false,false);
+	shipBlocks[4][5].initialize(1,true,false);
+	shipBlocks[4][4].initialize(1,true,false);
+	shipBlocks[4][3].initialize(1,true,false);
 	shipBlocks[3][3].initialize(1,false,false);
 	shipBlocks[2][3].initialize(1,false,false);
 
@@ -56,6 +56,8 @@ void ShipMovementManager::initialize(Ship * ship)
 			{
 			if(shipBlocks[i][j].isBlocked())
 				cout << "X";
+			else if(shipBlocks[i][j].isLadder())
+				cout << "-";
 			else
 				cout << " ";
 		}
@@ -66,6 +68,13 @@ void ShipMovementManager::initialize(Ship * ship)
 
 void ShipMovementManager::addNewMovement(CrewMember * crew, int x, int y)
 {
+	// do nothign if new block is not accessible and deselect the character
+	if(getCurrentBlock(x,y)->isBlocked() || getCurrentBlock(x,y)->isLadder())
+	{
+		crew->toggleSelect();
+		return;
+	}
+
 	// check if character already had movement, if does cancel old and create new
 	std::list<ShipMovement *>::iterator movementIterator = currentShipMovements.begin(), next;
 	while(movementIterator!=currentShipMovements.end()) 
@@ -134,10 +143,6 @@ bool ShipMovementManager::generateShortestPath(ShipMovement * movement)
 
 	sf::Vector2i destination = getCurrentBlock(movement->getFinalDestination().x, movement->getFinalDestination().y)->getBlockMatrixPosition();
 	sf::Vector2i start = getCurrentBlock(movement->getCrewMember())->getBlockMatrixPosition();
-
-	// if the block we want to get to is blocked, cant move to it
-	if(shipBlocks[destination.x][destination.y].isBlocked() || shipBlocks[destination.x][destination.y].isLadder() || shipBlocks[start.x][start.y].isBlocked())
-		return false;
 	
 	typedef pair<sf::Vector2i, bool> BlockParentPair; // <block, parent block>
 
@@ -165,6 +170,10 @@ bool ShipMovementManager::generateShortestPath(ShipMovement * movement)
 		pathNode = searchArray[(int)pathNode.x][(int)pathNode.y].first;
 	}
 
+	// only push current block if next direction is up/down
+	if(!path.empty() && (start.y - path.front()->getBlockMatrixPosition().y) != 0 )
+		path.push_front(&shipBlocks[(int)start.x][(int)start.y]);
+
 	movement->setShortestPath(path);
 	
 	for(int i = 0; i < xBlocks; i+=1)
@@ -190,38 +199,72 @@ sf::Vector2f ShipMovementManager::getNewMovementVector(ShipMovement * movement)
 {
 	sf::Vector2f spritePosition = movement->getCrewMember()->getPosition();
 	sf::Vector2f finalPosition = movement->getFinalDestination();
+	int finalPositionXCentered = finalPosition.x - BLOCK_WIDTH/2;
 
-	// reach final destination
-	if(spritePosition.x == finalPosition.x && (spritePosition.y >= finalPosition.y && spritePosition.y - BLOCK_HEIGHT < finalPosition.y) )
+	sf::Vector2i finalBlock = getCurrentBlock(finalPosition.x, finalPosition.y)->getBlockMatrixPosition();
+
+	// reach final destination - center sprite in middle of click
+	if(spritePosition.x == finalPositionXCentered && spritePosition.y == finalBlock.y*BLOCK_HEIGHT )
 	{
-		movement->setFinished(true);
+		movement->setStatus(Finished);
 		return sf::Vector2f(0,0);
 	}
 
-	sf::Vector2i nextBlock = movement->getShortestPath().front()->getBlockMatrixPosition();
+	int xDistToCompare, yDistToCompare;
 
-	bool initialMove = (movement->getMovementVector().x == 0 && movement->getMovementVector().y == 0);
+	if(movement->getShortestPath().empty())
+		movement->setStatus(Final);
 
-	// if completely in next path block, determine direction of next movement, otherwise contine until hit next block on path
-	if((spritePosition.x == nextBlock.x*BLOCK_WIDTH && spritePosition.y == nextBlock.y*BLOCK_HEIGHT) || initialMove)
+	if(movement->getStatus() == Final)
+	{
+		xDistToCompare = finalPositionXCentered;
+		yDistToCompare = finalBlock.y*BLOCK_HEIGHT;		// always align to block y coordinate
+	}
+	else
+	{
+		sf::Vector2i nextBlock = movement->getShortestPath().front()->getBlockMatrixPosition();
+		xDistToCompare = nextBlock.x*BLOCK_WIDTH;
+		yDistToCompare = nextBlock.y*BLOCK_HEIGHT;
+	}
+
+	// if completely in next path block, or inital movement or final movement determine direction of next movement, otherwise contine until hit next block on path
+	if((spritePosition.x == xDistToCompare && spritePosition.y == yDistToCompare) || movement->getStatus() == Initial || movement->getStatus() == Final)
 	{
 		// pop off the block
-		if(!initialMove)
+		if(movement->getStatus() != Initial && movement->getStatus() != Final)
 			movement->getShortestPath().pop_front();
+
+		movement->setStatus(Moving);
+
+		// update coordinates to check
+		if(movement->getShortestPath().empty())
+		movement->setStatus(Final);
+
+		if(movement->getStatus() == Final)
+		{
+			xDistToCompare = finalPositionXCentered;
+			yDistToCompare = finalBlock.y*BLOCK_HEIGHT;		// always align to block y coordinate
+		}
+		else
+		{
+			sf::Vector2i nextBlock = movement->getShortestPath().front()->getBlockMatrixPosition();
+			xDistToCompare = nextBlock.x*BLOCK_WIDTH;
+			yDistToCompare = nextBlock.y*BLOCK_HEIGHT;
+		}
 
 		//get coordinates for next movement
 		int xDir, yDir;
 
-		if((nextBlock.x*BLOCK_WIDTH - spritePosition.x) < 0)
+		if((xDistToCompare - spritePosition.x) < 0)
 			xDir = -1;
-		else if((nextBlock.x*BLOCK_WIDTH - spritePosition.x) == 0)
+		else if((xDistToCompare - spritePosition.x) == 0)
 			xDir = 0;
 		else
 			xDir = 1;
 		
-		if((nextBlock.y*BLOCK_HEIGHT - spritePosition.y) < 0)
+		if((yDistToCompare - spritePosition.y) < 0)
 			yDir = -1;
-		else if((nextBlock.y*BLOCK_HEIGHT - spritePosition.y) == 0)
+		else if((yDistToCompare - spritePosition.y) == 0)
 			yDir = 0;
 		else
 			yDir = 1;
@@ -239,7 +282,7 @@ void ShipMovementManager::move()
 	std::list<ShipMovement*>::iterator i = currentShipMovements.begin();
 	while (i != currentShipMovements.end())
 	{
-		if ((*i)->isFinished())
+		if ((*i)->getStatus() == Finished)
 		{
 			// if movement finished, delete object
 			delete *i;

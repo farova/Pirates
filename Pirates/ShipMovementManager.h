@@ -23,11 +23,12 @@ class ShipMovementManager {
 	private:
 		
 		bool DFSSearch(pair<sf::Vector2i, bool> **, sf::Vector2i, sf::Vector2i);
+		bool generateShortestPath(ShipMovement *);
 
 		ShipBlock * getCurrentBlock(CrewMember *);
 		ShipBlock * getCurrentBlock(float, float);
+
 		sf::Vector2f getNewMovementVector(ShipMovement *);
-		bool generateShortestPath(ShipMovement *);
 
 		Ship * playerShip;
 

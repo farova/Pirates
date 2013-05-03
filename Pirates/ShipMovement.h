@@ -4,6 +4,8 @@
 #include "CrewMember.h"
 #include "ShipBlock.h"
 
+enum MovementStatus {Initial, Moving, Final, Finished};
+
 class ShipMovement {
 
 	public:
@@ -13,10 +15,9 @@ class ShipMovement {
 		void setMovementVector(float, float);
 		void setMovementVector(sf::Vector2f);
 		void setShortestPath(std::list<ShipBlock *>);
-		void setFinished(bool);
+		void setStatus(MovementStatus);
 
-		bool isFinished();
-
+		MovementStatus getStatus();
 		CrewMember * getCrewMember();
 		sf::Vector2f getFinalDestination();
 		sf::Vector2f getMovementVector();
@@ -24,7 +25,7 @@ class ShipMovement {
 
 	private:
 
-		bool finished;
+		MovementStatus movementStatus;
 
 		CrewMember * crewMember;
 

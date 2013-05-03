@@ -1,7 +1,7 @@
 #include "ShipMovement.h"
 
 ShipMovement::ShipMovement(CrewMember * crew, float finalX, float finalY)
-	: crewMember(crew), finished(false)
+	: crewMember(crew), movementStatus(Initial)
 {
 	finalDestination.x = finalX;
 	finalDestination.y = finalY;
@@ -12,14 +12,14 @@ ShipMovement::~ShipMovement()
 
 }
 
-void ShipMovement::setFinished(bool f)
+void ShipMovement::setStatus(MovementStatus stat)
 {
-	finished = f;
+	movementStatus = stat;
 }
 
-bool ShipMovement::isFinished()
+MovementStatus ShipMovement::getStatus()
 {
-	return finished;
+	return movementStatus;
 }
 
 
