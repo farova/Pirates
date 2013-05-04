@@ -175,26 +175,28 @@ void Game::initialize()
 	thor::ResourceKey<sf::Texture> splashScreenTexture = thor::Resources::fromFile<sf::Texture>("splash.jpg");
 	
 	thor::ResourceKey<sf::Texture> shipSmallTexture = thor::Resources::fromFile<sf::Texture>("ship.png");
-	thor::ResourceKey<sf::Texture> shipLargeTexture = thor::Resources::fromFile<sf::Texture>("ship_large.png");
+	thor::ResourceKey<sf::Texture> shipLargeTexture = thor::Resources::fromFile<sf::Texture>("images/ship_1.png");
+	thor::ResourceKey<sf::Texture> shipLargeOverlayTexture = thor::Resources::fromFile<sf::Texture>("images/ship_1_overlay.png");
 	
 	thor::ResourceKey<sf::Texture> shipPirateTexture = thor::Resources::fromFile<sf::Texture>("ship_pirate.png");
 	thor::ResourceKey<sf::Texture> shipNeutralTexture = thor::Resources::fromFile<sf::Texture>("ship_neutral.png");
 	thor::ResourceKey<sf::Texture> shipNavyTexture = thor::Resources::fromFile<sf::Texture>("ship_navy.png");
 
-	thor::ResourceKey<sf::Texture> crewTextureB = thor::Resources::fromFile<sf::Texture>("crew_b.png");
-	thor::ResourceKey<sf::Texture> crewTextureG = thor::Resources::fromFile<sf::Texture>("crew_g.png");
-	thor::ResourceKey<sf::Texture> crewTextureY = thor::Resources::fromFile<sf::Texture>("crew_y.png");
+	thor::ResourceKey<sf::Texture> crewTexture1 = thor::Resources::fromFile<sf::Texture>("images/pirate_1.png");
+	thor::ResourceKey<sf::Texture> crewTexture2 = thor::Resources::fromFile<sf::Texture>("images/pirate_2.png");
+	thor::ResourceKey<sf::Texture> crewTextureS = thor::Resources::fromFile<sf::Texture>("images/selected.png");
 
 	// load into cache
-	std::shared_ptr<sf::Texture> crewTextureBPtr = resourceCache->acquire(crewTextureB);
-	std::shared_ptr<sf::Texture> crewTextureYPtr = resourceCache->acquire(crewTextureY);
-	std::shared_ptr<sf::Texture> crewTextureGPtr = resourceCache->acquire(crewTextureG);
+	std::shared_ptr<sf::Texture> crewTexture1Ptr = resourceCache->acquire(crewTexture1);
+	std::shared_ptr<sf::Texture> crewTexture2Ptr = resourceCache->acquire(crewTexture2);
+	std::shared_ptr<sf::Texture> crewTextureSPtr = resourceCache->acquire(crewTextureS);
 	resourceCache->acquire(shipPirateTexture);
 	resourceCache->acquire(shipNeutralTexture);
 	resourceCache->acquire(shipNavyTexture);
 	std::shared_ptr<sf::Texture> splashScreenPtr = resourceCache->acquire(splashScreenTexture);
 	std::shared_ptr<sf::Texture> playerSmallTexturePtr = resourceCache->acquire(shipSmallTexture);
 	std::shared_ptr<sf::Texture> playerLargeTexturePtr = resourceCache->acquire(shipLargeTexture);
+	std::shared_ptr<sf::Texture> playerLargeOverlayTexturePtr = resourceCache->acquire(shipLargeOverlayTexture);
 	
 
 	//initialize splashscreen
@@ -202,29 +204,17 @@ void Game::initialize()
 
 
 	// initialize playerShip
-	playerShip = new Ship(playerSmallTexturePtr.get(), 20, 20, 10, neutral, Fighter, playerLargeTexturePtr.get());
+	playerShip = new Ship(playerSmallTexturePtr.get(), 20, 20, 10, neutral, Fighter, playerLargeTexturePtr.get(), playerLargeOverlayTexturePtr.get());
 	playerShip->setPosition(0,0);
 
-	CrewMember *crewA = new CrewMember(crewTextureYPtr.get(), crewTextureGPtr.get(), "Michaela", 10, 10, 0.5, 15);
-	CrewMember *crewB = new CrewMember(crewTextureBPtr.get(), crewTextureGPtr.get(), "Victor", 10, 10, 0.5, 15);
+	int characterH = 50;
+	int characterW = 30;
+
+	CrewMember *crewA = new CrewMember(crewTexture1Ptr.get(), crewTextureSPtr.get(), "Michaela", 10, 10, 1, 15);
+	CrewMember *crewB = new CrewMember(crewTexture2Ptr.get(), crewTextureSPtr.get(), "Victor", 10, 10, 1, 15);
 	
 	playerShip->addCrewMember(crewA);
 	playerShip->addCrewMember(crewB);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	// initialize different game views
 	mapView = new MapView();
@@ -235,6 +225,7 @@ void Game::initialize()
 
 	shipView = new ShipView();
 	shipView->setWindowSize(windowWidth, windowHeight);
+	shipView->setCaracterSize(characterW, characterH);
 	shipView->setPlayerShip(playerShip);
 	shipView->loadCache(resourceCache);
 	shipView->initialize();

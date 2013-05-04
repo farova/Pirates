@@ -2,7 +2,7 @@
 #define _SHIPVIEW_H
 
 #include "Ship.h"
-#include "ShipMovementManager.h"
+#include "CharacterMovementManager.h"
 #include "IGameView.h"
 
 class ShipView : public IGameView {
@@ -20,6 +20,7 @@ class ShipView : public IGameView {
 		void handleKeyPress();
 		
 		void setWindowSize(int, int);
+		void setCaracterSize(int, int);
 		void setPlayerShip(Ship *);
 		void setEnemyShip(Ship *);
 
@@ -41,6 +42,9 @@ class ShipView : public IGameView {
 		
 		int windowHeight;
 		int windowWidth;
+
+		int characterHeight;
+		int characterWidth;
 		
 		Ship *playerShip;
 		Ship *enemyShip;
@@ -51,7 +55,7 @@ class ShipView : public IGameView {
 		sf::Sprite backgroundSprite;
 		
 		// Ship movement management
-		ShipMovementManager movementManager;
+		CharacterMovementManager movementManager;
 
 };
 

@@ -3,8 +3,8 @@
 
 int main()
 {
-	int windowHeight = 800;
-	int windowWidth = 800;
+	int windowHeight = 1024;
+	int windowWidth = 768;
 	sf::RenderWindow window(sf::VideoMode(windowHeight, windowWidth), "Pirates", sf::Style::Close);
 
 	window.setFramerateLimit(60);
@@ -38,7 +38,7 @@ int main()
 					break;
 					
 				case sf::Event::KeyPressed:
-					gameController->handleMouseClick(event.mouseButton.x, event.mouseButton.y);
+					gameController->handleKeyPress();
 					break;
 			}
         }

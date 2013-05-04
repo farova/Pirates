@@ -1,11 +1,12 @@
 #include "Ship.h"
 
 
-Ship::Ship(sf::Texture * textureSmall, int healthMax, int healthCurrent, int speed, ShipAlliance alliance, ShipType type, sf::Texture * textureLarge)
+Ship::Ship(sf::Texture * textureSmall, int healthMax, int healthCurrent, int speed, ShipAlliance alliance, ShipType type, sf::Texture * textureLarge, sf::Texture * textureLargeOver)
 	: MovableObject(textureSmall, healthMax, healthCurrent, speed),
 	alliance(alliance), shipType(type)
 {
 	largeSprite.setTexture(*textureLarge);
+	largeOverlaySprite.setTexture(*textureLargeOver);
 }
 
 Ship::~Ship()
@@ -27,6 +28,9 @@ void Ship::drawShip(sf::RenderWindow &window)
 	{
 		(*crewIterator)->draw(window);
 	}
+
+	
+	window.draw(getLargeShipOverlaySprite());
 }
 
 ShipAlliance Ship::getShipAlliance()
@@ -44,6 +48,10 @@ sf::Sprite & Ship::getLargeShipSprite()
 	return largeSprite;
 }
 
+sf::Sprite & Ship::getLargeShipOverlaySprite()
+{
+	return largeOverlaySprite;
+}
 
 void Ship::addCrewMember(CrewMember *crewMember)
 {

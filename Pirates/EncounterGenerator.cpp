@@ -61,7 +61,7 @@ Ship * EncounterGenerator::generatePirateShip()
 	thor::ResourceKey<sf::Texture> shipTextureResource = thor::Resources::fromFile<sf::Texture>("ship_pirate.png");
 	std::shared_ptr<sf::Texture> shipTexturePtr = resourceCache->acquire(shipTextureResource);
 
-	return new Ship(shipTexturePtr.get(), 20,20,10, pirate, Fighter, shipTexturePtr.get());
+	return new Ship(shipTexturePtr.get(), 20,20,10, pirate, Fighter, shipTexturePtr.get(), shipTexturePtr.get());
 }
 
 Ship * EncounterGenerator::generateNavyShip()
@@ -69,7 +69,7 @@ Ship * EncounterGenerator::generateNavyShip()
 	thor::ResourceKey<sf::Texture> shipTextureResource = thor::Resources::fromFile<sf::Texture>("ship_navy.png");
 	std::shared_ptr<sf::Texture> shipTexturePtr = resourceCache->acquire(shipTextureResource);
 
-	return new Ship(shipTexturePtr.get(), 20,20,10, navy, Fighter, shipTexturePtr.get());
+	return new Ship(shipTexturePtr.get(), 20,20,10, navy, Fighter, shipTexturePtr.get(), shipTexturePtr.get());
 }
 
 Ship * EncounterGenerator::generateNeutralShip()
@@ -77,5 +77,5 @@ Ship * EncounterGenerator::generateNeutralShip()
 	thor::ResourceKey<sf::Texture> shipTextureResource = thor::Resources::fromFile<sf::Texture>("ship_neutral.png");
 	std::shared_ptr<sf::Texture> shipTexturePtr = resourceCache->acquire(shipTextureResource);
 
-	return new Ship(shipTexturePtr.get(), 20,20,10, neutral, TransportShip, shipTexturePtr.get());
+	return new Ship(shipTexturePtr.get(), 20,20,10, neutral, TransportShip, shipTexturePtr.get(), shipTexturePtr.get());
 }

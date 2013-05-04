@@ -4,7 +4,7 @@
 
 
 ShipView::ShipView()
-	: initialized(false), enemyLoaded(false), fightFinished(false), cacheLoaded(false)
+	: initialized(false), enemyLoaded(false), fightFinished(false), cacheLoaded(false), characterHeight(0), characterWidth(0)
 {
 
 }
@@ -24,15 +24,15 @@ void ShipView::drawAll(sf::RenderWindow &window)
 	//move all characters on screen
 	movementManager.move();
 
-	// draw player characters
-	playerShip->drawShip(window);
-
 	// draw enemy ship
 	if(enemyLoaded)	
 	{
-		enemyShip->getLargeShipSprite().setPosition(580,300);
+		enemyShip->getLargeShipSprite().setPosition(movementManager.getBlockWidth()*15,movementManager.getBlockHeight()*6);
 		window.draw(enemyShip->getLargeShipSprite());
 	}
+
+	// draw player characters
+	playerShip->drawShip(window);
 
 }
 
@@ -41,25 +41,25 @@ void ShipView::initialize()
 	if(!cacheLoaded)
 		return;
 	
-	thor::ResourceKey<sf::Texture> bgTextureResource = thor::Resources::fromFile<sf::Texture>("shipViewBackground.jpg");
+	thor::ResourceKey<sf::Texture> bgTextureResource = thor::Resources::fromFile<sf::Texture>("images/shipViewBg.png");
 	std::shared_ptr<sf::Texture> bgTexturePtr = resourceCache->acquire(bgTextureResource);
 	backgroundSprite.setTexture(*bgTexturePtr);
 	backgroundSprite.setPosition(0,0);
 
-	movementManager.initialize(playerShip);
+	movementManager.initialize(playerShip, windowHeight, windowWidth, characterHeight, characterWidth);
+	
+	playerShip->getLargeShipSprite().setPosition(movementManager.getBlockWidth(),movementManager.getBlockHeight());
+	playerShip->getLargeShipOverlaySprite().setPosition(movementManager.getBlockWidth(),movementManager.getBlockHeight());
 
-	playerShip->getLargeShipSprite().setPosition(movementManager.BLOCK_WIDTH,movementManager.BLOCK_HEIGHT*3);
-
-	float offset = movementManager.BLOCK_WIDTH*3;
+	float offset = movementManager.getBlockWidth()*3;
 
 	std::list<CrewMember*> playerCrew = playerShip->getCrew();
 	std::list<CrewMember *>::iterator crewIterator;
 	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
 	{
-		(*crewIterator)->setPosition(offset = offset+movementManager.BLOCK_WIDTH*2, movementManager.BLOCK_HEIGHT*6);
+		(*crewIterator)->setPosition(offset = offset+movementManager.getBlockWidth()*2, movementManager.getBlockHeight()*7);
 	}
-
-
+	
 	initialized = true;
 }
 
@@ -140,6 +140,12 @@ void ShipView::setWindowSize(int w, int h)
 {
 	windowHeight = h;
 	windowWidth = w;
+}
+		
+void ShipView::setCaracterSize(int w, int h)
+{
+	characterHeight = h;
+	characterWidth = w;
 }
 
 bool ShipView::isInitialized()

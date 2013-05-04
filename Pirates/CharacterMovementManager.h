@@ -4,36 +4,44 @@
 #include "CrewMember.h"
 #include "ShipBlock.h"
 #include "Ship.h"
-#include "ShipMovement.h"
+#include "CharacterMovement.h"
 
-class ShipMovementManager {
+class CharacterMovementManager {
 
 	public:
-		ShipMovementManager();
-		~ShipMovementManager();
+		CharacterMovementManager();
+		~CharacterMovementManager();
 		
-		void initialize(Ship *);
+		void initialize(Ship *, int, int, int, int);
 
 		void addNewMovement(CrewMember *, int, int);
 		void move();
 		
-		const int BLOCK_HEIGHT;
-		const int BLOCK_WIDTH;
+		int getBlockWidth();
+		int getBlockHeight();
+		
 
 	private:
 		
 		bool DFSSearch(pair<sf::Vector2i, bool> **, sf::Vector2i, sf::Vector2i);
-		bool generateShortestPath(ShipMovement *);
+		bool generateShortestPath(CharacterMovement *);
 
 		ShipBlock * getCurrentBlock(CrewMember *);
 		ShipBlock * getCurrentBlock(float, float);
 
-		sf::Vector2f getNewMovementVector(ShipMovement *);
+		sf::Vector2f getNewMovementVector(CharacterMovement *);
 
 		Ship * playerShip;
 
-		std::list<ShipMovement *> currentShipMovements;
+		std::list<CharacterMovement *> currentCharacterMovements;
 		ShipBlock** shipBlocks;
+
+		int numXBlocks;
+		int numYBlocks;
+
+		int blockWidth;;
+		int blockHeight;
+
 
 };
 

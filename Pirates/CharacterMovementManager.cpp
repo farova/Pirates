@@ -1,58 +1,102 @@
-#include "ShipMovementManager.h"
+#include "CharacterMovementManager.h"
 
 #include <iostream>
 
-ShipMovementManager::ShipMovementManager()
-	: BLOCK_HEIGHT(81), BLOCK_WIDTH(50)
+CharacterMovementManager::CharacterMovementManager()
 {
 	
 }
 
-ShipMovementManager::~ShipMovementManager()
+CharacterMovementManager::~CharacterMovementManager()
 {
-	int xBlocks = 800/50;
-	int yBlocks = 800/81;
-
-	for(int i = 0; i < xBlocks; i+=1)
+	for(int i = 0; i < numXBlocks; i+=1)
 	{
 		delete [] shipBlocks;
 	}
 	delete [] shipBlocks;
 }
 
-void ShipMovementManager::initialize(Ship * ship)
+int CharacterMovementManager::getBlockWidth()
 {
+	return blockWidth;
+}
+
+int CharacterMovementManager::getBlockHeight()
+{
+	return blockHeight;
+}
+
+void CharacterMovementManager::initialize(Ship * ship, int windowH, int windowW, int characterH, int characterW)
+{
+	blockWidth = characterH;
+	blockHeight = characterH;
+
 	playerShip = ship;
 
-	int xBlocks = 800/50;
-	int yBlocks = 800/81;
+	numXBlocks = ceil(windowW/characterW);
+	numYBlocks = ceil(windowH/characterH);
 	
-	shipBlocks = new ShipBlock*[xBlocks];
-	for(int i = 0; i < xBlocks; i+=1)
+	shipBlocks = new ShipBlock*[numXBlocks];
+	for(int i = 0; i < numXBlocks; i+=1)
 	{
-		shipBlocks[i] = new ShipBlock[yBlocks];
+		shipBlocks[i] = new ShipBlock[numYBlocks];
 	}
 
-	for(int i = 0; i < xBlocks; i+=1)
+	for(int i = 0; i < numXBlocks; i+=1)
 	{
-		for(int j = 0; j < yBlocks; j+=1)
+		for(int j = 0; j < numYBlocks; j+=1)
 		{
-			shipBlocks[i][j].initialize(1,false,!(i > 2 && i < 9 && j == 6));
+			shipBlocks[i][j].initialize(1,false,!(i >= 2 && i <= 11 && j == 7));
 			shipBlocks[i][j].setBlockMatrixPosition(i,j);
 		}
 	}
 	
+	shipBlocks[4][6].initialize(1,true,false);
 	shipBlocks[4][5].initialize(1,true,false);
-	shipBlocks[4][4].initialize(1,true,false);
-	shipBlocks[4][3].initialize(1,true,false);
-	shipBlocks[3][3].initialize(1,false,false);
-	shipBlocks[2][3].initialize(1,false,false);
+	shipBlocks[3][5].initialize(1,false,false);
+	shipBlocks[2][5].initialize(1,false,false);
+	shipBlocks[1][5].initialize(1,false,false);
+
+	
+	shipBlocks[7][6].initialize(1,true,false);
+	shipBlocks[7][5].initialize(1,true,false);
+	shipBlocks[7][4].initialize(1,true,false);
+	shipBlocks[7][3].initialize(1,true,false);
+	shipBlocks[7][2].initialize(1,true,false);
+	shipBlocks[7][1].initialize(1,false,false);
+	shipBlocks[8][1].initialize(1,false,false);
+
+
+	
+	shipBlocks[2][8].initialize(1,true,false);
+	shipBlocks[2][9].initialize(1,false,false);
+	shipBlocks[3][9].initialize(1,false,false);
+	shipBlocks[4][9].initialize(1,false,false);
+	shipBlocks[5][9].initialize(1,false,false);
+	shipBlocks[6][9].initialize(1,false,false);
+	shipBlocks[7][9].initialize(1,false,false);
+	shipBlocks[8][9].initialize(1,false,false);
+	shipBlocks[9][9].initialize(1,false,false);
+	shipBlocks[10][9].initialize(1,false,false);
+	shipBlocks[11][9].initialize(1,false,false);
+
+	
+	shipBlocks[7][10].initialize(1,true,false);
+	shipBlocks[2][11].initialize(1,false,false);
+	shipBlocks[3][11].initialize(1,false,false);
+	shipBlocks[4][11].initialize(1,false,false);
+	shipBlocks[5][11].initialize(1,false,false);
+	shipBlocks[6][11].initialize(1,false,false);
+	shipBlocks[7][11].initialize(1,false,false);
+	shipBlocks[8][11].initialize(1,false,false);
+	shipBlocks[9][11].initialize(1,false,false);
+	shipBlocks[10][11].initialize(1,false,false);
 
 	
 	
-	for(int j = 0; j < yBlocks; j+=1)
+	for(int j = 0; j < numYBlocks; j+=1)
 	{
-		for(int i = 0; i < xBlocks; i+=1)
+		for(int i = 0; i < numXBlocks; i+=1)
 			{
 			if(shipBlocks[i][j].isBlocked())
 				cout << "X";
@@ -66,7 +110,7 @@ void ShipMovementManager::initialize(Ship * ship)
 
 }
 
-void ShipMovementManager::addNewMovement(CrewMember * crew, int x, int y)
+void CharacterMovementManager::addNewMovement(CrewMember * crew, int x, int y)
 {
 	// do nothign if new block is not accessible and deselect the character
 	if(getCurrentBlock(x,y)->isBlocked() || getCurrentBlock(x,y)->isLadder())
@@ -76,20 +120,20 @@ void ShipMovementManager::addNewMovement(CrewMember * crew, int x, int y)
 	}
 
 	// check if character already had movement, if does cancel old and create new
-	std::list<ShipMovement *>::iterator movementIterator = currentShipMovements.begin(), next;
-	while(movementIterator!=currentShipMovements.end()) 
+	std::list<CharacterMovement *>::iterator movementIterator = currentCharacterMovements.begin(), next;
+	while(movementIterator!=currentCharacterMovements.end()) 
 	{
 		next = movementIterator; next++;
 		if((*movementIterator)->getCrewMember() == crew)
 		{
 			delete *movementIterator;
-			currentShipMovements.erase(movementIterator);
+			currentCharacterMovements.erase(movementIterator);
 			break;
 		}
 		movementIterator = next;
 	}
 
-	ShipMovement *movement = new ShipMovement(crew, x, y);
+	CharacterMovement *movement = new CharacterMovement(crew, x, y);
 
 	// if we cannot generate a path, cannot create new movement
 	if(!generateShortestPath(movement))
@@ -98,10 +142,10 @@ void ShipMovementManager::addNewMovement(CrewMember * crew, int x, int y)
 		return;
 	}
 
-	currentShipMovements.push_back(movement);
+	currentCharacterMovements.push_back(movement);
 }
 
-bool ShipMovementManager::DFSSearch( pair<sf::Vector2i, bool> ** matrix, sf::Vector2i node, sf::Vector2i goal)
+bool CharacterMovementManager::DFSSearch( pair<sf::Vector2i, bool> ** matrix, sf::Vector2i node, sf::Vector2i goal)
 {
 	if(node.x == goal.x && node.y == goal.y)
 		return true;
@@ -136,23 +180,20 @@ bool ShipMovementManager::DFSSearch( pair<sf::Vector2i, bool> ** matrix, sf::Vec
 	}
 }
 
-bool ShipMovementManager::generateShortestPath(ShipMovement * movement)
+bool CharacterMovementManager::generateShortestPath(CharacterMovement * movement)
 {
-	const int xBlocks = 800/50;
-	const int yBlocks = 800/81;
-
 	sf::Vector2i destination = getCurrentBlock(movement->getFinalDestination().x, movement->getFinalDestination().y)->getBlockMatrixPosition();
 	sf::Vector2i start = getCurrentBlock(movement->getCrewMember())->getBlockMatrixPosition();
 	
 	typedef pair<sf::Vector2i, bool> BlockParentPair; // <block, parent block>
 
 	BlockParentPair ** searchArray; //<parent, visited
-	searchArray = new BlockParentPair*[xBlocks];
-	for(int i = 0; i < xBlocks; i+=1)
+	searchArray = new BlockParentPair*[numXBlocks];
+	for(int i = 0; i < numXBlocks; i+=1)
 	{
-		searchArray[i] = new BlockParentPair[yBlocks];
+		searchArray[i] = new BlockParentPair[numYBlocks];
 		
-		for(int j = 0; j < yBlocks; j++)
+		for(int j = 0; j < numYBlocks; j++)
 		{
 			searchArray[i]->second = false;
 		}
@@ -176,7 +217,7 @@ bool ShipMovementManager::generateShortestPath(ShipMovement * movement)
 
 	movement->setShortestPath(path);
 	
-	for(int i = 0; i < xBlocks; i+=1)
+	for(int i = 0; i < numXBlocks; i+=1)
 	{
 		delete[] searchArray[i];
 	}
@@ -185,26 +226,26 @@ bool ShipMovementManager::generateShortestPath(ShipMovement * movement)
 	return true;
 }
 
-ShipBlock * ShipMovementManager::getCurrentBlock(CrewMember * crewMember)
+ShipBlock * CharacterMovementManager::getCurrentBlock(CrewMember * crewMember)
 {
 	return getCurrentBlock(crewMember->getPosition().x, crewMember->getPosition().y);
 }
 
-ShipBlock * ShipMovementManager::getCurrentBlock(float xPos, float yPos)
+ShipBlock * CharacterMovementManager::getCurrentBlock(float xPos, float yPos)
 {
-	return &shipBlocks[(int)(xPos/BLOCK_WIDTH)][(int)(yPos/BLOCK_HEIGHT)];
+	return &shipBlocks[(int)(xPos/blockWidth)][(int)(yPos/blockHeight)];
 }
 
-sf::Vector2f ShipMovementManager::getNewMovementVector(ShipMovement * movement)
+sf::Vector2f CharacterMovementManager::getNewMovementVector(CharacterMovement * movement)
 {
 	sf::Vector2f spritePosition = movement->getCrewMember()->getPosition();
 	sf::Vector2f finalPosition = movement->getFinalDestination();
-	int finalPositionXCentered = finalPosition.x - BLOCK_WIDTH/2;
+	int finalPositionXCentered = finalPosition.x; // - blockWidth/2;
 
 	sf::Vector2i finalBlock = getCurrentBlock(finalPosition.x, finalPosition.y)->getBlockMatrixPosition();
 
 	// reach final destination - center sprite in middle of click
-	if(spritePosition.x == finalPositionXCentered && spritePosition.y == finalBlock.y*BLOCK_HEIGHT )
+	if(spritePosition.x == finalPositionXCentered && spritePosition.y == finalBlock.y*blockHeight )
 	{
 		movement->setStatus(Finished);
 		return sf::Vector2f(0,0);
@@ -218,13 +259,13 @@ sf::Vector2f ShipMovementManager::getNewMovementVector(ShipMovement * movement)
 	if(movement->getStatus() == Final)
 	{
 		xDistToCompare = finalPositionXCentered;
-		yDistToCompare = finalBlock.y*BLOCK_HEIGHT;		// always align to block y coordinate
+		yDistToCompare = finalBlock.y*blockHeight;		// always align to block y coordinate
 	}
 	else
 	{
 		sf::Vector2i nextBlock = movement->getShortestPath().front()->getBlockMatrixPosition();
-		xDistToCompare = nextBlock.x*BLOCK_WIDTH;
-		yDistToCompare = nextBlock.y*BLOCK_HEIGHT;
+		xDistToCompare = nextBlock.x*blockWidth;
+		yDistToCompare = nextBlock.y*blockHeight;
 	}
 
 	// if completely in next path block, or inital movement or final movement determine direction of next movement, otherwise contine until hit next block on path
@@ -243,13 +284,13 @@ sf::Vector2f ShipMovementManager::getNewMovementVector(ShipMovement * movement)
 		if(movement->getStatus() == Final)
 		{
 			xDistToCompare = finalPositionXCentered;
-			yDistToCompare = finalBlock.y*BLOCK_HEIGHT;		// always align to block y coordinate
+			yDistToCompare = finalBlock.y*blockHeight;		// always align to block y coordinate
 		}
 		else
 		{
 			sf::Vector2i nextBlock = movement->getShortestPath().front()->getBlockMatrixPosition();
-			xDistToCompare = nextBlock.x*BLOCK_WIDTH;
-			yDistToCompare = nextBlock.y*BLOCK_HEIGHT;
+			xDistToCompare = nextBlock.x*blockWidth;
+			yDistToCompare = nextBlock.y*blockHeight;
 		}
 
 		//get coordinates for next movement
@@ -277,16 +318,16 @@ sf::Vector2f ShipMovementManager::getNewMovementVector(ShipMovement * movement)
 	}
 }
 
-void ShipMovementManager::move()
+void CharacterMovementManager::move()
 {
-	std::list<ShipMovement*>::iterator i = currentShipMovements.begin();
-	while (i != currentShipMovements.end())
+	std::list<CharacterMovement*>::iterator i = currentCharacterMovements.begin();
+	while (i != currentCharacterMovements.end())
 	{
 		if ((*i)->getStatus() == Finished)
 		{
 			// if movement finished, delete object
 			delete *i;
-			i = currentShipMovements.erase(i);
+			i = currentCharacterMovements.erase(i);
 		}
 		else
 		{
@@ -295,13 +336,9 @@ void ShipMovementManager::move()
 			float xMovement = (*i)->getMovementVector().x * (*i)->getCrewMember()->getSpeed();
 			float yMovement = (*i)->getMovementVector().y * (*i)->getCrewMember()->getSpeed();
 
-			cout << xMovement << " " << yMovement << endl;
-
 			(*i)->getCrewMember()->move(xMovement, yMovement);
 
 			++i;
 		}
 	}
 }
-
-

@@ -14,7 +14,7 @@ enum ShipType{Fighter, Shipwreck, Stranded, FishingShip, TransportShip};
 class Ship : public MovableObject {
 
 	public:
-		Ship(sf::Texture *, int, int, int, ShipAlliance, ShipType, sf::Texture *);
+		Ship(sf::Texture *, int, int, int, ShipAlliance, ShipType, sf::Texture *, sf::Texture *);
 		~Ship();
 
 		ShipAlliance getShipAlliance();
@@ -31,6 +31,7 @@ class Ship : public MovableObject {
 		std::list<MeleeWeapon*> & getArmory();
 		
 		sf::Sprite & getLargeShipSprite();
+		sf::Sprite & getLargeShipOverlaySprite();
 
 	private:
 		//general ship properties
@@ -38,6 +39,7 @@ class Ship : public MovableObject {
 		ShipType shipType;
 		
 		sf::Sprite largeSprite;
+		sf::Sprite largeOverlaySprite;
 
 		// weapons and crew pointers
 		std::list<Cannon*> cannons;

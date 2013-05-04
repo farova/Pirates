@@ -1,16 +1,16 @@
-#if !defined(_SHIPMOVEMENT_H)
-#define _SHIPMOVEMENT_H
+#if !defined(_CharacterMovement_H)
+#define _CharacterMovement_H
 
 #include "CrewMember.h"
 #include "ShipBlock.h"
 
 enum MovementStatus {Initial, Moving, Final, Finished};
 
-class ShipMovement {
+class CharacterMovement {
 
 	public:
-		ShipMovement(CrewMember*, float, float);
-		~ShipMovement();
+		CharacterMovement(CrewMember*, float, float);
+		~CharacterMovement();
 		
 		void setMovementVector(float, float);
 		void setMovementVector(sf::Vector2f);
@@ -36,4 +36,4 @@ class ShipMovement {
 
 };
 
-#endif  //_SHIPMOVEMENT_H
+#endif  //_CharacterMovement_H

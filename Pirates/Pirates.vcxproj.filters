@@ -51,13 +51,13 @@
     <ClCompile Include="CrewMember.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShipMovementManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="ShipBlock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ShipMovement.cpp">
+    <ClCompile Include="CharacterMovementManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterMovement.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -110,10 +110,10 @@
     <ClInclude Include="ShipBlock.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShipMovement.h">
+    <ClInclude Include="CharacterMovementManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ShipMovementManager.h">
+    <ClInclude Include="CharacterMovement.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
