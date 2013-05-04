@@ -2,7 +2,7 @@
 
 CrewMember::CrewMember(sf::Texture *texture, sf::Texture *selected,string name, int strength, int intelligence, float speed, int healthMax)
 	: MovableObject(texture, speed, healthMax, healthMax),
-	name(name), strength(strength), intelligence(intelligence), selected(false), performingAction(false) ,action(NoAction)
+	name(name), strength(strength), intelligence(intelligence), selected(false), performingAction(false) ,action(NoAction), facingDirection(Right)
 {
 	selectedOverlay.setTexture(*selected);
 }
@@ -10,6 +10,16 @@ CrewMember::CrewMember(sf::Texture *texture, sf::Texture *selected,string name, 
 CrewMember::~CrewMember()
 {
 
+}
+
+CharacterFacingDirection CrewMember::getFacingDirection()
+{
+	return facingDirection;
+}
+
+void CrewMember::setFacingDirection(CharacterFacingDirection dir)
+{
+	facingDirection = dir;
 }
 
 bool CrewMember::isPerformingAction()

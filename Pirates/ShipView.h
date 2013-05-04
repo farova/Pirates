@@ -37,6 +37,8 @@ class ShipView : public IGameView {
 
 		bool isSpriteClicked(sf::Sprite &, float, float);
 
+		void pollActions();
+
 		bool initialized;
 		bool enemyLoaded;
 		bool fightFinished;

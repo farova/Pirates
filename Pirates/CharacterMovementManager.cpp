@@ -275,6 +275,18 @@ void CharacterMovementManager::move()
 			float xMovement = (*i)->getMovementVector().x * (*i)->getCrewMember()->getSpeed();
 			float yMovement = (*i)->getMovementVector().y * (*i)->getCrewMember()->getSpeed();
 
+			// determine which direction character is facing
+			CharacterFacingDirection direction;
+			if(xMovement >= 0)
+				direction = Right;
+			else if(xMovement < 0)
+				direction = Left;
+
+			// if going down ladder, face inside of ship
+			if(yMovement != 0)
+				direction = In;
+
+			(*i)->getCrewMember()->setFacingDirection(direction);
 			(*i)->getCrewMember()->move(xMovement, yMovement);
 
 			++i;

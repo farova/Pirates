@@ -38,18 +38,34 @@ void ShipView::drawAll(sf::RenderWindow &window)
 	// draw player characters
 	playerShip->drawShip(window);
 
+	pollActions();
+}
+
+void ShipView::pollActions()
+{
+	/*
+	
+	std::list<CrewMember*> playerCrew = playerShip->getCrew();
+	std::list<CrewMember *>::iterator crewIterator;
+	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
+	{
+		if((*crewIterator)->isCharacterSelected())
+		{
 
 
-	// poll crew for actions, update stats accordingly
+			movementManager.addNewMovement(*crewIterator, x, y);
 
 
+			// if clicke on object to perform action, add action into the movement
 
+			// can only perform action if block is not occupied!
 
+			// movementManager.addNewMovement(*crewIterator, x, y, CharacterMovement);
 
+		}
+	}
 
-
-
-
+	*/
 }
 
 void ShipView::initialize()
@@ -66,20 +82,19 @@ void ShipView::initialize()
 
 	movementManager.initialize(playerShip, blockWidth, blockHeight, numXBlocks, numYBlocks, shipBlocks);
 
-	playerShip->getLargeShipSprite().setPosition(movementManager.getBlockWidth(),movementManager.getBlockHeight());
-	playerShip->getLargeShipOverlaySprite().setPosition(movementManager.getBlockWidth(),movementManager.getBlockHeight());
+	playerShip->getLargeShipSprite().setPosition(blockWidth,blockHeight);
+	playerShip->getLargeShipOverlaySprite().setPosition(blockWidth,blockHeight);
 
 	float offset = movementManager.getBlockWidth()*3;
 
+	// place crew onto ship
 	std::list<CrewMember*> playerCrew = playerShip->getCrew();
 	std::list<CrewMember *>::iterator crewIterator;
 	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
 	{
-		(*crewIterator)->setPosition(offset = offset+movementManager.getBlockWidth()*2, movementManager.getBlockHeight()*7);
+		(*crewIterator)->setPosition(offset = offset + blockWidth*2, blockHeight*7);
 	}
 
-
-	
 	initialized = true;
 }
 
@@ -163,14 +178,6 @@ void ShipView::initializeBlocks()
 	}
 }
 
-
-
-
-
-
-
-
-
 bool ShipView::handleCrewClick(int x, int y)
 {
 	bool spriteClicked = false;
@@ -203,8 +210,11 @@ void ShipView::handleShipBlockClick(int x, int y)
 			movementManager.addNewMovement(*crewIterator, x, y);
 
 
-			// if clicke on object to perform action, add action into the movemen
-			// movementManager.addNewMovement(*crewIterator, x, y, CharacterMovement);
+			// if clicke on object to perform action, add action into the movement
+
+			// can only perform action if block is not occupied!
+
+			// movementManager.addNewMovement(*crewIterator, x, y, CharacterAction);
 
 		}
 	}

@@ -7,6 +7,7 @@
 using namespace std;
 
 enum CharacterAction {NoAction, ArmCannon, RepairHull};
+enum CharacterFacingDirection {Left, Right, In, Out};
 
 class CrewMember : public MovableObject {
 
@@ -26,6 +27,9 @@ class CrewMember : public MovableObject {
 
 		bool isCharacterSelected();
 		void toggleSelect();
+		
+		CharacterFacingDirection getFacingDirection();
+		void setFacingDirection(CharacterFacingDirection);
 
 		void setStrength(int);
 		void setIntelligence(int);
@@ -38,6 +42,8 @@ class CrewMember : public MovableObject {
 
 		bool performingAction;
 		CharacterAction action;
+
+		CharacterFacingDirection facingDirection;
 
 		string name;
 		MeleeWeapon * weapon;
