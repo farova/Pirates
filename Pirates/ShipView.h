@@ -30,6 +30,8 @@ class ShipView : public IGameView {
 
 	private:
 		
+		void initializeBlocks();
+
 		bool handleCrewClick(int,int);
 		void handleShipBlockClick(int,int);
 
@@ -40,15 +42,20 @@ class ShipView : public IGameView {
 		bool fightFinished;
 		bool cacheLoaded;
 		
-		int windowHeight;
-		int windowWidth;
-
-		int characterHeight;
-		int characterWidth;
-		
 		Ship *playerShip;
 		Ship *enemyShip;
 
+		// block properties
+		ShipBlock ** shipBlocks;
+		int windowHeight;
+		int windowWidth;
+		int blockHeight;
+		int blockWidth;
+		int characterHeight;
+		int characterWidth;
+		int numXBlocks;
+		int numYBlocks;
+		
 		thor::ResourceCache<sf::Texture> * resourceCache;
 		
 		// graphics 

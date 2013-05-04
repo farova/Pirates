@@ -11,7 +11,11 @@ ShipView::ShipView()
 
 ShipView::~ShipView()
 {
-
+	for(int i = 0; i < numXBlocks; i+=1)
+	{
+		delete [] shipBlocks;
+	}
+	delete [] shipBlocks;
 }
 
 void ShipView::drawAll(sf::RenderWindow &window)
@@ -34,6 +38,18 @@ void ShipView::drawAll(sf::RenderWindow &window)
 	// draw player characters
 	playerShip->drawShip(window);
 
+
+
+	// poll crew for actions, update stats accordingly
+
+
+
+
+
+
+
+
+
 }
 
 void ShipView::initialize()
@@ -46,8 +62,10 @@ void ShipView::initialize()
 	backgroundSprite.setTexture(*bgTexturePtr);
 	backgroundSprite.setPosition(0,0);
 
-	movementManager.initialize(playerShip, windowHeight, windowWidth, characterHeight, characterWidth);
-	
+	initializeBlocks();
+
+	movementManager.initialize(playerShip, blockWidth, blockHeight, numXBlocks, numYBlocks, shipBlocks);
+
 	playerShip->getLargeShipSprite().setPosition(movementManager.getBlockWidth(),movementManager.getBlockHeight());
 	playerShip->getLargeShipOverlaySprite().setPosition(movementManager.getBlockWidth(),movementManager.getBlockHeight());
 
@@ -59,9 +77,99 @@ void ShipView::initialize()
 	{
 		(*crewIterator)->setPosition(offset = offset+movementManager.getBlockWidth()*2, movementManager.getBlockHeight()*7);
 	}
+
+
 	
 	initialized = true;
 }
+
+
+
+void ShipView::initializeBlocks()
+{
+	blockHeight = blockWidth = characterHeight;
+	numXBlocks = ceil(windowWidth/characterWidth);
+	numYBlocks = ceil(windowHeight/characterHeight);
+
+	shipBlocks = new ShipBlock*[numXBlocks];
+	for(int i = 0; i < numXBlocks; i+=1)
+	{
+		shipBlocks[i] = new ShipBlock[numYBlocks];
+	}
+
+	for(int i = 0; i < numXBlocks; i+=1)
+	{
+		for(int j = 0; j < numYBlocks; j+=1)
+		{
+			shipBlocks[i][j].initialize(1,false,!(i >= 2 && i <= 11 && j == 7));
+			shipBlocks[i][j].setBlockMatrixPosition(i,j);
+		}
+	}
+	
+	shipBlocks[4][6].initialize(1,true,false);
+	shipBlocks[4][5].initialize(1,true,false);
+	shipBlocks[3][5].initialize(1,false,false);
+	shipBlocks[2][5].initialize(1,false,false);
+	shipBlocks[1][5].initialize(1,false,false);
+
+	
+	shipBlocks[7][6].initialize(1,true,false);
+	shipBlocks[7][5].initialize(1,true,false);
+	shipBlocks[7][4].initialize(1,true,false);
+	shipBlocks[7][3].initialize(1,true,false);
+	shipBlocks[7][2].initialize(1,true,false);
+	shipBlocks[7][1].initialize(1,false,false);
+
+
+	
+	shipBlocks[2][8].initialize(1,true,false);
+	shipBlocks[2][9].initialize(1,false,false);
+	shipBlocks[3][9].initialize(1,false,false);
+	shipBlocks[4][9].initialize(1,false,false);
+	shipBlocks[5][9].initialize(1,false,false);
+	shipBlocks[6][9].initialize(1,false,false);
+	shipBlocks[7][9].initialize(1,false,false);
+	shipBlocks[8][9].initialize(1,false,false);
+	shipBlocks[9][9].initialize(1,false,false);
+	shipBlocks[10][9].initialize(1,false,false);
+	shipBlocks[11][9].initialize(1,false,false);
+
+	
+	shipBlocks[7][10].initialize(1,true,false);
+	shipBlocks[2][11].initialize(1,false,false);
+	shipBlocks[3][11].initialize(1,false,false);
+	shipBlocks[4][11].initialize(1,false,false);
+	shipBlocks[5][11].initialize(1,false,false);
+	shipBlocks[6][11].initialize(1,false,false);
+	shipBlocks[7][11].initialize(1,false,false);
+	shipBlocks[8][11].initialize(1,false,false);
+	shipBlocks[9][11].initialize(1,false,false);
+	shipBlocks[10][11].initialize(1,false,false);
+
+	
+	
+	for(int j = 0; j < numYBlocks; j+=1)
+	{
+		for(int i = 0; i < numXBlocks; i+=1)
+			{
+			if(shipBlocks[i][j].isBlocked())
+				cout << "X";
+			else if(shipBlocks[i][j].isLadder())
+				cout << "-";
+			else
+				cout << " ";
+		}
+		cout << endl;
+	}
+}
+
+
+
+
+
+
+
+
 
 bool ShipView::handleCrewClick(int x, int y)
 {
@@ -90,7 +198,14 @@ void ShipView::handleShipBlockClick(int x, int y)
 	{
 		if((*crewIterator)->isCharacterSelected())
 		{
+
+
 			movementManager.addNewMovement(*crewIterator, x, y);
+
+
+			// if clicke on object to perform action, add action into the movemen
+			// movementManager.addNewMovement(*crewIterator, x, y, CharacterMovement);
+
 		}
 	}
 }

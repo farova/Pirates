@@ -6,6 +6,8 @@
 
 using namespace std;
 
+enum CharacterAction {NoAction, ArmCannon, RepairHull};
+
 class CrewMember : public MovableObject {
 
 	public:
@@ -28,7 +30,15 @@ class CrewMember : public MovableObject {
 		void setStrength(int);
 		void setIntelligence(int);
 
+		bool isPerformingAction();
+		void stopPerformingAction();
+		void performAction(CharacterAction);
+
 	private:
+
+		bool performingAction;
+		CharacterAction action;
+
 		string name;
 		MeleeWeapon * weapon;
 

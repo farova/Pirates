@@ -9,13 +9,17 @@ enum MovementStatus {Initial, Moving, Final, Finished};
 class CharacterMovement {
 
 	public:
-		CharacterMovement(CrewMember*, float, float);
+		CharacterMovement(CrewMember*, float, float, bool);
 		~CharacterMovement();
 		
 		void setMovementVector(float, float);
 		void setMovementVector(sf::Vector2f);
 		void setShortestPath(std::list<ShipBlock *>);
 		void setStatus(MovementStatus);
+		
+		bool isActionTriggered();
+		CharacterAction getTriggeredAction();
+		void setTriggeredAction(CharacterAction);
 
 		MovementStatus getStatus();
 		CrewMember * getCrewMember();
@@ -24,6 +28,9 @@ class CharacterMovement {
 		std::list<ShipBlock *> & getShortestPath();
 
 	private:
+
+		bool actionTriggered;
+		CharacterAction actionToPerform;
 
 		MovementStatus movementStatus;
 

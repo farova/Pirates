@@ -1,7 +1,7 @@
 #include "CharacterMovement.h"
 
-CharacterMovement::CharacterMovement(CrewMember * crew, float finalX, float finalY)
-	: crewMember(crew), movementStatus(Initial)
+CharacterMovement::CharacterMovement(CrewMember * crew, float finalX, float finalY, bool action)
+	: crewMember(crew), movementStatus(Initial), actionTriggered(action)
 {
 	finalDestination.x = finalX;
 	finalDestination.y = finalY;
@@ -10,6 +10,21 @@ CharacterMovement::CharacterMovement(CrewMember * crew, float finalX, float fina
 CharacterMovement::~CharacterMovement()
 {
 
+}
+
+bool CharacterMovement::isActionTriggered()
+{
+	return actionTriggered;
+}
+
+CharacterAction CharacterMovement::getTriggeredAction()
+{
+	return actionToPerform;
+}
+
+void CharacterMovement::setTriggeredAction(CharacterAction act)
+{
+	actionToPerform = act;
 }
 
 void CharacterMovement::setStatus(MovementStatus stat)

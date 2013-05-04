@@ -9,11 +9,7 @@ CharacterMovementManager::CharacterMovementManager()
 
 CharacterMovementManager::~CharacterMovementManager()
 {
-	for(int i = 0; i < numXBlocks; i+=1)
-	{
-		delete [] shipBlocks;
-	}
-	delete [] shipBlocks;
+
 }
 
 int CharacterMovementManager::getBlockWidth()
@@ -26,91 +22,22 @@ int CharacterMovementManager::getBlockHeight()
 	return blockHeight;
 }
 
-void CharacterMovementManager::initialize(Ship * ship, int windowH, int windowW, int characterH, int characterW)
+void CharacterMovementManager::initialize(Ship * ship, int blockW, int blockH, int numX, int numY, ShipBlock ** shipBlocksPtr)
 {
-	blockWidth = characterH;
-	blockHeight = characterH;
-
+	blockWidth = blockW;
+	blockHeight = blockH;
+	numXBlocks = numX;
+	numYBlocks = numY;
+	shipBlocks = shipBlocksPtr;
 	playerShip = ship;
-
-	numXBlocks = ceil(windowW/characterW);
-	numYBlocks = ceil(windowH/characterH);
-	
-	shipBlocks = new ShipBlock*[numXBlocks];
-	for(int i = 0; i < numXBlocks; i+=1)
-	{
-		shipBlocks[i] = new ShipBlock[numYBlocks];
-	}
-
-	for(int i = 0; i < numXBlocks; i+=1)
-	{
-		for(int j = 0; j < numYBlocks; j+=1)
-		{
-			shipBlocks[i][j].initialize(1,false,!(i >= 2 && i <= 11 && j == 7));
-			shipBlocks[i][j].setBlockMatrixPosition(i,j);
-		}
-	}
-	
-	shipBlocks[4][6].initialize(1,true,false);
-	shipBlocks[4][5].initialize(1,true,false);
-	shipBlocks[3][5].initialize(1,false,false);
-	shipBlocks[2][5].initialize(1,false,false);
-	shipBlocks[1][5].initialize(1,false,false);
-
-	
-	shipBlocks[7][6].initialize(1,true,false);
-	shipBlocks[7][5].initialize(1,true,false);
-	shipBlocks[7][4].initialize(1,true,false);
-	shipBlocks[7][3].initialize(1,true,false);
-	shipBlocks[7][2].initialize(1,true,false);
-	shipBlocks[7][1].initialize(1,false,false);
-	shipBlocks[8][1].initialize(1,false,false);
-
-
-	
-	shipBlocks[2][8].initialize(1,true,false);
-	shipBlocks[2][9].initialize(1,false,false);
-	shipBlocks[3][9].initialize(1,false,false);
-	shipBlocks[4][9].initialize(1,false,false);
-	shipBlocks[5][9].initialize(1,false,false);
-	shipBlocks[6][9].initialize(1,false,false);
-	shipBlocks[7][9].initialize(1,false,false);
-	shipBlocks[8][9].initialize(1,false,false);
-	shipBlocks[9][9].initialize(1,false,false);
-	shipBlocks[10][9].initialize(1,false,false);
-	shipBlocks[11][9].initialize(1,false,false);
-
-	
-	shipBlocks[7][10].initialize(1,true,false);
-	shipBlocks[2][11].initialize(1,false,false);
-	shipBlocks[3][11].initialize(1,false,false);
-	shipBlocks[4][11].initialize(1,false,false);
-	shipBlocks[5][11].initialize(1,false,false);
-	shipBlocks[6][11].initialize(1,false,false);
-	shipBlocks[7][11].initialize(1,false,false);
-	shipBlocks[8][11].initialize(1,false,false);
-	shipBlocks[9][11].initialize(1,false,false);
-	shipBlocks[10][11].initialize(1,false,false);
-
-	
-	
-	for(int j = 0; j < numYBlocks; j+=1)
-	{
-		for(int i = 0; i < numXBlocks; i+=1)
-			{
-			if(shipBlocks[i][j].isBlocked())
-				cout << "X";
-			else if(shipBlocks[i][j].isLadder())
-				cout << "-";
-			else
-				cout << " ";
-		}
-		cout << endl;
-	}
-
 }
 
 void CharacterMovementManager::addNewMovement(CrewMember * crew, int x, int y)
+{
+	addNewMovement(crew, x, y, NoAction);
+}
+
+void CharacterMovementManager::addNewMovement(CrewMember * crew, int x, int y, CharacterAction action)
 {
 	// do nothign if new block is not accessible and deselect the character
 	if(getCurrentBlock(x,y)->isBlocked() || getCurrentBlock(x,y)->isLadder())
@@ -133,7 +60,9 @@ void CharacterMovementManager::addNewMovement(CrewMember * crew, int x, int y)
 		movementIterator = next;
 	}
 
-	CharacterMovement *movement = new CharacterMovement(crew, x, y);
+	bool performingValidAction = action != NoAction;
+
+	CharacterMovement *movement = new CharacterMovement(crew, x, y, performingValidAction);
 
 	// if we cannot generate a path, cannot create new movement
 	if(!generateShortestPath(movement))
@@ -141,6 +70,12 @@ void CharacterMovementManager::addNewMovement(CrewMember * crew, int x, int y)
 		delete movement;
 		return;
 	}
+
+	// stop character from performing current action
+	movement->getCrewMember()->stopPerformingAction();
+
+	if(performingValidAction)
+		movement->setTriggeredAction(action);
 
 	currentCharacterMovements.push_back(movement);
 }
@@ -325,6 +260,10 @@ void CharacterMovementManager::move()
 	{
 		if ((*i)->getStatus() == Finished)
 		{
+			// trigger action
+			if((*i)->isActionTriggered())
+				(*i)->getCrewMember()->performAction((*i)->getTriggeredAction());
+
 			// if movement finished, delete object
 			delete *i;
 			i = currentCharacterMovements.erase(i);

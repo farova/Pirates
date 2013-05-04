@@ -2,7 +2,7 @@
 
 CrewMember::CrewMember(sf::Texture *texture, sf::Texture *selected,string name, int strength, int intelligence, float speed, int healthMax)
 	: MovableObject(texture, speed, healthMax, healthMax),
-	name(name), strength(strength), intelligence(intelligence), selected(false)
+	name(name), strength(strength), intelligence(intelligence), selected(false), performingAction(false) ,action(NoAction)
 {
 	selectedOverlay.setTexture(*selected);
 }
@@ -12,12 +12,36 @@ CrewMember::~CrewMember()
 
 }
 
+bool CrewMember::isPerformingAction()
+{
+	return performingAction;
+}
+
+void CrewMember::stopPerformingAction()
+{
+	performingAction = false;
+	this->action = NoAction;
+}
+
+void CrewMember::performAction(CharacterAction action)
+{
+	performingAction = true;
+	this->action = action;
+}
+
 void CrewMember::draw(sf::RenderWindow &window)
 {
 	Object::draw(window);	//call parent implementation of function
 	
 	if(isCharacterSelected())
 		window.draw(selectedOverlay);
+
+
+	if(isPerformingAction())
+	{
+		// draw action!
+	}
+
 }
 
 void CrewMember::move(float x, float y)

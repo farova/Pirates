@@ -12,9 +12,10 @@ class CharacterMovementManager {
 		CharacterMovementManager();
 		~CharacterMovementManager();
 		
-		void initialize(Ship *, int, int, int, int);
-
+		void initialize(Ship *, int, int, int, int, ShipBlock **);
+		
 		void addNewMovement(CrewMember *, int, int);
+		void addNewMovement(CrewMember *, int, int, CharacterAction);
 		void move();
 		
 		int getBlockWidth();
