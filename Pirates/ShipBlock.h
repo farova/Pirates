@@ -2,7 +2,6 @@
 #define _SHIPBLOCK_H
 
 #include <SFML/Graphics.hpp>
-#include <list>
 
 class ShipBlock {
 

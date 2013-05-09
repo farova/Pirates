@@ -4,7 +4,6 @@
 #include "Ship.h"
 #include "MapBlock.h"
 #include "IGameView.h"
-#include "EncounterGenerator.h"
 
 class MapView : public IGameView {
 

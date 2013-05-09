@@ -71,7 +71,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BuyView.cpp" />
     <ClCompile Include="CrewMember.cpp" />
     <ClCompile Include="EncounterGenerator.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -91,6 +90,7 @@
   <ItemGroup>
     <ClInclude Include="BuyView.h" />
     <ClInclude Include="Cannon.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="CrewMember.h" />
     <ClInclude Include="EncounterGenerator.h" />
     <ClInclude Include="Game.h" />

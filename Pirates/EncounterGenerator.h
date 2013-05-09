@@ -2,6 +2,7 @@
 #define _ENCOUNTERGENERATOR_H
 
 #include "MapBlock.h"
+#include "Ship.h"
 #include <Thor/Resources.hpp>
 
 enum EncounterType{LandHit, ShipHit};

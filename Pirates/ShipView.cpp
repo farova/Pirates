@@ -1,7 +1,5 @@
 #include "ShipView.h"
 
-#include <iostream>
-
 
 ShipView::ShipView()
 	: initialized(false), enemyLoaded(false), fightFinished(false), cacheLoaded(false), characterHeight(0), characterWidth(0)

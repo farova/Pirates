@@ -14,7 +14,6 @@ class Object {
 		
 		sf::Sprite & getSprite();
 		sf::Vector2f getPosition();
-		void setSprite(sf::Sprite);
 
 	private:
 		sf::Sprite objectSprite;

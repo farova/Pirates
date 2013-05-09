@@ -13,113 +13,143 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Views">
+      <UniqueIdentifier>{2e214169-b6cc-4245-9b4a-29b02aa037d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Views\Helpers">
+      <UniqueIdentifier>{1898adf9-da87-4181-b281-7bf3e6b98876}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects">
+      <UniqueIdentifier>{bc17322f-8ca3-4ae2-bf3b-e0cff3d600c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{95c0b82b-1a57-4d21-9b49-5bcae9373760}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views">
+      <UniqueIdentifier>{e0a456dd-07f1-4f82-b7c0-729a85aa7cde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Views\Helpers">
+      <UniqueIdentifier>{22243dff-a2aa-459d-ab8b-77851d1218f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\Weapons">
+      <UniqueIdentifier>{6d4ae77f-86c2-4521-8b28-667ee9c3eff8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objects\MovableObjects">
+      <UniqueIdentifier>{548b55c9-85d8-4634-add0-4db395f6ee6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\Weapons">
+      <UniqueIdentifier>{857be75b-9d72-4c32-8f53-3b5a0c2707bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\MovableObjects">
+      <UniqueIdentifier>{677bfe1d-3a50-43bb-b7f0-f6111c12138a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ShipView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="ShipBlock.cpp">
+      <Filter>Source Files\Views\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="MapView.cpp">
+      <Filter>Source Files\Views</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterMovement.cpp">
+      <Filter>Source Files\Views\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="CharacterMovementManager.cpp">
+      <Filter>Source Files\Views\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="EncounterGenerator.cpp">
+      <Filter>Source Files\Views\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="LandEncounter.cpp">
+      <Filter>Source Files\Views\Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="MapBlock.cpp">
+      <Filter>Source Files\Views\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
-    <ClCompile Include="MovableObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Ship.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ShipActionObject.cpp">
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MapView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MapBlock.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EncounterGenerator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="LandEncounter.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BuyView.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ShipView.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CrewMember.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Objects\MovableObjects</Filter>
     </ClCompile>
-    <ClCompile Include="ShipBlock.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MovableObject.cpp">
+      <Filter>Source Files\Objects\MovableObjects</Filter>
     </ClCompile>
-    <ClCompile Include="CharacterMovementManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="CharacterMovement.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ShipActionObject.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Ship.cpp">
+      <Filter>Source Files\Objects\MovableObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ship.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MapView.h">
+      <Filter>Header Files\Views</Filter>
     </ClInclude>
-    <ClInclude Include="MovableObject.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ShipView.h">
+      <Filter>Header Files\Views</Filter>
     </ClInclude>
-    <ClInclude Include="CrewMember.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="IGameView.h">
+      <Filter>Header Files\Views</Filter>
     </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="BuyView.h">
+      <Filter>Header Files\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="MapBlock.h">
+      <Filter>Header Files\Views\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ShipBlock.h">
+      <Filter>Header Files\Views\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="LandEncounter.h">
+      <Filter>Header Files\Views\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="EncounterGenerator.h">
+      <Filter>Header Files\Views\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterMovement.h">
+      <Filter>Header Files\Views\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="CharacterMovementManager.h">
+      <Filter>Header Files\Views\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Objects</Filter>
     </ClInclude>
-    <ClInclude Include="MeleeWeapon.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Cannon.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="ShipActionObject.h">
+      <Filter>Header Files\Objects</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MapBlock.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Weapon.h">
+      <Filter>Header Files\Objects\Weapons</Filter>
     </ClInclude>
-    <ClInclude Include="MapView.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MeleeWeapon.h">
+      <Filter>Header Files\Objects\Weapons</Filter>
     </ClInclude>
-    <ClInclude Include="IGameView.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Cannon.h">
+      <Filter>Header Files\Objects\Weapons</Filter>
     </ClInclude>
-    <ClInclude Include="EncounterGenerator.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MovableObject.h">
+      <Filter>Header Files\Objects\MovableObjects</Filter>
     </ClInclude>
-    <ClInclude Include="LandEncounter.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="CrewMember.h">
+      <Filter>Header Files\Objects\MovableObjects</Filter>
     </ClInclude>
-    <ClInclude Include="ShipView.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Ship.h">
+      <Filter>Header Files\Objects\MovableObjects</Filter>
     </ClInclude>
-    <ClInclude Include="BuyView.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ShipBlock.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterMovementManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="CharacterMovement.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ShipActionObject.h">
+    <ClInclude Include="Constants.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

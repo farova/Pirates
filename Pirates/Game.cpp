@@ -1,12 +1,8 @@
 #include "Game.h"
 
-// TAKEOUT
-#include <iostream>
-using namespace std;
-// TAKEOUT
 
 Game::Game()
-	: gameState(splashScreenState), initialized(false), cacheLoaded(false)
+	: gameState(SplashScreenState), initialized(false), cacheLoaded(false)
 {
 
 }
@@ -22,12 +18,12 @@ void Game::drawAll(sf::RenderWindow &window)
 {
 	switch(this->getGameState())
 	{
-	case splashScreenState:	drawSplashScreen(window);	break;
-	case mapViewState:		drawMapView(window);		break;
-	case buyViewState:		drawBuyView(window);		break;
-	case shipViewState:		drawShipView(window);		break;
-	case mainMenuState:		drawMainMenu(window);		break;
-	case settingsState:		drawSettingsMenu(window);	break;
+	case SplashScreenState:	drawSplashScreen(window);	break;
+	case MapViewState:		drawMapView(window);		break;
+	case BuyViewState:		drawBuyView(window);		break;
+	case ShipViewState:		drawShipView(window);		break;
+	case MainMenuState:		drawMainMenu(window);		break;
+	case SettingsState:		drawSettingsMenu(window);	break;
 	default:			break;
 	}
 }
@@ -67,32 +63,32 @@ void Game::handleMouseClick(int x, int y)
 
 	switch(this->getGameState())
 	{
-	case splashScreenState:
-		this->setGameState(mapViewState);
+	case SplashScreenState:
+		this->setGameState(MapViewState);
 		break;
 
-	case mapViewState:
+	case MapViewState:
 		mapView->handleMouseClick(x,y);
 		if(mapView->isValidMove())
 			this->determineEncounter(mapView->getMapBlockMovedTo());
 		break;
 
-	case shipViewState:
+	case ShipViewState:
 		shipView->handleMouseClick(x,y);
 		if(shipView->isFightFinished())
 		{
-			this->setGameState(mapViewState);
+			this->setGameState(MapViewState);
 			shipView->cleanUp();
 		}
 		break;
 
-	case buyViewState:
+	case BuyViewState:
 		break;
 
-	case mainMenuState:
+	case MainMenuState:
 		break;
 
-	case settingsState:
+	case SettingsState:
 		break;
 		
 	default:
@@ -115,7 +111,7 @@ void Game::determineEncounter(MapBlock * mapBlock)
 			if(encounterGenerator.hitShip())
 			{
 				Ship *enemy = encounterGenerator.generateShip();
-				this->setGameState(shipViewState);
+				this->setGameState(ShipViewState);
 
 				shipView->setEnemyShip(enemy);
 			}
@@ -136,8 +132,8 @@ void Game::handleKeyPress()
 {
 	switch(this->getGameState())
 	{
-	case splashScreenState:
-		this->setGameState(mapViewState);
+	case SplashScreenState:
+		this->setGameState(MapViewState);
 		break;
 	default:
 		break;
@@ -204,7 +200,7 @@ void Game::initialize()
 
 
 	// initialize playerShip
-	playerShip = new Ship(playerSmallTexturePtr.get(), 20, 20, 10, neutral, Fighter, playerLargeTexturePtr.get(), playerLargeOverlayTexturePtr.get());
+	playerShip = new Ship(playerSmallTexturePtr.get(), 20, 20, 10, Neutral, Fighter, playerLargeTexturePtr.get(), playerLargeOverlayTexturePtr.get());
 	playerShip->setPosition(0,0);
 
 	int characterH = 50;

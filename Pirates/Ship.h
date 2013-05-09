@@ -7,9 +7,6 @@
 #include "MeleeWeapon.h"
 #include <list>
 
-// some enums
-enum ShipAlliance{neutral, pirate, navy};
-enum ShipType{Fighter, Shipwreck, Stranded, FishingShip, TransportShip};
 
 class Ship : public MovableObject {
 

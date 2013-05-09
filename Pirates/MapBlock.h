@@ -1,11 +1,8 @@
 #if !defined(_MAPBLOCK_H)
 #define _MAPBLOCK_H
 
-#include "Ship.h"
+#include "Constants.h"
 #include "LandEncounter.h"
-
-enum SquareType{Water, Shore, Land, Island, Port};
-enum Difficulty{Easy, Normal, Hard, Extreme};
 
 class MapBlock {
 

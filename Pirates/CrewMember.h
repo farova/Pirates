@@ -1,13 +1,11 @@
 #if !defined(_CREWMEMBER_H)
 #define _CREWMEMBER_H
 
+#include "Constants.h"
 #include "MovableObject.h"
 #include "MeleeWeapon.h"
 
 using namespace std;
-
-enum CharacterAction {NoAction, ArmCannon, RepairHull};
-enum CharacterFacingDirection {Left, Right, In, Out};
 
 class CrewMember : public MovableObject {
 

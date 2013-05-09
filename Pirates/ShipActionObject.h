@@ -1,18 +1,16 @@
 #if !defined(_SHIPACTIONOBJECT_H)
 #define _SHIPACTIONOBJECT_H
 
-#include "CrewMember.h"
+#include "Constants.h"
+#include "Object.h"
 #include <SFML/Graphics.hpp>
 
-class ShipActionObject {
+class ShipActionObject : Object {
 
 	public:
 
-		ShipActionObject();
+		ShipActionObject(sf::Texture *);
 		~ShipActionObject();
-		
-		void setSpriteCoordinates(float, float);
-		sf::Vector2f getSpriteCoordinates();
 
 		void setUsageCoordinates(int, int);
 		sf::Vector2i getUsageCoordinates();
@@ -24,7 +22,6 @@ class ShipActionObject {
 		void setActionType(CharacterAction);
 
 		void setBonuses(float, float);
-		void setTexture(sf::Texture *);
 		
 		float getEscapeBonus();
 		float getHitBonus();
@@ -37,8 +34,6 @@ class ShipActionObject {
 		int usageCoordinateY;
 
 		bool occupied;
-
-		sf::Sprite objectSprite;
 
 		float escapeBonus;
 		float hitBonus;

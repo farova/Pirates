@@ -1,6 +1,8 @@
 #if !defined(_GAME_H)
 #define _GAME_H
 
+
+#include "Constants.h"
 #include "MapView.h"
 #include "ShipView.h"
 #include "BuyView.h"
@@ -8,7 +10,10 @@
 #include <SFML/Graphics.hpp>
 #include <Thor/Resources.hpp>
 
-enum GameState{splashScreenState, mainMenuState, settingsState, mapViewState, shipViewState, buyViewState, aboutState};
+// TAKEOUT
+#include <iostream>
+using namespace std;
+// TAKEOUT
 
 class Game : public IGameView {
 

@@ -2,7 +2,6 @@
 #define _BUYVIEW_H
 
 #include "Ship.h"
-#include "MapBlock.h"
 #include "IGameView.h"
 #include "EncounterGenerator.h"
 

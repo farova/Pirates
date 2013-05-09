@@ -1,10 +1,16 @@
 #if !defined(_SHIPMOVEMENTMANAGER_H)
 #define _SHIPMOVEMENTMANAGER_H
 
+#include "Constants.h"
 #include "CrewMember.h"
 #include "ShipBlock.h"
 #include "Ship.h"
 #include "CharacterMovement.h"
+
+// TAKEOUT
+#include <iostream>
+// TAEKEOUT
+
 
 class CharacterMovementManager {
 

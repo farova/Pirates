@@ -5,6 +5,10 @@
 #include "CharacterMovementManager.h"
 #include "IGameView.h"
 
+// TAKEOUT
+#include <iostream>
+// TAKEOUT
+
 class ShipView : public IGameView {
 
 	public:

@@ -1,8 +1,14 @@
 #include "ShipActionObject.h"
 
 
-ShipActionObject::ShipActionObject()
-	: usageCoordinateX(0), usageCoordinateY(0), occupied(false), escapeBonus(0), hitBonus(0), actionType(NoAction)
+ShipActionObject::ShipActionObject(sf::Texture * texture)
+	: Object(texture), 
+	usageCoordinateX(0), 
+	usageCoordinateY(0), 
+	occupied(false), 
+	escapeBonus(0), 
+	hitBonus(0), 
+	actionType(NoAction)
 {
 
 }
@@ -10,16 +16,6 @@ ShipActionObject::ShipActionObject()
 ShipActionObject::~ShipActionObject()
 {
 
-}	
-	
-void ShipActionObject::setSpriteCoordinates(float x, float y)
-{
-	objectSprite.setPosition(x,y);
-}
-
-sf::Vector2f ShipActionObject::getSpriteCoordinates()
-{
-	return objectSprite.getPosition();
 }
 
 void ShipActionObject::setUsageCoordinates(int x, int y)
@@ -47,11 +43,6 @@ void ShipActionObject::setBonuses(float escape, float hit)
 {
 	escapeBonus = escape;
 	hitBonus = hit;
-}
-
-void ShipActionObject::setTexture(sf::Texture *texture)
-{
-	objectSprite.setTexture(*texture);
 }
 
 float ShipActionObject::getEscapeBonus()

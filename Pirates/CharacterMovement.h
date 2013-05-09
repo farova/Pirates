@@ -1,8 +1,10 @@
 #if !defined(_CharacterMovement_H)
 #define _CharacterMovement_H
 
+#include "Constants.h"
 #include "CrewMember.h"
 #include "ShipBlock.h"
+#include <list>
 
 enum MovementStatus {Initial, Moving, Final, Finished};
 

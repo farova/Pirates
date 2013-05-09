@@ -1,6 +1,5 @@
 #include "CharacterMovementManager.h"
 
-#include <iostream>
 
 CharacterMovementManager::CharacterMovementManager()
 {
