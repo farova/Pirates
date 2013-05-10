@@ -2,6 +2,7 @@
 #define _SHIPVIEW_H
 
 #include "Ship.h"
+#include "ShipActionObject.h"
 #include "CharacterMovementManager.h"
 #include "IGameView.h"
 
@@ -20,8 +21,8 @@ class ShipView : public IGameView {
 		void loadCache(thor::ResourceCache<sf::Texture> *);
 		void cleanUp();
 
-		void handleMouseClick(int, int);
-		void handleKeyPress();
+		void handleMouseClick(int, int, sf::Mouse::Button);
+		void handleKeyPress(sf::Keyboard::Key);
 		
 		void setWindowSize(int, int);
 		void setCaracterSize(int, int);
@@ -35,6 +36,7 @@ class ShipView : public IGameView {
 	private:
 		
 		void initializeBlocks();
+		void initializeActionObjects();
 
 		bool handleCrewClick(int,int);
 		void handleShipBlockClick(int,int);
@@ -42,6 +44,7 @@ class ShipView : public IGameView {
 		bool isSpriteClicked(sf::Sprite &, float, float);
 
 		void pollActions();
+		void deselectAllCrew();
 
 		bool initialized;
 		bool enemyLoaded;
@@ -61,6 +64,8 @@ class ShipView : public IGameView {
 		int characterWidth;
 		int numXBlocks;
 		int numYBlocks;
+
+		list<ShipActionObject *> shipActionObjects;
 		
 		thor::ResourceCache<sf::Texture> * resourceCache;
 		

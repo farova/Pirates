@@ -18,6 +18,21 @@ ShipActionObject::~ShipActionObject()
 
 }
 
+void ShipActionObject::draw(sf::RenderWindow &window)
+{
+	window.draw(getSprite());
+}
+
+void ShipActionObject::setPosition(float x, float y)
+{
+	this->getSprite().setPosition(x,y);
+}
+
+bool ShipActionObject::isInBounds(float x, float y)
+{
+	return this->getSprite().getGlobalBounds().contains(x,y);
+}
+
 void ShipActionObject::setUsageCoordinates(int x, int y)
 {
 	usageCoordinateX = x;

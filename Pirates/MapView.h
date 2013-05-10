@@ -15,8 +15,8 @@ class MapView : public IGameView {
 		void initialize();
 		void loadCache(thor::ResourceCache<sf::Texture> *);
 
-		void handleMouseClick(int, int);
-		void handleKeyPress();
+		void handleMouseClick(int, int, sf::Mouse::Button);
+		void handleKeyPress(sf::Keyboard::Key);
 		
 		MapBlock * getMapBlockMovedTo();
 		
@@ -28,6 +28,8 @@ class MapView : public IGameView {
 
 	private:
 		
+		void leftMouseClick(int, int);
+
 		bool cacheLoaded;
 		bool validMove;
 		bool initialized;

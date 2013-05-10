@@ -25,8 +25,8 @@ class Game : public IGameView {
 		void initialize();
 		void loadCache(thor::ResourceCache<sf::Texture> *);
 
-		void handleMouseClick(int, int);
-		void handleKeyPress();
+		void handleMouseClick(int, int, sf::Mouse::Button);
+		void handleKeyPress(sf::Keyboard::Key);
 
 		void determineEncounter(MapBlock *);
 		void generateShipView(MapBlock *);

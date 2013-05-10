@@ -14,8 +14,8 @@ class IGameView {
 		virtual void initialize() = 0;
 		virtual bool isInitialized() = 0;
 
-		virtual void handleMouseClick(int, int) = 0;
-		virtual void handleKeyPress() = 0;
+		virtual void handleMouseClick(int, int, sf::Mouse::Button) = 0;
+		virtual void handleKeyPress(sf::Keyboard::Key) = 0;
 		
 		virtual void setPlayerShip(Ship *) = 0;
 		virtual void setWindowSize(int, int) = 0;

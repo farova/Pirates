@@ -33,8 +33,19 @@ void ShipView::drawAll(sf::RenderWindow &window)
 		window.draw(enemyShip->getLargeShipSprite());
 	}
 
+	// deaw all action objects 
+	std::list<ShipActionObject *>::iterator shipObjIterator;
+	for ( shipObjIterator = shipActionObjects.begin(); shipObjIterator != shipActionObjects.end(); ++shipObjIterator)
+	{
+		(*shipObjIterator)->draw(window);
+	}
+		
 	// draw player characters
 	playerShip->drawShip(window);
+
+
+
+
 
 	pollActions();
 }
@@ -47,20 +58,8 @@ void ShipView::pollActions()
 	std::list<CrewMember *>::iterator crewIterator;
 	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
 	{
-		if((*crewIterator)->isCharacterSelected())
-		{
+		
 
-
-			movementManager.addNewMovement(*crewIterator, x, y);
-
-
-			// if clicke on object to perform action, add action into the movement
-
-			// can only perform action if block is not occupied!
-
-			// movementManager.addNewMovement(*crewIterator, x, y, CharacterMovement);
-
-		}
 	}
 
 	*/
@@ -75,15 +74,16 @@ void ShipView::initialize()
 	std::shared_ptr<sf::Texture> bgTexturePtr = resourceCache->acquire(bgTextureResource);
 	backgroundSprite.setTexture(*bgTexturePtr);
 	backgroundSprite.setPosition(0,0);
-
+	
 	initializeBlocks();
+	initializeActionObjects();
 
 	movementManager.initialize(playerShip, blockWidth, blockHeight, numXBlocks, numYBlocks, shipBlocks);
 
 	playerShip->getLargeShipSprite().setPosition(blockWidth,blockHeight);
 	playerShip->getLargeShipOverlaySprite().setPosition(blockWidth,blockHeight);
 
-	float offset = movementManager.getBlockWidth()*3;
+	float offset = blockWidth*3;
 
 	// place crew onto ship
 	std::list<CrewMember*> playerCrew = playerShip->getCrew();
@@ -97,6 +97,18 @@ void ShipView::initialize()
 }
 
 
+void ShipView::initializeActionObjects()
+{
+	thor::ResourceKey<sf::Texture> wheelTextureResource = thor::Resources::fromFile<sf::Texture>("shipWheel.png");
+	std::shared_ptr<sf::Texture> wheelTexturePtr = resourceCache->acquire(wheelTextureResource);
+
+	ShipActionObject * captainWheel = new ShipActionObject(wheelTexturePtr.get());
+	captainWheel->setPosition( blockWidth*11 ,blockHeight*7);
+	captainWheel->setUsageCoordinates( blockWidth*11 ,blockHeight*7);
+
+
+	shipActionObjects.push_back(captainWheel);
+}
 
 void ShipView::initializeBlocks()
 {
@@ -204,32 +216,64 @@ void ShipView::handleShipBlockClick(int x, int y)
 		if((*crewIterator)->isCharacterSelected())
 		{
 
+			std::list<ShipActionObject *>::iterator shipObjIterator;
+			for ( shipObjIterator = shipActionObjects.begin(); shipObjIterator != shipActionObjects.end(); ++shipObjIterator)
+			{
+				if((*shipObjIterator)->isInBounds(x, y))
+				{
+					if(!(*shipObjIterator)->isOccupied())
+					{
+						sf::Vector2i actionCoords = (*shipObjIterator)->getUsageCoordinates();
+						CharacterAction action = (*shipObjIterator)->getActionType();
+
+						movementManager.addNewMovement(*crewIterator, actionCoords.x, actionCoords.y, action);
+
+						return;
+					}
+					break;
+				}
+			}
 
 			movementManager.addNewMovement(*crewIterator, x, y);
-
-
-			// if clicke on object to perform action, add action into the movement
-
-			// can only perform action if block is not occupied!
-
-			// movementManager.addNewMovement(*crewIterator, x, y, CharacterAction);
-
 		}
 	}
 }
 
-void ShipView::handleMouseClick(int x, int y)
+void ShipView::handleMouseClick(int x, int y, sf::Mouse::Button button)
 {
 	if (!isInitialized())
 		return;
 
-	// if click on crew member, no other action preformed
-	if(handleCrewClick(x,y))
+	switch (button)
+	{
+	case sf::Mouse::Left:
+		// if click on crew member, no other action preformed
+		if(handleCrewClick(x,y))
 		return;
 
-	handleShipBlockClick(x,y);
+		deselectAllCrew();
+
+		break;
+
+	case sf::Mouse::Right:
+		handleShipBlockClick(x,y);
+		break;
+	}
 
 	// fightFinished = true;
+}
+
+void ShipView::deselectAllCrew()
+{
+	std::list<CrewMember*> playerCrew = playerShip->getCrew();
+	std::list<CrewMember *>::iterator crewIterator;
+	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
+	{
+		if((*crewIterator)->isCharacterSelected())
+		{
+			(*crewIterator)->toggleSelect();
+		}
+	}
 }
 
 bool ShipView::isSpriteClicked(sf::Sprite &sprite, float x, float y)
@@ -237,7 +281,7 @@ bool ShipView::isSpriteClicked(sf::Sprite &sprite, float x, float y)
 	return sprite.getGlobalBounds().contains(x,y);
 }
 
-void ShipView::handleKeyPress()
+void ShipView::handleKeyPress(sf::Keyboard::Key key)
 {
 
 }

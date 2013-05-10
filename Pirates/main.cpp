@@ -29,16 +29,11 @@ int main()
 					break;
 					
 				case sf::Event::MouseButtonPressed:
-					switch (event.mouseButton.button)
-					{
-						case sf::Mouse::Left:
-							gameController->handleMouseClick(event.mouseButton.x, event.mouseButton.y);
-							break;
-					}
+					gameController->handleMouseClick(event.mouseButton.x, event.mouseButton.y, event.mouseButton.button);	
 					break;
 					
 				case sf::Event::KeyPressed:
-					gameController->handleKeyPress();
+					gameController->handleKeyPress(event.key.code);
 					break;
 			}
         }

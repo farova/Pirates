@@ -12,9 +12,13 @@ class ShipActionObject : Object {
 		ShipActionObject(sf::Texture *);
 		~ShipActionObject();
 
+		void draw(sf::RenderWindow &);
+		void setPosition(float, float);
+
 		void setUsageCoordinates(int, int);
 		sf::Vector2i getUsageCoordinates();
 
+		bool isInBounds(float, float);
 		bool isOccupied();
 		void setIfOccupied(bool);
 

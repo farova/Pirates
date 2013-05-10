@@ -73,7 +73,17 @@ void MapView::initialize()
 	initialized = true;
 }
 
-void MapView::handleMouseClick(int x, int y)
+void MapView::handleMouseClick(int x, int y, sf::Mouse::Button button)
+{
+	switch (button)
+	{
+		case sf::Mouse::Left:
+			leftMouseClick(x,y);
+			break;
+	}
+}
+
+void MapView::leftMouseClick(int x, int y)
 {
 	// reset validMove bool
 	validMove = false;
@@ -132,7 +142,7 @@ void MapView::drawAll(sf::RenderWindow &window)
 
 }
 
-void MapView::handleKeyPress()
+void MapView::handleKeyPress(sf::Keyboard::Key key)
 {
 	if(!isInitialized())
 		return;

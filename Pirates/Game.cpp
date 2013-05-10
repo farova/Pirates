@@ -58,7 +58,7 @@ void Game::drawMapView(sf::RenderWindow &window)
 	mapView->drawAll(window);
 }
 
-void Game::handleMouseClick(int x, int y)
+void Game::handleMouseClick(int x, int y, sf::Mouse::Button button)
 {
 
 	switch(this->getGameState())
@@ -68,13 +68,13 @@ void Game::handleMouseClick(int x, int y)
 		break;
 
 	case MapViewState:
-		mapView->handleMouseClick(x,y);
+		mapView->handleMouseClick(x,y, button);
 		if(mapView->isValidMove())
 			this->determineEncounter(mapView->getMapBlockMovedTo());
 		break;
 
 	case ShipViewState:
-		shipView->handleMouseClick(x,y);
+		shipView->handleMouseClick(x,y, button);
 		if(shipView->isFightFinished())
 		{
 			this->setGameState(MapViewState);
@@ -105,9 +105,6 @@ void Game::determineEncounter(MapBlock * mapBlock)
 	{
 		case ShipHit:
 
-			cout << endl;
-			cout << "ShipHit" << endl;
-
 			if(encounterGenerator.hitShip())
 			{
 				Ship *enemy = encounterGenerator.generateShip();
@@ -119,8 +116,6 @@ void Game::determineEncounter(MapBlock * mapBlock)
 			break;
 		case LandHit:
 			// this->setGameState(buyViewState);
-			
-			cout << "LandHit"<< endl;
 
 			// encounterGenerator.generateLandEncounter();
 
@@ -128,7 +123,7 @@ void Game::determineEncounter(MapBlock * mapBlock)
 	}
 }
 
-void Game::handleKeyPress()
+void Game::handleKeyPress(sf::Keyboard::Key key)
 {
 	switch(this->getGameState())
 	{
