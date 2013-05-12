@@ -32,14 +32,14 @@ class CrewMember : public MovableObject {
 		void setStrength(int);
 		void setIntelligence(int);
 
+		ActionType getAction();
 		bool isPerformingAction();
 		void stopPerformingAction();
-		void performAction(CharacterAction);
+		void performAction(ActionType);
 
 	private:
-
-		bool performingAction;
-		CharacterAction action;
+		
+		ActionType action;
 
 		CharacterFacingDirection facingDirection;
 

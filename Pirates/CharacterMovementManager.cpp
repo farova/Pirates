@@ -21,7 +21,14 @@ int CharacterMovementManager::getBlockHeight()
 	return blockHeight;
 }
 
-void CharacterMovementManager::initialize(Ship * ship, int blockW, int blockH, int numX, int numY, ShipBlock ** shipBlocksPtr)
+void CharacterMovementManager::initialize(
+		Ship * ship, 
+		int blockW, 
+		int blockH, 
+		int numX, 
+		int numY, 
+		ShipBlock ** shipBlocksPtr, 
+		list<ShipActionObject *> & actionObjs)
 {
 	blockWidth = blockW;
 	blockHeight = blockH;
@@ -29,19 +36,29 @@ void CharacterMovementManager::initialize(Ship * ship, int blockW, int blockH, i
 	numYBlocks = numY;
 	shipBlocks = shipBlocksPtr;
 	playerShip = ship;
+	actionObjects = actionObjs;
 }
 
 void CharacterMovementManager::addNewMovement(CrewMember * crew, int x, int y)
 {
-	addNewMovement(crew, x, y, NoAction);
+	addNewMovement(crew, x, y, NULL);
 }
 
-void CharacterMovementManager::addNewMovement(CrewMember * crew, int x, int y, CharacterAction action)
+void CharacterMovementManager::addNewMovement(CrewMember * crew, int x, int y, ShipActionObject * action)
 {
 	// do nothign if new block is not accessible and deselect the character
 	if(getCurrentBlock(x,y)->isBlocked() || getCurrentBlock(x,y)->isLadder())
 	{
 		crew->toggleSelect();
+		return;
+	}
+
+	CharacterMovement *movement = new CharacterMovement(crew, x, y);
+
+	// if we cannot generate a path, cannot create new movement
+	if(!generateShortestPath(movement))
+	{
+		delete movement;
 		return;
 	}
 
@@ -59,22 +76,19 @@ void CharacterMovementManager::addNewMovement(CrewMember * crew, int x, int y, C
 		movementIterator = next;
 	}
 
-	bool performingValidAction = action != NoAction;
-
-	CharacterMovement *movement = new CharacterMovement(crew, x, y, performingValidAction);
-
-	// if we cannot generate a path, cannot create new movement
-	if(!generateShortestPath(movement))
+	if(crew->isPerformingAction())
 	{
-		delete movement;
-		return;
+		ShipActionObject * obj = getCurrentShipActionObject(crew->getPosition().x, crew->getPosition().y);
+
+		if(obj != NULL)
+			obj->setIfOccupied(false);
 	}
+	
+	crew->stopPerformingAction();
 
-	// stop character from performing current action
-	movement->getCrewMember()->stopPerformingAction();
-
-	if(performingValidAction)
-		movement->setTriggeredAction(action);
+	// give new action
+	if(action != NULL)
+		movement->setActionObject(action);
 
 	currentCharacterMovements.push_back(movement);
 }
@@ -170,6 +184,19 @@ ShipBlock * CharacterMovementManager::getCurrentBlock(float xPos, float yPos)
 	return &shipBlocks[(int)(xPos/blockWidth)][(int)(yPos/blockHeight)];
 }
 
+ShipActionObject * CharacterMovementManager::getCurrentShipActionObject(float x, float y)
+{
+	std::list<ShipActionObject *>::iterator shipObjIterator;
+	for ( shipObjIterator = actionObjects.begin(); shipObjIterator != actionObjects.end(); ++shipObjIterator)
+	{
+		sf::Vector2i usageCoords = (*shipObjIterator)->getUsageCoordinates();
+
+		if(usageCoords.x == x && usageCoords.y == y)
+			return *shipObjIterator;
+	}
+	return NULL;
+}
+
 sf::Vector2f CharacterMovementManager::getNewMovementVector(CharacterMovement * movement)
 {
 	sf::Vector2f spritePosition = movement->getCrewMember()->getPosition();
@@ -178,7 +205,7 @@ sf::Vector2f CharacterMovementManager::getNewMovementVector(CharacterMovement * 
 
 	sf::Vector2i finalBlock = getCurrentBlock(finalPosition.x, finalPosition.y)->getBlockMatrixPosition();
 
-	// reach final destination - center sprite in middle of click
+	// reach final destination
 	if(spritePosition.x == finalPositionXCentered && spritePosition.y == finalBlock.y*blockHeight )
 	{
 		movement->setStatus(Finished);
@@ -260,8 +287,12 @@ void CharacterMovementManager::move()
 		if ((*i)->getStatus() == Finished)
 		{
 			// trigger action
-			if((*i)->isActionTriggered())
-				(*i)->getCrewMember()->performAction((*i)->getTriggeredAction());
+			if((*i)->hasAction())
+			{
+				(*i)->getCrewMember()->performAction( (*i)->getActionObject()->getActionType() );
+				(*i)->getActionObject()->setIfOccupied(true);
+				(*i)->getCrewMember()->setFacingDirection( (*i)->getActionObject()->getActionDirection() );
+			}
 
 			// if movement finished, delete object
 			delete *i;

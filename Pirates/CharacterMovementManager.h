@@ -18,10 +18,10 @@ class CharacterMovementManager {
 		CharacterMovementManager();
 		~CharacterMovementManager();
 		
-		void initialize(Ship *, int, int, int, int, ShipBlock **);
+		void initialize(Ship *, int, int, int, int, ShipBlock **, list<ShipActionObject *> &);
 		
 		void addNewMovement(CrewMember *, int, int);
-		void addNewMovement(CrewMember *, int, int, CharacterAction);
+		void addNewMovement(CrewMember *, int, int, ShipActionObject *);
 		void move();
 		
 		int getBlockWidth();
@@ -36,12 +36,16 @@ class CharacterMovementManager {
 		ShipBlock * getCurrentBlock(CrewMember *);
 		ShipBlock * getCurrentBlock(float, float);
 
+		ShipActionObject * getCurrentShipActionObject(float, float);
+
 		sf::Vector2f getNewMovementVector(CharacterMovement *);
 
 		Ship * playerShip;
 
 		std::list<CharacterMovement *> currentCharacterMovements;
+
 		ShipBlock** shipBlocks;
+		list<ShipActionObject *> actionObjects;
 
 		int numXBlocks;
 		int numYBlocks;

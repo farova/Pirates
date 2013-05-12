@@ -29,10 +29,15 @@ enum Difficulty{
 };
 
 // Crew member
-enum CharacterAction {
+enum ActionType {
 	NoAction, 
 	ArmCannon, 
-	RepairHull
+	RepairHull,
+	SteerShip,
+	MopDeck,
+	RowOres,
+	Sleep,
+	Lookout
 };
 
 enum CharacterFacingDirection {
@@ -59,6 +64,15 @@ enum ShipType{
 	Stranded, 
 	FishingShip, 
 	TransportShip
+};
+
+
+//
+enum MovementStatus {
+	Initial, 
+	Moving, 
+	Final, 
+	Finished
 };
 
 

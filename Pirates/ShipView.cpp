@@ -52,17 +52,23 @@ void ShipView::drawAll(sf::RenderWindow &window)
 
 void ShipView::pollActions()
 {
-	/*
 	
-	std::list<CrewMember*> playerCrew = playerShip->getCrew();
-	std::list<CrewMember *>::iterator crewIterator;
-	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
+	std::list<ShipActionObject *>::iterator shipObjIterator;
+	for ( shipObjIterator = shipActionObjects.begin(); shipObjIterator != shipActionObjects.end(); ++shipObjIterator)
 	{
-		
+		cout << (*shipObjIterator)->isOccupied() << endl;
+
+
+
+
+
+
+
+
+
 
 	}
-
-	*/
+	
 }
 
 void ShipView::initialize()
@@ -78,7 +84,7 @@ void ShipView::initialize()
 	initializeBlocks();
 	initializeActionObjects();
 
-	movementManager.initialize(playerShip, blockWidth, blockHeight, numXBlocks, numYBlocks, shipBlocks);
+	movementManager.initialize(playerShip, blockWidth, blockHeight, numXBlocks, numYBlocks, shipBlocks, shipActionObjects);
 
 	playerShip->getLargeShipSprite().setPosition(blockWidth,blockHeight);
 	playerShip->getLargeShipOverlaySprite().setPosition(blockWidth,blockHeight);
@@ -105,7 +111,7 @@ void ShipView::initializeActionObjects()
 	ShipActionObject * captainWheel = new ShipActionObject(wheelTexturePtr.get());
 	captainWheel->setPosition( blockWidth*11 ,blockHeight*7);
 	captainWheel->setUsageCoordinates( blockWidth*11 ,blockHeight*7);
-
+	captainWheel->setActionType(SteerShip);
 
 	shipActionObjects.push_back(captainWheel);
 }
@@ -224,9 +230,8 @@ void ShipView::handleShipBlockClick(int x, int y)
 					if(!(*shipObjIterator)->isOccupied())
 					{
 						sf::Vector2i actionCoords = (*shipObjIterator)->getUsageCoordinates();
-						CharacterAction action = (*shipObjIterator)->getActionType();
 
-						movementManager.addNewMovement(*crewIterator, actionCoords.x, actionCoords.y, action);
+						movementManager.addNewMovement(*crewIterator, actionCoords.x, actionCoords.y, (*shipObjIterator));
 
 						return;
 					}

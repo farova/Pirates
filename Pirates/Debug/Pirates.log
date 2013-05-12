@@ -1,16 +1,7 @@
-﻿  ShipView.cpp
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(32): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(95): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(96): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(98): warning C4244: 'initializing' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(105): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(118): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(128): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(129): warning C4244: '=' : conversion from 'double' to 'int', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(212): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\shipview.cpp(234): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-  Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  Game.cpp
+﻿  CharacterMovementManager.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\charactermovementmanager.cpp(50): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\charactermovementmanager.cpp(56): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\charactermovementmanager.cpp(204): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\charactermovementmanager.cpp(274): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\charactermovementmanager.cpp(129): warning C4715: 'CharacterMovementManager::DFSSearch' : not all control paths return a value
   Pirates.vcxproj -> C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\Pirates.exe

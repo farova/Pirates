@@ -8,7 +8,8 @@ ShipActionObject::ShipActionObject(sf::Texture * texture)
 	occupied(false), 
 	escapeBonus(0), 
 	hitBonus(0), 
-	actionType(NoAction)
+	actionType(NoAction),
+	actionDirection(Right)
 {
 
 }
@@ -70,12 +71,22 @@ float ShipActionObject::getHitBonus()
 	return hitBonus;
 }
 
-CharacterAction ShipActionObject::getActionType()
+ActionType ShipActionObject::getActionType()
 {
 	return actionType;
 }
 
-void ShipActionObject::setActionType(CharacterAction action)
+void ShipActionObject::setActionType(ActionType action)
 {
 	actionType = action;
+}
+
+CharacterFacingDirection ShipActionObject::getActionDirection()
+{
+	return actionDirection;
+}
+
+void ShipActionObject::setActionDirection(CharacterFacingDirection dir)
+{
+	actionDirection = dir;
 }

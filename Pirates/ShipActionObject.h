@@ -22,8 +22,11 @@ class ShipActionObject : Object {
 		bool isOccupied();
 		void setIfOccupied(bool);
 
-		CharacterAction getActionType();
-		void setActionType(CharacterAction);
+		ActionType getActionType();
+		void setActionType(ActionType);
+
+		CharacterFacingDirection getActionDirection();
+		void setActionDirection(CharacterFacingDirection);
 
 		void setBonuses(float, float);
 		
@@ -32,7 +35,11 @@ class ShipActionObject : Object {
 
 	private:
 
-		CharacterAction actionType;
+		ActionType actionType;
+		CharacterFacingDirection actionDirection;
+
+		sf::Time cooldown;
+		sf::Clock timeSinceLastUsage;
 
 		int usageCoordinateX;
 		int usageCoordinateY;

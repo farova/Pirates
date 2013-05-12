@@ -4,14 +4,13 @@
 #include "Constants.h"
 #include "CrewMember.h"
 #include "ShipBlock.h"
+#include "ShipActionObject.h"
 #include <list>
-
-enum MovementStatus {Initial, Moving, Final, Finished};
 
 class CharacterMovement {
 
 	public:
-		CharacterMovement(CrewMember*, float, float, bool);
+		CharacterMovement(CrewMember*, float, float);
 		~CharacterMovement();
 		
 		void setMovementVector(float, float);
@@ -19,9 +18,9 @@ class CharacterMovement {
 		void setShortestPath(std::list<ShipBlock *>);
 		void setStatus(MovementStatus);
 		
-		bool isActionTriggered();
-		CharacterAction getTriggeredAction();
-		void setTriggeredAction(CharacterAction);
+		bool hasAction();
+		ShipActionObject * getActionObject();
+		void setActionObject(ShipActionObject *);
 
 		MovementStatus getStatus();
 		CrewMember * getCrewMember();
@@ -31,8 +30,7 @@ class CharacterMovement {
 
 	private:
 
-		bool actionTriggered;
-		CharacterAction actionToPerform;
+		ShipActionObject * actionObject;
 
 		MovementStatus movementStatus;
 
