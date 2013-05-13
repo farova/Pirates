@@ -43,32 +43,21 @@ void ShipView::drawAll(sf::RenderWindow &window)
 	// draw player characters
 	playerShip->drawShip(window);
 
-
-
-
-
 	pollActions();
 }
 
 void ShipView::pollActions()
 {
-	
 	std::list<ShipActionObject *>::iterator shipObjIterator;
 	for ( shipObjIterator = shipActionObjects.begin(); shipObjIterator != shipActionObjects.end(); ++shipObjIterator)
 	{
-		cout << (*shipObjIterator)->isOccupied() << endl;
+		if ((*shipObjIterator)->isOccupied())
+		{
+			
 
-
-
-
-
-
-
-
-
-
+			
+		}
 	}
-	
 }
 
 void ShipView::initialize()
@@ -90,6 +79,7 @@ void ShipView::initialize()
 	playerShip->getLargeShipOverlaySprite().setPosition(blockWidth,blockHeight);
 
 	float offset = blockWidth*3;
+	float profileOffset = - blockWidth*2;
 
 	// place crew onto ship
 	std::list<CrewMember*> playerCrew = playerShip->getCrew();
@@ -97,11 +87,20 @@ void ShipView::initialize()
 	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
 	{
 		(*crewIterator)->setPosition(offset = offset + blockWidth*2, blockHeight*7);
+		(*crewIterator)->setProfilePicturePosition(profileOffset = profileOffset + blockWidth*3, blockHeight*14);
+		(*crewIterator)->setProfilePictureSelectedOverlayPosition(profileOffset, blockHeight*14);
 	}
 
 	initialized = true;
 }
 
+void ShipView::initializeNewEncounter()
+{
+	initializeActionObjects();
+
+
+
+}
 
 void ShipView::initializeActionObjects()
 {
@@ -112,6 +111,13 @@ void ShipView::initializeActionObjects()
 	captainWheel->setPosition( blockWidth*11 ,blockHeight*7);
 	captainWheel->setUsageCoordinates( blockWidth*11 ,blockHeight*7);
 	captainWheel->setActionType(SteerShip);
+
+
+
+	// remove previous cannon and add all cannons to ActionObjectList in case new cannons bought
+
+
+
 
 	shipActionObjects.push_back(captainWheel);
 }
@@ -203,7 +209,7 @@ bool ShipView::handleCrewClick(int x, int y)
 	std::list<CrewMember *>::iterator crewIterator;
 	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
 	{
-		if(isSpriteClicked((*crewIterator)->getSprite(), x,y))
+		if(isSpriteClicked((*crewIterator)->getSprite(), x,y) || isSpriteClicked((*crewIterator)->getProfileSprite(), x,y))
 		{
 			(*crewIterator)->toggleSelect();
 			spriteClicked = true;

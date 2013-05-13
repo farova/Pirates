@@ -18,6 +18,7 @@ class ShipView : public IGameView {
 		
 		void drawAll(sf::RenderWindow &);
 		void initialize();
+		void initializeNewEncounter();
 		void loadCache(thor::ResourceCache<sf::Texture> *);
 		void cleanUp();
 
@@ -40,7 +41,7 @@ class ShipView : public IGameView {
 
 		bool handleCrewClick(int,int);
 		void handleShipBlockClick(int,int);
-
+		
 		bool isSpriteClicked(sf::Sprite &, float, float);
 
 		void pollActions();

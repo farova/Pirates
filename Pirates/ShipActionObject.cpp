@@ -22,6 +22,13 @@ ShipActionObject::~ShipActionObject()
 void ShipActionObject::draw(sf::RenderWindow &window)
 {
 	window.draw(getSprite());
+
+
+	// if action in progress, draw progress bar
+
+
+
+
 }
 
 void ShipActionObject::setPosition(float x, float y)

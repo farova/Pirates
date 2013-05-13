@@ -18,6 +18,10 @@ class CrewMember : public MovableObject {
 		virtual void draw(sf::RenderWindow &);
 		virtual void move(float, float);
 		virtual void setPosition(float, float);
+		
+		void setProfilePicturePosition(float, float);
+		void setProfilePictureSelectedOverlayPosition(float, float);
+		sf::Sprite & getProfileSprite();
 
 		int getStrength();
 		int getIntelligence();
@@ -45,8 +49,10 @@ class CrewMember : public MovableObject {
 
 		string name;
 		MeleeWeapon * weapon;
-
+		
 		sf::Sprite selectedOverlay;
+		sf::Sprite profilePicture;
+		sf::Sprite profilePictureSelectedOverlay;
 
 		bool selected;
 

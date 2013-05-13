@@ -29,7 +29,6 @@ class ShipActionObject : Object {
 		void setActionDirection(CharacterFacingDirection);
 
 		void setBonuses(float, float);
-		
 		float getEscapeBonus();
 		float getHitBonus();
 

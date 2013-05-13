@@ -5,6 +5,8 @@ CrewMember::CrewMember(sf::Texture *texture, sf::Texture *selected,string name, 
 	name(name), strength(strength), intelligence(intelligence), selected(false), action(NoAction), facingDirection(Right)
 {
 	selectedOverlay.setTexture(*selected);
+	profilePicture.setTexture(*texture);
+	profilePictureSelectedOverlay.setTexture(*selected);
 }
 
 CrewMember::~CrewMember()
@@ -46,8 +48,13 @@ void CrewMember::draw(sf::RenderWindow &window)
 {
 	Object::draw(window);	//call parent implementation of function
 	
+	window.draw(profilePicture);
+
 	if(isCharacterSelected())
+	{
 		window.draw(selectedOverlay);
+		window.draw(profilePictureSelectedOverlay);
+	}
 
 
 	if(isPerformingAction())
@@ -72,9 +79,24 @@ void CrewMember::setPosition(float x, float y)
 	selectedOverlay.setPosition(x,y);
 }
 
+void CrewMember::setProfilePicturePosition(float x, float y)
+{
+	profilePicture.setPosition(x,y);
+}
+
+void CrewMember::setProfilePictureSelectedOverlayPosition(float x, float y)
+{
+	profilePictureSelectedOverlay.setPosition(x,y);
+}
+
 int CrewMember::getStrength()
 {
 	return strength;
+}
+
+sf::Sprite & CrewMember::getProfileSprite()
+{
+	return profilePicture;
 }
 
 string CrewMember::getName()

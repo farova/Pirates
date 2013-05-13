@@ -111,6 +111,7 @@ void Game::determineEncounter(MapBlock * mapBlock)
 				this->setGameState(ShipViewState);
 
 				shipView->setEnemyShip(enemy);
+				shipView->initializeNewEncounter();
 			}
 
 			break;

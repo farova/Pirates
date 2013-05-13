@@ -1,7 +1,2 @@
-﻿  CharacterMovementManager.cpp
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\charactermovementmanager.cpp(50): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\charactermovementmanager.cpp(56): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\charactermovementmanager.cpp(204): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\charactermovementmanager.cpp(274): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
-c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\charactermovementmanager.cpp(129): warning C4715: 'CharacterMovementManager::DFSSearch' : not all control paths return a value
+﻿  CrewMember.cpp
   Pirates.vcxproj -> C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\Pirates.exe
