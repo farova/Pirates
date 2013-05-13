@@ -9,7 +9,9 @@ ShipActionObject::ShipActionObject(sf::Texture * texture)
 	escapeBonus(0), 
 	hitBonus(0), 
 	actionType(NoAction),
-	actionDirection(Right)
+	actionDirection(Right),
+	actionButtonSet(false),
+	cooldown()
 {
 
 }
@@ -23,17 +25,64 @@ void ShipActionObject::draw(sf::RenderWindow &window)
 {
 	window.draw(getSprite());
 
+	if(isOccupied())
+	{
+		if(isActionReady() && actionButtonSet)
+		{
+			// draw button
+			window.draw(actionButton);
+		}
+		else
+		{
+			// draw progress bar
+		}
+	}
 
-	// if action in progress, draw progress bar
+}
 
+bool ShipActionObject::isActionReady()
+{
+	return getCooldownElapsedTime() > cooldown;
+}
 
+void ShipActionObject::setCooldown(float time)
+{
+	cooldown = sf::seconds(time);
+}
 
+void ShipActionObject::resetCooldownClock()
+{
+	cooldownClock.restart();
+}
 
+sf::Time ShipActionObject::getCooldownElapsedTime()
+{
+	return cooldownClock.getElapsedTime();
 }
 
 void ShipActionObject::setPosition(float x, float y)
 {
 	this->getSprite().setPosition(x,y);
+}
+
+bool ShipActionObject::isActionButtonSet()
+{
+	return actionButtonSet;
+}
+
+sf::Sprite & ShipActionObject::getActionButton()
+{
+	if(!actionButtonSet)
+		throw "NoActionButtonConfigured";
+
+	return actionButton;
+}
+
+void ShipActionObject::setActionButton(sf::Texture * buttonTexture, float x, float y)
+{
+	actionButton.setTexture(*buttonTexture);
+	actionButton.setPosition(x,y);
+	actionButtonSet = true;
 }
 
 bool ShipActionObject::isInBounds(float x, float y)

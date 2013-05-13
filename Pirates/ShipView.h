@@ -41,6 +41,10 @@ class ShipView : public IGameView {
 
 		bool handleCrewClick(int,int);
 		void handleShipBlockClick(int,int);
+		void handleActionButtonClick(int,int);
+		
+		void handleCannonButtonClick(ShipActionObject *);
+		void handleSteeringWheelButtonClick();
 		
 		bool isSpriteClicked(sf::Sprite &, float, float);
 

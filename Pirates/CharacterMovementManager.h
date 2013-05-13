@@ -27,6 +27,7 @@ class CharacterMovementManager {
 		int getBlockWidth();
 		int getBlockHeight();
 		
+		void stopAllMovements();
 
 	private:
 		

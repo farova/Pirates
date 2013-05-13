@@ -71,6 +71,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cannon.cpp" />
     <ClCompile Include="CrewMember.cpp" />
     <ClCompile Include="EncounterGenerator.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -86,6 +87,7 @@
     <ClCompile Include="CharacterMovement.cpp" />
     <ClCompile Include="CharacterMovementManager.cpp" />
     <ClCompile Include="ShipView.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BuyView.h" />

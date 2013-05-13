@@ -33,15 +33,15 @@ void ShipView::drawAll(sf::RenderWindow &window)
 		window.draw(enemyShip->getLargeShipSprite());
 	}
 
+	// draw player characters
+	playerShip->drawShip(window);
+
 	// deaw all action objects 
 	std::list<ShipActionObject *>::iterator shipObjIterator;
 	for ( shipObjIterator = shipActionObjects.begin(); shipObjIterator != shipActionObjects.end(); ++shipObjIterator)
 	{
 		(*shipObjIterator)->draw(window);
 	}
-		
-	// draw player characters
-	playerShip->drawShip(window);
 
 	pollActions();
 }
@@ -54,7 +54,7 @@ void ShipView::pollActions()
 		if ((*shipObjIterator)->isOccupied())
 		{
 			
-
+			// apply bonuses is using specific actionItems
 			
 		}
 	}
@@ -98,6 +98,10 @@ void ShipView::initializeNewEncounter()
 {
 	initializeActionObjects();
 
+	// reset all timers
+	std::list<ShipActionObject *>::iterator shipObjIterator;
+	for ( shipObjIterator = shipActionObjects.begin(); shipObjIterator != shipActionObjects.end(); ++shipObjIterator)
+		(*shipObjIterator)->resetCooldownClock();
 
 
 }
@@ -106,11 +110,16 @@ void ShipView::initializeActionObjects()
 {
 	thor::ResourceKey<sf::Texture> wheelTextureResource = thor::Resources::fromFile<sf::Texture>("shipWheel.png");
 	std::shared_ptr<sf::Texture> wheelTexturePtr = resourceCache->acquire(wheelTextureResource);
+	
+	thor::ResourceKey<sf::Texture> escapeButtonTextureResource = thor::Resources::fromFile<sf::Texture>("images/button_escape.png");
+	std::shared_ptr<sf::Texture> escapeButtonTextureResourcePtr = resourceCache->acquire(escapeButtonTextureResource);
 
 	ShipActionObject * captainWheel = new ShipActionObject(wheelTexturePtr.get());
 	captainWheel->setPosition( blockWidth*11 ,blockHeight*7);
 	captainWheel->setUsageCoordinates( blockWidth*11 ,blockHeight*7);
 	captainWheel->setActionType(SteerShip);
+	captainWheel->setCooldown(5);
+	captainWheel->setActionButton(escapeButtonTextureResourcePtr.get(), blockWidth*12, blockHeight*7);
 
 
 
@@ -209,7 +218,8 @@ bool ShipView::handleCrewClick(int x, int y)
 	std::list<CrewMember *>::iterator crewIterator;
 	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
 	{
-		if(isSpriteClicked((*crewIterator)->getSprite(), x,y) || isSpriteClicked((*crewIterator)->getProfileSprite(), x,y))
+		if( isSpriteClicked((*crewIterator)->getSprite(), x,y) || 
+			isSpriteClicked((*crewIterator)->getProfileSprite(), x,y))
 		{
 			(*crewIterator)->toggleSelect();
 			spriteClicked = true;
@@ -260,8 +270,9 @@ void ShipView::handleMouseClick(int x, int y, sf::Mouse::Button button)
 	case sf::Mouse::Left:
 		// if click on crew member, no other action preformed
 		if(handleCrewClick(x,y))
-		return;
+			return;
 
+		handleActionButtonClick(x,y);
 		deselectAllCrew();
 
 		break;
@@ -272,6 +283,61 @@ void ShipView::handleMouseClick(int x, int y, sf::Mouse::Button button)
 	}
 
 	// fightFinished = true;
+}
+
+void ShipView::handleActionButtonClick(int x,int y)
+{
+	// determmine if action is ready, and button was clicked for it
+	std::list<ShipActionObject *>::iterator shipObjIterator;
+	for ( shipObjIterator = shipActionObjects.begin(); shipObjIterator != shipActionObjects.end(); ++shipObjIterator)
+	{
+
+		if ((*shipObjIterator)->isOccupied() && 
+			(*shipObjIterator)->isActionReady() && 
+			(*shipObjIterator)->getActionButton().getGlobalBounds().contains(x,y))
+		{
+			switch((*shipObjIterator)->getActionType())
+			{
+				case ArmCannon:
+					handleCannonButtonClick(*shipObjIterator);
+					break;
+				case SteerShip:
+					handleSteeringWheelButtonClick();
+					break;
+			}
+		}
+	}
+}
+
+void ShipView::handleCannonButtonClick(ShipActionObject *actionObject)
+{
+	// go through cannon list, determine which cannon based on actionObj pointer
+	std::list<Cannon *> cannons = playerShip->getCannons();
+	std::list<Cannon *>::iterator cannonIterator;
+	for ( cannonIterator = cannons.begin(); cannonIterator != cannons.end(); ++cannonIterator)
+	{
+		if((*cannonIterator)->getActionObject() == actionObject)
+		{
+			
+			// shoot cannon, reduce anno, reset actionobj clock, etc.
+
+
+
+
+
+
+			actionObject->resetCooldownClock();
+
+			break;
+		}
+	}
+
+
+}
+
+void ShipView::handleSteeringWheelButtonClick()
+{
+	fightFinished = true;
 }
 
 void ShipView::deselectAllCrew()
@@ -303,6 +369,8 @@ void ShipView::cleanUp()
 	enemyLoaded = false;
 	fightFinished = false;
 
+	// stop all movements
+	movementManager.stopAllMovements();
 
 
 

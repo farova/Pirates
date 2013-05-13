@@ -39,6 +39,15 @@ void CharacterMovementManager::initialize(
 	actionObjects = actionObjs;
 }
 
+void CharacterMovementManager::stopAllMovements()
+{
+	while(!currentCharacterMovements.empty()) 
+	{
+		delete currentCharacterMovements.front();
+		currentCharacterMovements.pop_front();
+	}
+}
+
 void CharacterMovementManager::addNewMovement(CrewMember * crew, int x, int y)
 {
 	addNewMovement(crew, x, y, NULL);
@@ -292,6 +301,7 @@ void CharacterMovementManager::move()
 				(*i)->getCrewMember()->performAction( (*i)->getActionObject()->getActionType() );
 				(*i)->getActionObject()->setIfOccupied(true);
 				(*i)->getCrewMember()->setFacingDirection( (*i)->getActionObject()->getActionDirection() );
+				(*i)->getActionObject()->resetCooldownClock();
 			}
 
 			// if movement finished, delete object

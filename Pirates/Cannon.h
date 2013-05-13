@@ -7,10 +7,11 @@
 class Cannon : public Weapon {
 
 	public:
+		Cannon(sf::Texture *);
+		~Cannon();
 
-
-		ShipActionObject getActionObject();
-		void setActionObject(ShipActionObject);
+		ShipActionObject * getActionObject();
+		void setActionObject(ShipActionObject *);
 
 	private:
 		bool reloaded;

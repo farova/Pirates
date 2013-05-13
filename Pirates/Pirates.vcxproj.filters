@@ -90,6 +90,12 @@
     <ClCompile Include="Ship.cpp">
       <Filter>Source Files\Objects\MovableObjects</Filter>
     </ClCompile>
+    <ClCompile Include="Cannon.cpp">
+      <Filter>Source Files\Objects\Weapons</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
+      <Filter>Source Files\Objects\Weapons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MapView.h">

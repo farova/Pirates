@@ -21,9 +21,19 @@ class ShipActionObject : Object {
 		bool isInBounds(float, float);
 		bool isOccupied();
 		void setIfOccupied(bool);
+		
+		void setCooldown(float);
+		void resetCooldownClock();
+		sf::Time getCooldownElapsedTime();
 
+		bool isActionReady();
+		
 		ActionType getActionType();
 		void setActionType(ActionType);
+
+		sf::Sprite & getActionButton();
+		void setActionButton(sf::Texture *, float, float);
+		bool isActionButtonSet();
 
 		CharacterFacingDirection getActionDirection();
 		void setActionDirection(CharacterFacingDirection);
@@ -34,11 +44,14 @@ class ShipActionObject : Object {
 
 	private:
 
+		sf::Sprite actionButton;
+		bool actionButtonSet;
+
 		ActionType actionType;
 		CharacterFacingDirection actionDirection;
 
 		sf::Time cooldown;
-		sf::Clock timeSinceLastUsage;
+		sf::Clock cooldownClock;
 
 		int usageCoordinateX;
 		int usageCoordinateY;

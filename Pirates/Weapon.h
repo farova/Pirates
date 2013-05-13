@@ -6,8 +6,8 @@
 class Weapon : public Object {
 
 	public:
-
-
+		Weapon(sf::Texture *);
+		~Weapon();
 
 
 	private:
