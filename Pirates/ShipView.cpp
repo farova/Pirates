@@ -209,6 +209,22 @@ void ShipView::initializeBlocks()
 	}
 }
 
+void ShipView::handleSelectionBox(sf::FloatRect &selectionRect)
+{
+	std::list<CrewMember*> playerCrew = playerShip->getCrew();
+	std::list<CrewMember *>::iterator crewIterator;
+	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
+	{
+		(*crewIterator)->Deselect();
+
+		if( selectionRect.intersects((*crewIterator)->getSprite().getGlobalBounds()) ||
+			selectionRect.intersects((*crewIterator)->getProfileSprite().getGlobalBounds()) )
+		{
+			(*crewIterator)->Select();
+		}
+	}
+}
+
 bool ShipView::handleCrewClick(int x, int y)
 {
 	bool spriteClicked = false;
@@ -218,14 +234,16 @@ bool ShipView::handleCrewClick(int x, int y)
 	std::list<CrewMember *>::iterator crewIterator;
 	for ( crewIterator = playerCrew.begin(); crewIterator != playerCrew.end(); ++crewIterator)
 	{
+		(*crewIterator)->Deselect();
+
 		if( isSpriteClicked((*crewIterator)->getSprite(), x,y) || 
 			isSpriteClicked((*crewIterator)->getProfileSprite(), x,y))
 		{
-			(*crewIterator)->toggleSelect();
+			(*crewIterator)->Select();
 			spriteClicked = true;
 		}
 	}
-
+	
 	return spriteClicked;
 }
 
@@ -427,3 +445,5 @@ void ShipView::loadCache(thor::ResourceCache<sf::Texture> * cache)
 	resourceCache = cache;
 	cacheLoaded = true;
 }
+
+

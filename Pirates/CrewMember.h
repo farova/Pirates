@@ -29,6 +29,8 @@ class CrewMember : public MovableObject {
 
 		bool isCharacterSelected();
 		void toggleSelect();
+		void Select();
+		void Deselect();
 		
 		CharacterFacingDirection getFacingDirection();
 		void setFacingDirection(CharacterFacingDirection);

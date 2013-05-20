@@ -13,9 +13,9 @@ int main()
 	gameController->setWindowSize(windowWidth, windowHeight);
 	gameController->initialize();
 
-	
+	bool mousePressed = false;;
+
 	srand(time(NULL));
-	sf::Clock frameClock;
 
     while (window.isOpen())
     {
@@ -28,8 +28,19 @@ int main()
 					window.close();
 					break;
 					
+				case sf::Event::MouseButtonReleased:
+					mousePressed = false;
+					gameController->handleMouseRelease(event.mouseButton.x, event.mouseButton.y, event.mouseButton.button);
+					break;
+
+				case sf::Event::MouseMoved:
+					if(mousePressed)
+						gameController->handleMouseDrag(event.mouseMove.x, event.mouseMove.y);
+					break;
+
 				case sf::Event::MouseButtonPressed:
-					gameController->handleMouseClick(event.mouseButton.x, event.mouseButton.y, event.mouseButton.button);	
+					mousePressed = true;
+					gameController->handleMouseClick(event.mouseButton.x, event.mouseButton.y, event.mouseButton.button);
 					break;
 					
 				case sf::Event::KeyPressed:

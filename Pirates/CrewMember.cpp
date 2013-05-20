@@ -129,3 +129,13 @@ void CrewMember::toggleSelect()
 {
 	selected = !selected;
 }
+
+void CrewMember::Select()
+{
+	selected = true;
+}
+
+void CrewMember::Deselect()
+{
+	selected = false;
+}

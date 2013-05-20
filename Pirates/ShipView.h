@@ -24,6 +24,8 @@ class ShipView : public IGameView {
 
 		void handleMouseClick(int, int, sf::Mouse::Button);
 		void handleKeyPress(sf::Keyboard::Key);
+
+		void handleSelectionBox(sf::FloatRect &);
 		
 		void setWindowSize(int, int);
 		void setCaracterSize(int, int);

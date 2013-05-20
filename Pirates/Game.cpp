@@ -36,6 +36,7 @@ void Game::drawSplashScreen(sf::RenderWindow &window)
 void Game::drawShipView(sf::RenderWindow &window)
 {
 	shipView->drawAll(window);
+	window.draw(mouseDragManager.getRectangle());
 }
 
 void Game::drawBuyView(sf::RenderWindow &window)
@@ -58,9 +59,45 @@ void Game::drawMapView(sf::RenderWindow &window)
 	mapView->drawAll(window);
 }
 
+void Game::passSelectionBoxToView(sf::FloatRect &selectionRect)
+{
+	switch(this->getGameState())
+	{
+	case ShipViewState:
+		shipView->handleSelectionBox(selectionRect);
+		break;
+	}
+}
+
+void Game::handleMouseDrag(int x, int y)
+{
+	if(mouseDragManager.isMousePressed())
+		mouseDragManager.setCurrent(x, y);
+}
+
+void Game::handleMouseRelease(int x, int y, sf::Mouse::Button button)
+{
+	switch (button)
+	{
+	case sf::Mouse::Button::Left:
+		if(mouseDragManager.isValidSelection(x, y))
+			passSelectionBoxToView(mouseDragManager.getRectangle().getGlobalBounds());
+		mouseDragManager.finishSelection();
+		break;
+	}
+}
+
 void Game::handleMouseClick(int x, int y, sf::Mouse::Button button)
 {
+	// handle mouse selection
+	switch (button)
+	{
+	case sf::Mouse::Button::Left:
+		mouseDragManager.setStart(x,y);
+		break;
+	}
 
+	// handle game views
 	switch(this->getGameState())
 	{
 	case SplashScreenState:

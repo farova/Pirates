@@ -7,6 +7,7 @@
 #include "ShipView.h"
 #include "BuyView.h"
 #include "IGameView.h"
+#include "MouseDragManager.h"
 #include <SFML/Graphics.hpp>
 #include <Thor/Resources.hpp>
 
@@ -24,9 +25,11 @@ class Game : public IGameView {
 		void drawAll(sf::RenderWindow &);
 		void initialize();
 		void loadCache(thor::ResourceCache<sf::Texture> *);
-
-		void handleMouseClick(int, int, sf::Mouse::Button);
+		
 		void handleKeyPress(sf::Keyboard::Key);
+		void handleMouseClick(int, int, sf::Mouse::Button);
+		void handleMouseRelease(int, int, sf::Mouse::Button);
+		void handleMouseDrag(int, int);
 
 		void determineEncounter(MapBlock *);
 		void generateShipView(MapBlock *);
@@ -48,6 +51,8 @@ class Game : public IGameView {
 		void drawMainMenu(sf::RenderWindow &);
 		void drawSettingsMenu(sf::RenderWindow &);
 		void drawMapView(sf::RenderWindow &);
+
+		void passSelectionBoxToView(sf::FloatRect &);
 		
 		bool cacheLoaded;
 		bool playing;
@@ -57,6 +62,8 @@ class Game : public IGameView {
 		int windowWidth;
 
 		GameState gameState;
+
+		MouseDragManager mouseDragManager;
 
 		MapView *mapView;
 		ShipView *shipView;
