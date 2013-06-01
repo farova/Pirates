@@ -1,51 +1,50 @@
 #include "MovableObject.h"
 
-MovableObject::MovableObject(sf::Texture *texture, float speed, int healthMax, int healthCurrent)
-	: Object(texture), healthCurrent(healthCurrent), healthMax(healthMax), speed(speed)
+MovableObject::MovableObject( sf::Texture *texture, float speed, int healthMax, int healthCurrent )
+    : Object( texture ), healthCurrent( healthCurrent ), healthMax( healthMax ), speed( speed )
 {
-	// nothing
+    // nothing
 }
 
 bool MovableObject::isDead()
 {
-	return healthCurrent <= 0;
+    return healthCurrent <= 0;
 }
 
-void MovableObject::move(float x, float y)
+void MovableObject::move( float x, float y )
 {
-	if(isDead())
-		return; 
-
-	getSprite().move(x,y);
+    if( isDead() )
+        return;
+        
+    getSprite().move( x, y );
 }
 
 float MovableObject::getSpeed()
 {
-	return speed;
+    return speed;
 }
 
 int MovableObject::getCurrentHealth()
 {
-	return healthCurrent;
+    return healthCurrent;
 }
 
 int MovableObject::getMaxHealth()
 {
-	return healthMax;
+    return healthMax;
 }
 
-void MovableObject::takeDamage(int amount)
+void MovableObject::takeDamage( int amount )
 {
-	healthCurrent -= amount;
+    healthCurrent -= amount;
 }
 
-void MovableObject::restoreHealth(int amount)
+void MovableObject::restoreHealth( int amount )
 {
-	healthCurrent += amount;
+    healthCurrent += amount;
 }
 
 void MovableObject::restoreFullHealth()
 {
-	healthCurrent = healthMax;
+    healthCurrent = healthMax;
 }
-		

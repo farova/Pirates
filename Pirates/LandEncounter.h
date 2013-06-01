@@ -5,25 +5,26 @@
 #include "Cannon.h"
 #include "CrewMember.h"
 
-class LandEncounter {
+class LandEncounter
+{
 
-	public:
-		LandEncounter();
-		~LandEncounter();
-
-	private:
-
-		bool allowFullRepairs;
-
-		float tax;
-
-		int gold;
-		int repairMaterials;
-
-		MeleeWeapon *weapons;
-		Cannon *cannons;
-		CrewMember *crewMembers;
-
+    public:
+        LandEncounter();
+        ~LandEncounter();
+        
+    private:
+    
+        bool allowFullRepairs;
+        
+        float tax;
+        
+        int gold;
+        int repairMaterials;
+        
+        MeleeWeapon *weapons;
+        Cannon *cannons;
+        CrewMember *crewMembers;
+        
 };
 
 #endif  //_LANDENCOUNTER_H

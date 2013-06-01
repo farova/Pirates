@@ -1,10 +1,10 @@
 #include "CharacterMovement.h"
 
-CharacterMovement::CharacterMovement(CrewMember * crew, float finalX, float finalY)
-	: crewMember(crew), movementStatus(Initial)
+CharacterMovement::CharacterMovement( CrewMember * crew, float finalX, float finalY )
+    : crewMember( crew ), movementStatus( Initial )
 {
-	finalDestination.x = finalX;
-	finalDestination.y = finalY;
+    finalDestination.x = finalX;
+    finalDestination.y = finalY;
 }
 
 CharacterMovement::~CharacterMovement()
@@ -14,62 +14,62 @@ CharacterMovement::~CharacterMovement()
 
 bool CharacterMovement::hasAction()
 {
-	return actionObject != NULL;
+    return actionObject != NULL;
 }
 
 ShipActionObject * CharacterMovement::getActionObject()
 {
-	return actionObject;
+    return actionObject;
 }
 
-void CharacterMovement::setActionObject(ShipActionObject * act)
+void CharacterMovement::setActionObject( ShipActionObject * act )
 {
-	actionObject = act;
+    actionObject = act;
 }
 
-void CharacterMovement::setStatus(MovementStatus stat)
+void CharacterMovement::setStatus( MovementStatus stat )
 {
-	movementStatus = stat;
+    movementStatus = stat;
 }
 
 MovementStatus CharacterMovement::getStatus()
 {
-	return movementStatus;
+    return movementStatus;
 }
 
 
-void CharacterMovement::setMovementVector(float x, float y)
+void CharacterMovement::setMovementVector( float x, float y )
 {
-	movementVector.x = x;
-	movementVector.y = y;
+    movementVector.x = x;
+    movementVector.y = y;
 }
 
-void CharacterMovement::setMovementVector(sf::Vector2f vector)
+void CharacterMovement::setMovementVector( sf::Vector2f vector )
 {
-	movementVector = vector;
+    movementVector = vector;
 }
 
 CrewMember * CharacterMovement::getCrewMember()
 {
-	return crewMember;
+    return crewMember;
 }
 
 sf::Vector2f CharacterMovement::getFinalDestination()
 {
-	return finalDestination;
+    return finalDestination;
 }
 
 sf::Vector2f CharacterMovement::getMovementVector()
 {
-	 return movementVector;
+    return movementVector;
 }
 
-void CharacterMovement::setShortestPath(std::list<ShipBlock *> path)
+void CharacterMovement::setShortestPath( std::list<ShipBlock *> path )
 {
-	shortestPath = path;
+    shortestPath = path;
 }
 
 std::list<ShipBlock *> & CharacterMovement::getShortestPath()
 {
-	return shortestPath;
+    return shortestPath;
 }

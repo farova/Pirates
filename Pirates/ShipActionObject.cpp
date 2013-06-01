@@ -1,17 +1,17 @@
 #include "ShipActionObject.h"
 
 
-ShipActionObject::ShipActionObject(sf::Texture * texture)
-	: Object(texture), 
-	usageCoordinateX(0), 
-	usageCoordinateY(0), 
-	occupied(false), 
-	escapeBonus(0), 
-	hitBonus(0), 
-	actionType(NoAction),
-	actionDirection(Right),
-	actionButtonSet(false),
-	cooldown()
+ShipActionObject::ShipActionObject( sf::Texture * texture )
+    : Object( texture ),
+      usageCoordinateX( 0 ),
+      usageCoordinateY( 0 ),
+      occupied( false ),
+      escapeBonus( 0 ),
+      hitBonus( 0 ),
+      actionType( NoAction ),
+      actionDirection( Right ),
+      actionButtonSet( false ),
+      cooldown()
 {
 
 }
@@ -21,128 +21,128 @@ ShipActionObject::~ShipActionObject()
 
 }
 
-void ShipActionObject::draw(sf::RenderWindow &window)
+void ShipActionObject::draw( sf::RenderWindow &window )
 {
-	window.draw(getSprite());
-
-	if(isOccupied())
-	{
-		if(isActionReady() && actionButtonSet)
-		{
-			// draw button
-			window.draw(actionButton);
-		}
-		else
-		{
-			// draw progress bar
-		}
-	}
-
+    window.draw( getSprite() );
+    
+    if( isOccupied() )
+    {
+        if( isActionReady() && actionButtonSet )
+        {
+            // draw button
+            window.draw( actionButton );
+        }
+        else
+        {
+            // draw progress bar
+        }
+    }
+    
 }
 
 bool ShipActionObject::isActionReady()
 {
-	return getCooldownElapsedTime() > cooldown;
+    return getCooldownElapsedTime() > cooldown;
 }
 
-void ShipActionObject::setCooldown(float time)
+void ShipActionObject::setCooldown( float time )
 {
-	cooldown = sf::seconds(time);
+    cooldown = sf::seconds( time );
 }
 
 void ShipActionObject::resetCooldownClock()
 {
-	cooldownClock.restart();
+    cooldownClock.restart();
 }
 
 sf::Time ShipActionObject::getCooldownElapsedTime()
 {
-	return cooldownClock.getElapsedTime();
+    return cooldownClock.getElapsedTime();
 }
 
-void ShipActionObject::setPosition(float x, float y)
+void ShipActionObject::setPosition( float x, float y )
 {
-	this->getSprite().setPosition(x,y);
+    this->getSprite().setPosition( x, y );
 }
 
 bool ShipActionObject::isActionButtonSet()
 {
-	return actionButtonSet;
+    return actionButtonSet;
 }
 
 sf::Sprite & ShipActionObject::getActionButton()
 {
-	if(!actionButtonSet)
-		throw "NoActionButtonConfigured";
-
-	return actionButton;
+    if( !actionButtonSet )
+        throw "NoActionButtonConfigured";
+        
+    return actionButton;
 }
 
-void ShipActionObject::setActionButton(sf::Texture * buttonTexture, float x, float y)
+void ShipActionObject::setActionButton( sf::Texture * buttonTexture, float x, float y )
 {
-	actionButton.setTexture(*buttonTexture);
-	actionButton.setPosition(x,y);
-	actionButtonSet = true;
+    actionButton.setTexture( *buttonTexture );
+    actionButton.setPosition( x, y );
+    actionButtonSet = true;
 }
 
-bool ShipActionObject::isInBounds(float x, float y)
+bool ShipActionObject::isInBounds( float x, float y )
 {
-	return this->getSprite().getGlobalBounds().contains(x,y);
+    return this->getSprite().getGlobalBounds().contains( x, y );
 }
 
-void ShipActionObject::setUsageCoordinates(int x, int y)
+void ShipActionObject::setUsageCoordinates( int x, int y )
 {
-	usageCoordinateX = x;
-	usageCoordinateY = y;
+    usageCoordinateX = x;
+    usageCoordinateY = y;
 }
 
 sf::Vector2i ShipActionObject::getUsageCoordinates()
 {
-	return sf::Vector2i(usageCoordinateX, usageCoordinateY);
+    return sf::Vector2i( usageCoordinateX, usageCoordinateY );
 }
 
 bool ShipActionObject::isOccupied()
 {
-	return occupied;
+    return occupied;
 }
 
-void ShipActionObject::setIfOccupied(bool occ)
+void ShipActionObject::setIfOccupied( bool occ )
 {
-	occupied = occ;
+    occupied = occ;
 }
 
-void ShipActionObject::setBonuses(float escape, float hit)
+void ShipActionObject::setBonuses( float escape, float hit )
 {
-	escapeBonus = escape;
-	hitBonus = hit;
+    escapeBonus = escape;
+    hitBonus = hit;
 }
 
 float ShipActionObject::getEscapeBonus()
 {
-	return escapeBonus;
+    return escapeBonus;
 }
 
 float ShipActionObject::getHitBonus()
 {
-	return hitBonus;
+    return hitBonus;
 }
 
 ActionType ShipActionObject::getActionType()
 {
-	return actionType;
+    return actionType;
 }
 
-void ShipActionObject::setActionType(ActionType action)
+void ShipActionObject::setActionType( ActionType action )
 {
-	actionType = action;
+    actionType = action;
 }
 
 CharacterFacingDirection ShipActionObject::getActionDirection()
 {
-	return actionDirection;
+    return actionDirection;
 }
 
-void ShipActionObject::setActionDirection(CharacterFacingDirection dir)
+void ShipActionObject::setActionDirection( CharacterFacingDirection dir )
 {
-	actionDirection = dir;
+    actionDirection = dir;
 }

@@ -1,7 +1,7 @@
 #include "Cannon.h"
 
-Cannon::Cannon(sf::Texture * texture)
-	: Weapon(texture)
+Cannon::Cannon( sf::Texture * texture )
+    : Weapon( texture )
 {
 
 }
@@ -13,10 +13,20 @@ Cannon::~Cannon()
 
 ShipActionObject * Cannon::getActionObject()
 {
-	return actionObject;
+    return actionObject;
 }
 
-void Cannon::setActionObject(ShipActionObject * actionObj)
+void Cannon::setActionObject( ShipActionObject * actionObj )
 {
-	actionObject = actionObj;
+    actionObject = actionObj;
+}
+
+bool Cannon::isAssignedToSlot()
+{
+    return assignedToSlot;
+}
+
+void Cannon::setIfAssignedToSlot( bool assigned )
+{
+    assignedToSlot = assigned;
 }

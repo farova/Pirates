@@ -1,7 +1,7 @@
 #include "MapBlock.h"
 
 MapBlock::MapBlock()
-	: initialized(false), pirateSpawnChance(0), navySpawnChance(0), neutralSpawnChance(0), pirateMaxDifficulty(Easy), navyMaxDifficulty(Easy), MAX_SPAWN_CHANCE(100)
+    : initialized( false ), pirateSpawnChance( 0 ), navySpawnChance( 0 ), neutralSpawnChance( 0 ), pirateMaxDifficulty( Easy ), navyMaxDifficulty( Easy ), MAX_SPAWN_CHANCE( 100 )
 {
 
 }
@@ -11,90 +11,90 @@ MapBlock::~MapBlock()
 
 }
 
-void MapBlock::initialize(int x, int y, SquareType type, sf::Texture &texture)
+void MapBlock::initialize( int x, int y, SquareType type, sf::Texture &texture )
 {
-	this->type = type;
-	this->blockSprite.setTexture(texture);
-	this->blockSprite.setPosition(x,y);
-
-	initialized = true;
+    this->type = type;
+    this->blockSprite.setTexture( texture );
+    this->blockSprite.setPosition( x, y );
+    
+    initialized = true;
 }
 
-void MapBlock::setLandEncounter(LandEncounter &land)
+void MapBlock::setLandEncounter( LandEncounter &land )
 {
-	landEncouterObject = land;
-	landEncounter = true;
+    landEncouterObject = land;
+    landEncounter = true;
 }
 
 LandEncounter & MapBlock::getLandEncounter()
 {
-	return landEncouterObject;
+    return landEncouterObject;
 }
 
 bool MapBlock::isLandEncounter()
 {
-	return landEncounter;
+    return landEncounter;
 }
 
-void MapBlock::setPirateParameters(float chance, Difficulty diff)
+void MapBlock::setPirateParameters( float chance, Difficulty diff )
 {
-	chance = chance > 0 ? chance : 0;
-	pirateSpawnChance = chance > MAX_SPAWN_CHANCE ? MAX_SPAWN_CHANCE : chance;
-	pirateMaxDifficulty = diff;
+    chance = chance > 0 ? chance : 0;
+    pirateSpawnChance = chance > MAX_SPAWN_CHANCE ? MAX_SPAWN_CHANCE : chance;
+    pirateMaxDifficulty = diff;
 }
 
-void MapBlock::setNavyParameters(float chance, Difficulty diff)
+void MapBlock::setNavyParameters( float chance, Difficulty diff )
 {
-	chance = chance > 0 ? chance : 0;
-	navySpawnChance = chance > MAX_SPAWN_CHANCE ? MAX_SPAWN_CHANCE : chance;
-	navyMaxDifficulty = diff;
+    chance = chance > 0 ? chance : 0;
+    navySpawnChance = chance > MAX_SPAWN_CHANCE ? MAX_SPAWN_CHANCE : chance;
+    navyMaxDifficulty = diff;
 }
 
-void MapBlock::setNeutralParameters(float chance)
+void MapBlock::setNeutralParameters( float chance )
 {
-	chance = chance > 0 ? chance : 0;
-	neutralSpawnChance = chance > MAX_SPAWN_CHANCE ? MAX_SPAWN_CHANCE : chance;
+    chance = chance > 0 ? chance : 0;
+    neutralSpawnChance = chance > MAX_SPAWN_CHANCE ? MAX_SPAWN_CHANCE : chance;
 }
 
-void MapBlock::draw(sf::RenderWindow &window)
+void MapBlock::draw( sf::RenderWindow &window )
 {
-	if(!isInitialized())
-		return;
-
-	window.draw(blockSprite);
+    if( !isInitialized() )
+        return;
+        
+    window.draw( blockSprite );
 }
 
 bool MapBlock::isInitialized()
 {
-	return initialized;
+    return initialized;
 }
 
 SquareType MapBlock::getSquareType()
 {
-	return type;
+    return type;
 }
 
 Difficulty MapBlock::getPirateMaxDifficulty()
 {
-	return pirateMaxDifficulty;
+    return pirateMaxDifficulty;
 }
 
 Difficulty MapBlock::getNavyMaxDifficulty()
 {
-	return navyMaxDifficulty;
+    return navyMaxDifficulty;
 }
 
 float MapBlock::getPirateSpawnChance()
 {
-	return pirateSpawnChance;
+    return pirateSpawnChance;
 }
 
 float MapBlock::getNavySpawnChance()
 {
-	return navySpawnChance;
+    return navySpawnChance;
 }
 
 float MapBlock::getNeutralSpawnChance()
 {
-	return neutralSpawnChance;
+    return neutralSpawnChance;
 }

@@ -3,20 +3,21 @@
 
 #include <SFML/Graphics.hpp>
 
-class Object {
+class Object
+{
 
-	public:
-		Object(sf::Texture *);
-		~Object();
-
-		virtual void draw(sf::RenderWindow &);
-		virtual void setPosition(float, float);
-		
-		sf::Sprite & getSprite();
-		sf::Vector2f getPosition();
-
-	private:
-		sf::Sprite objectSprite;
+    public:
+        Object( sf::Texture * );
+        ~Object();
+        
+        virtual void draw( sf::RenderWindow & );
+        virtual void setPosition( float, float );
+        
+        sf::Sprite & getSprite();
+        sf::Vector2f getPosition();
+        
+    private:
+        sf::Sprite objectSprite;
 };
 
 #endif  //_OBJECT_H

@@ -1,12 +1,12 @@
 #include "Ship.h"
 
 
-Ship::Ship(sf::Texture * textureSmall, int healthMax, int healthCurrent, int speed, ShipAlliance alliance, ShipType type, sf::Texture * textureLarge, sf::Texture * textureLargeOver)
-	: MovableObject(textureSmall, healthMax, healthCurrent, speed),
-	alliance(alliance), shipType(type)
+Ship::Ship( sf::Texture * textureSmall, int healthMax, int healthCurrent, int speed, ShipAlliance alliance, ShipType type, sf::Texture * textureLarge, sf::Texture * textureLargeOver, int numCannonSlots )
+    : MovableObject( textureSmall, healthMax, healthCurrent, speed ),
+      alliance( alliance ), shipType( type ), numCannonSlots( numCannonSlots )
 {
-	largeSprite.setTexture(*textureLarge);
-	largeOverlaySprite.setTexture(*textureLargeOver);
+    largeSprite.setTexture( *textureLarge );
+    largeOverlaySprite.setTexture( *textureLargeOver );
 }
 
 Ship::~Ship()
@@ -14,71 +14,90 @@ Ship::~Ship()
 
 
 
+}
 
+void Ship::addCannonToSlot( Cannon * cannon )
+{
+    if( cannon->isAssignedToSlot() )
+        return;
+        
+        
+}
 
+void Ship::removeCannonFromSlot( Cannon * cannon )
+{
+    if( !cannon->isAssignedToSlot() )
+        return;
+        
+        
+}
+
+int getNumEmptySlots()
+{
 
 }
 
-void Ship::drawShip(sf::RenderWindow &window)
+void Ship::drawShip( sf::RenderWindow &window )
 {
-	window.draw(getLargeShipSprite());
-
-	std::list<CrewMember *>::iterator crewIterator;
-	for ( crewIterator = crew.begin(); crewIterator != crew.end(); ++crewIterator)
-	{
-		(*crewIterator)->draw(window);
-	}
-
-	
-	window.draw(getLargeShipOverlaySprite());
+    window.draw( getLargeShipSprite() );
+    
+    std::list<CrewMember *>::iterator crewIterator;
+    
+    for ( crewIterator = crew.begin(); crewIterator != crew.end(); ++crewIterator )
+    {
+        ( *crewIterator )->draw( window );
+    }
+    
+    
+    window.draw( getLargeShipOverlaySprite() );
 }
 
 ShipAlliance Ship::getShipAlliance()
 {
-	return alliance;
+    return alliance;
 }
 
 ShipType Ship::getShipType()
 {
-	return shipType;
+    return shipType;
 }
 
 sf::Sprite & Ship::getLargeShipSprite()
 {
-	return largeSprite;
+    return largeSprite;
 }
 
 sf::Sprite & Ship::getLargeShipOverlaySprite()
 {
-	return largeOverlaySprite;
+    return largeOverlaySprite;
 }
 
-void Ship::addCrewMember(CrewMember *crewMember)
+void Ship::addCrewMember( CrewMember *crewMember )
 {
-	crew.push_back(crewMember);
+    crew.push_back( crewMember );
 }
 
-void Ship::addCannon(Cannon *cannon)
+void Ship::addCannon( Cannon *cannon )
 {
-	cannons.push_back(cannon);
+    cannons.push_back( cannon );
 }
 
-void Ship::addMeleeWeapon(MeleeWeapon *weapon)
+void Ship::addMeleeWeapon( MeleeWeapon *weapon )
 {
-	armory.push_back(weapon);
+    armory.push_back( weapon );
 }
 
 std::list<CrewMember*> & Ship::getCrew()
 {
-	return crew;
+    return crew;
 }
 
 std::list<Cannon*> & Ship::getCannons()
 {
-	return cannons;
+    return cannons;
 }
 
 std::list<MeleeWeapon*> & Ship::getArmory()
 {
-	return armory;
+    return armory;
 }

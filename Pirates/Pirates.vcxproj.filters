@@ -99,6 +99,9 @@
     <ClCompile Include="MouseDragManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ShipCannonSlot.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MapView.h">
@@ -163,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="MouseDragManager.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShipCannonSlot.h">
+      <Filter>Header Files\Objects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

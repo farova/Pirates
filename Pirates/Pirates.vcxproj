@@ -87,6 +87,7 @@
     <ClCompile Include="ShipBlock.cpp" />
     <ClCompile Include="CharacterMovement.cpp" />
     <ClCompile Include="CharacterMovementManager.cpp" />
+    <ClCompile Include="ShipCannonSlot.cpp" />
     <ClCompile Include="ShipView.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
@@ -110,6 +111,7 @@
     <ClInclude Include="ShipBlock.h" />
     <ClInclude Include="CharacterMovement.h" />
     <ClInclude Include="CharacterMovementManager.h" />
+    <ClInclude Include="ShipCannonSlot.h" />
     <ClInclude Include="ShipView.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>

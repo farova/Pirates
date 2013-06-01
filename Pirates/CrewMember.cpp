@@ -1,12 +1,12 @@
 #include "CrewMember.h"
 
-CrewMember::CrewMember(sf::Texture *texture, sf::Texture *selected,string name, int strength, int intelligence, float speed, int healthMax)
-	: MovableObject(texture, speed, healthMax, healthMax),
-	name(name), strength(strength), intelligence(intelligence), selected(false), action(NoAction), facingDirection(Right)
+CrewMember::CrewMember( sf::Texture *texture, sf::Texture *selected, string name, int strength, int intelligence, float speed, int healthMax )
+    : MovableObject( texture, speed, healthMax, healthMax ),
+      name( name ), strength( strength ), intelligence( intelligence ), selected( false ), action( NoAction ), facingDirection( Right )
 {
-	selectedOverlay.setTexture(*selected);
-	profilePicture.setTexture(*texture);
-	profilePictureSelectedOverlay.setTexture(*selected);
+    selectedOverlay.setTexture( *selected );
+    profilePicture.setTexture( *texture );
+    profilePictureSelectedOverlay.setTexture( *selected );
 }
 
 CrewMember::~CrewMember()
@@ -16,126 +16,125 @@ CrewMember::~CrewMember()
 
 CharacterFacingDirection CrewMember::getFacingDirection()
 {
-	return facingDirection;
+    return facingDirection;
 }
 
-void CrewMember::setFacingDirection(CharacterFacingDirection dir)
+void CrewMember::setFacingDirection( CharacterFacingDirection dir )
 {
-	facingDirection = dir;
+    facingDirection = dir;
 }
 
 bool CrewMember::isPerformingAction()
 {
-	return action != NoAction;
+    return action != NoAction;
 }
 
 ActionType CrewMember::getAction()
 {
-	return action;
+    return action;
 }
 
 void CrewMember::stopPerformingAction()
 {
-	this->action = NoAction;
+    this->action = NoAction;
 }
 
-void CrewMember::performAction(ActionType action)
+void CrewMember::performAction( ActionType action )
 {
-	this->action = action;
+    this->action = action;
 }
 
-void CrewMember::draw(sf::RenderWindow &window)
+void CrewMember::draw( sf::RenderWindow &window )
 {
-	Object::draw(window);	//call parent implementation of function
-	
-	window.draw(profilePicture);
-
-	if(isCharacterSelected())
-	{
-		window.draw(selectedOverlay);
-		window.draw(profilePictureSelectedOverlay);
-	}
-
-
-	if(isPerformingAction())
-	{
-		// draw action!
-	}
-
+    Object::draw( window );	//call parent implementation of function
+    
+    window.draw( profilePicture );
+    
+    if( isCharacterSelected() )
+    {
+        window.draw( selectedOverlay );
+        window.draw( profilePictureSelectedOverlay );
+    }
+    
+    if( isPerformingAction() )
+    {
+        // draw action!
+    }
+    
 }
 
-void CrewMember::move(float x, float y)
+void CrewMember::move( float x, float y )
 {
-	if(isDead())
-		return;
-	
-	MovableObject::move(x,y);
-	selectedOverlay.move(x,y);
+    if( isDead() )
+        return;
+        
+    MovableObject::move( x, y );
+    selectedOverlay.move( x, y );
 }
 
-void CrewMember::setPosition(float x, float y)
+void CrewMember::setPosition( float x, float y )
 {
-	Object::setPosition(x,y);
-	selectedOverlay.setPosition(x,y);
+    Object::setPosition( x, y );
+    selectedOverlay.setPosition( x, y );
 }
 
-void CrewMember::setProfilePicturePosition(float x, float y)
+void CrewMember::setProfilePicturePosition( float x, float y )
 {
-	profilePicture.setPosition(x,y);
+    profilePicture.setPosition( x, y );
 }
 
-void CrewMember::setProfilePictureSelectedOverlayPosition(float x, float y)
+void CrewMember::setProfilePictureSelectedOverlayPosition( float x, float y )
 {
-	profilePictureSelectedOverlay.setPosition(x,y);
+    profilePictureSelectedOverlay.setPosition( x, y );
 }
 
 int CrewMember::getStrength()
 {
-	return strength;
+    return strength;
 }
 
 sf::Sprite & CrewMember::getProfileSprite()
 {
-	return profilePicture;
+    return profilePicture;
 }
 
 string CrewMember::getName()
 {
-	return name;
+    return name;
 }
 
 int CrewMember::getIntelligence()
 {
-	return intelligence;
+    return intelligence;
 }
 
-void CrewMember::setStrength(int amount)
+void CrewMember::setStrength( int amount )
 {
-	strength = amount;
+    strength = amount;
 }
 
-void CrewMember::setIntelligence(int amount)
+void CrewMember::setIntelligence( int amount )
 {
-	intelligence = amount;
+    intelligence = amount;
 }
 
 
 bool CrewMember::isCharacterSelected()
 {
-	return selected;
+    return selected;
 }
 
 void CrewMember::toggleSelect()
 {
-	selected = !selected;
+    selected = !selected;
 }
 
 void CrewMember::Select()
 {
-	selected = true;
+    selected = true;
 }
 
 void CrewMember::Deselect()
 {
-	selected = false;
+    selected = false;
 }

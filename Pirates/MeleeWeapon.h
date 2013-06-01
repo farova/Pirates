@@ -4,18 +4,19 @@
 #include "Constants.h"
 #include "Weapon.h"
 
-class MeleeWeapon : public Weapon {
+class MeleeWeapon : public Weapon
+{
 
-	public:
-
-
-
-
-	private:
-		
-		WeaponType weaponType;
-
-
+    public:
+    
+    
+    
+    
+    private:
+    
+        WeaponType weaponType;
+        
+        
 };
 
 #endif  //_MELEEWEAPON_H
