@@ -1,38 +1,40 @@
 #if !defined(_ENCOUNTERGENERATOR_H)
 #define _ENCOUNTERGENERATOR_H
 
-#include "MapBlock.h"
-#include "Ship.h"
 #include <Thor/Resources.hpp>
+#include "LandEncounter.h"
+#include "Ship.h"
+#include "MapBlock.h"
 
-enum EncounterType {LandHit, ShipHit};
-
-class EncounterGenerator
+namespace Pirates
 {
-
-    public:
-        EncounterGenerator( MapBlock &, thor::ResourceCache<sf::Texture> * );
-        ~EncounterGenerator();
-        
-        EncounterType getEncounterType();
-        
-        bool hitShip();
-        
-        LandEncounter& generateLandEncounter();
-        Ship* generateShip();
-        
-    private:
+    class EncounterGenerator
+    {
     
-        Ship * generatePirateShip();
-        Ship * generateNavyShip();
-        Ship * generateNeutralShip();
+        public:
+            EncounterGenerator( MapBlock &, thor::ResourceCache<sf::Texture> * );
+            ~EncounterGenerator();
+            
+            EncounterType getEncounterType();
+            
+            bool hitShip();
+            
+            LandEncounter& generateLandEncounter();
+            Ship* generateShip();
+            
+        private:
         
-        MapBlock mapBlock;
-        int hitNumber;
-        
-        thor::ResourceCache<sf::Texture> * resourceCache;
-        
-        
-};
+            Ship * generatePirateShip();
+            Ship * generateNavyShip();
+            Ship * generateNeutralShip();
+            
+            MapBlock mapBlock;
+            int hitNumber;
+            
+            thor::ResourceCache<sf::Texture> * resourceCache;
+            
+            
+    };
+}
 
 #endif  //_ENCOUNTERGENERATOR_H

@@ -1,35 +1,34 @@
 #if !defined(_BUYVIEW_H)
 #define _BUYVIEW_H
 
-#include "Ship.h"
-#include "IGameView.h"
-#include "EncounterGenerator.h"
-
-class BuyView : public IGameView
+namespace Pirates
 {
-
-    public:
-        BuyView();
-        ~BuyView();
-        
-        void drawAll( sf::RenderWindow & );
-        void initialize();
-        
-        void handleMouseClick( int, int );
-        void handleKeyPress();
-        
-        void setWindowSize( int, int );
-        virtual void setPlayerShip( Ship * );
-        
-        bool isInitialized();
-        
-    private:
+    class BuyView : public IGameView
+    {
     
-        bool initialized;
+        public:
+            BuyView();
+            ~BuyView();
+            
+            void drawAll( sf::RenderWindow & );
+            void initialize();
+            
+            void handleMouseClick( int, int );
+            void handleKeyPress();
+            
+            void setWindowSize( int, int );
+            virtual void setPlayerShip( Ship * );
+            
+            bool isInitialized();
+            
+        private:
         
-        int windowHeight;
-        int windowWidth;
-        
-};
+            bool initialized;
+            
+            int windowHeight;
+            int windowWidth;
+            
+    };
+}
 
 #endif  //_BUYVIEW_H

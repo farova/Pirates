@@ -1,25 +1,29 @@
 #if !defined(_WEAPON_H)
 #define _WEAPON_H
 
+#include <SFML/Graphics.hpp>
 #include "Object.h"
 
-class Weapon : public Object
+namespace Pirates
 {
-
-    public:
-        Weapon( sf::Texture * );
-        ~Weapon();
-        
-        
-    private:
+    class Weapon : public Object
+    {
     
-        int price;
+        public:
+            Weapon( sf::Texture * );
+            ~Weapon();
+            
+            
+        private:
         
-        float criticalChance;
-        float attackSpeed;
-        float baseDamage;
-        
-        
-};
+            int price;
+            
+            float criticalChance;
+            float attackSpeed;
+            float baseDamage;
+            
+            
+    };
+}
 
 #endif  //_WEAPON_H

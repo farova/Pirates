@@ -4,31 +4,34 @@
 #include <SFML\Window.hpp>
 #include <SFML\Graphics.hpp>
 
-class MouseDragManager
+namespace Pirates
 {
-
-    public:
-        MouseDragManager();
-        ~MouseDragManager();
-        
-        void setStart( int, int );
-        void setCurrent( int, int );
-        
-        void finishSelection();
-        bool isValidSelection( int, int );
-        
-        void setMousePressed( bool );
-        bool isMousePressed();
-        
-        sf::RectangleShape & getRectangle();
-        
-    private:
+    class MouseDragManager
+    {
     
-        void reset();
+        public:
+            MouseDragManager();
+            ~MouseDragManager();
+            
+            void setStart( int, int );
+            void setCurrent( int, int );
+            
+            void finishSelection();
+            bool isValidSelection( int, int );
+            
+            void setMousePressed( bool );
+            bool isMousePressed();
+            
+            sf::RectangleShape & getRectangle();
+            
+        private:
         
-        bool mousePressed;
-        
-        sf::RectangleShape selection;
-};
+            void reset();
+            
+            bool mousePressed;
+            
+            sf::RectangleShape selection;
+    };
+}
 
 #endif  //_MOUSEDRAGMANAGER_H

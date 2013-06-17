@@ -1,22 +1,25 @@
 #if !defined(_MELEEWEAPON_H)
 #define _MELEEWEAPON_H
 
-#include "Constants.h"
 #include "Weapon.h"
+#include "Constants.h"
 
-class MeleeWeapon : public Weapon
+namespace Pirates
 {
-
-    public:
+    class MeleeWeapon : public Weapon
+    {
     
-    
-    
-    
-    private:
-    
-        WeaponType weaponType;
+        public:
         
         
-};
+        
+        
+        private:
+        
+            WeaponType weaponType;
+            
+            
+    };
+}
 
 #endif  //_MELEEWEAPON_H

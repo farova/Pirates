@@ -84,6 +84,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="ShipActionObject.cpp" />
+    <ClCompile Include="ShipActionObjectManager.cpp" />
     <ClCompile Include="ShipBlock.cpp" />
     <ClCompile Include="CharacterMovement.cpp" />
     <ClCompile Include="CharacterMovementManager.cpp" />
@@ -92,6 +93,7 @@
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ShipActionObjectManager.h" />
     <ClInclude Include="BuyView.h" />
     <ClInclude Include="Cannon.h" />
     <ClInclude Include="Constants.h" />

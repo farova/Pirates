@@ -3,31 +3,34 @@
 
 #include <SFML/Graphics.hpp>
 
-class ShipBlock
+namespace Pirates
 {
-
-    public:
-        ShipBlock();
-        ~ShipBlock();
-        
-        void initialize ( int, bool, bool );
-        void setBlockMatrixPosition ( int, int );
-        
-        int getLevel();
-        sf::Vector2i getBlockMatrixPosition();
-        
-        bool isLadder();
-        bool isBlocked();
-        
-    private:
+    class ShipBlock
+    {
     
-        sf::Vector2i matrixPosition;
+        public:
+            ShipBlock();
+            ~ShipBlock();
+            
+            void initialize ( int, bool, bool );
+            void setBlockMatrixPosition ( int, int );
+            
+            int getLevel();
+            sf::Vector2i getBlockMatrixPosition();
+            
+            bool isLadder();
+            bool isBlocked();
+            
+        private:
         
-        bool blocked;
-        bool ladder;
-        
-        int level;
-        
-};
+            sf::Vector2i matrixPosition;
+            
+            bool blocked;
+            bool ladder;
+            
+            int level;
+            
+    };
+}
 
 #endif  //_SHIPBLOCK_H

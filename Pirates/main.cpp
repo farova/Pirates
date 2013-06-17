@@ -9,7 +9,7 @@ int main()
     
     window.setFramerateLimit( 60 );
     
-    Game *gameController = new Game();
+    Pirates::Game *gameController = new Pirates::Game();
     gameController->setWindowSize( windowWidth, windowHeight );
     gameController->initialize();
     

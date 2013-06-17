@@ -102,6 +102,9 @@
     <ClCompile Include="ShipCannonSlot.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="ShipActionObjectManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MapView.h">
@@ -169,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="ShipCannonSlot.h">
       <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ShipActionObjectManager.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

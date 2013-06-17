@@ -1,11 +1,14 @@
 #include "LandEncounter.h"
 
-LandEncounter::LandEncounter()
+namespace Pirates
 {
-
-}
-
-LandEncounter::~LandEncounter()
-{
-
+    LandEncounter::LandEncounter()
+    {
+    
+    }
+    
+    LandEncounter::~LandEncounter()
+    {
+    
+    }
 }
