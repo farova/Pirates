@@ -36,8 +36,9 @@ int main()
                     
                 case sf::Event::MouseMoved:
                     if( mousePressed )
+                    {
                         gameController->handleMouseDrag( event.mouseMove.x, event.mouseMove.y );
-                        
+                    }
                     break;
                     
                 case sf::Event::MouseButtonPressed:
