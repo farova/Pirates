@@ -5,176 +5,196 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Views">
-      <UniqueIdentifier>{2e214169-b6cc-4245-9b4a-29b02aa037d7}</UniqueIdentifier>
+    <Filter Include="Source Files\Interfaces">
+      <UniqueIdentifier>{1a49d252-99b7-4ecf-9a7b-322affd07cd2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Views\Helpers">
-      <UniqueIdentifier>{1898adf9-da87-4181-b281-7bf3e6b98876}</UniqueIdentifier>
+    <Filter Include="Source Files\____OLD_CODE">
+      <UniqueIdentifier>{b0b736df-bae4-4395-bd6e-8127d2a02404}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Objects">
-      <UniqueIdentifier>{bc17322f-8ca3-4ae2-bf3b-e0cff3d600c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Objects">
+    <Filter Include="Source Files\____OLD_CODE\Objects">
       <UniqueIdentifier>{95c0b82b-1a57-4d21-9b49-5bcae9373760}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Views">
-      <UniqueIdentifier>{e0a456dd-07f1-4f82-b7c0-729a85aa7cde}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Views\Helpers">
-      <UniqueIdentifier>{22243dff-a2aa-459d-ab8b-77851d1218f1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Objects\Weapons">
-      <UniqueIdentifier>{6d4ae77f-86c2-4521-8b28-667ee9c3eff8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Objects\MovableObjects">
-      <UniqueIdentifier>{548b55c9-85d8-4634-add0-4db395f6ee6c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Objects\Weapons">
+    <Filter Include="Source Files\____OLD_CODE\Objects\Weapons">
       <UniqueIdentifier>{857be75b-9d72-4c32-8f53-3b5a0c2707bd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Objects\MovableObjects">
+    <Filter Include="Source Files\____OLD_CODE\Objects\MovableObjects">
       <UniqueIdentifier>{677bfe1d-3a50-43bb-b7f0-f6111c12138a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\____OLD_CODE\Views">
+      <UniqueIdentifier>{e0a456dd-07f1-4f82-b7c0-729a85aa7cde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\____OLD_CODE\Views\Helpers">
+      <UniqueIdentifier>{22243dff-a2aa-459d-ab8b-77851d1218f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ViewManagers">
+      <UniqueIdentifier>{df718ab5-3776-4683-b52a-915f270ba28d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Constants">
+      <UniqueIdentifier>{ebd83927-df7e-4f74-a736-3732eeeb84be}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShipView.cpp">
-      <Filter>Source Files\Views</Filter>
+      <Filter>Source Files\____OLD_CODE\Views</Filter>
     </ClCompile>
     <ClCompile Include="ShipBlock.cpp">
-      <Filter>Source Files\Views\Helpers</Filter>
+      <Filter>Source Files\____OLD_CODE\Views\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="MapView.cpp">
-      <Filter>Source Files\Views</Filter>
+      <Filter>Source Files\____OLD_CODE\Views</Filter>
     </ClCompile>
     <ClCompile Include="CharacterMovement.cpp">
-      <Filter>Source Files\Views\Helpers</Filter>
+      <Filter>Source Files\____OLD_CODE\Views\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="CharacterMovementManager.cpp">
-      <Filter>Source Files\Views\Helpers</Filter>
+      <Filter>Source Files\____OLD_CODE\Views\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="EncounterGenerator.cpp">
-      <Filter>Source Files\Views\Helpers</Filter>
+      <Filter>Source Files\____OLD_CODE\Views\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="LandEncounter.cpp">
-      <Filter>Source Files\Views\Helpers</Filter>
+      <Filter>Source Files\____OLD_CODE\Views\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="MapBlock.cpp">
-      <Filter>Source Files\Views\Helpers</Filter>
+      <Filter>Source Files\____OLD_CODE\Views\Helpers</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>Source Files\Objects</Filter>
+      <Filter>Source Files\____OLD_CODE\Objects</Filter>
     </ClCompile>
     <ClCompile Include="ShipActionObject.cpp">
-      <Filter>Source Files\Objects</Filter>
-    </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\____OLD_CODE\Objects</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="CrewMember.cpp">
-      <Filter>Source Files\Objects\MovableObjects</Filter>
+      <Filter>Source Files\____OLD_CODE\Objects\MovableObjects</Filter>
     </ClCompile>
     <ClCompile Include="MovableObject.cpp">
-      <Filter>Source Files\Objects\MovableObjects</Filter>
+      <Filter>Source Files\____OLD_CODE\Objects\MovableObjects</Filter>
     </ClCompile>
     <ClCompile Include="Ship.cpp">
-      <Filter>Source Files\Objects\MovableObjects</Filter>
+      <Filter>Source Files\____OLD_CODE\Objects\MovableObjects</Filter>
     </ClCompile>
     <ClCompile Include="Cannon.cpp">
-      <Filter>Source Files\Objects\Weapons</Filter>
+      <Filter>Source Files\____OLD_CODE\Objects\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
-      <Filter>Source Files\Objects\Weapons</Filter>
-    </ClCompile>
-    <ClCompile Include="MouseDragManager.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\____OLD_CODE\Objects\Weapons</Filter>
     </ClCompile>
     <ClCompile Include="ShipCannonSlot.cpp">
-      <Filter>Source Files\Objects</Filter>
+      <Filter>Source Files\____OLD_CODE\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="MouseDragManager.cpp">
+      <Filter>Source Files\____OLD_CODE</Filter>
     </ClCompile>
     <ClCompile Include="ShipActionObjectManager.cpp">
+      <Filter>Source Files\____OLD_CODE</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\____OLD_CODE</Filter>
+    </ClCompile>
+    <ClCompile Include="GameController.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShipViewManager.cpp">
+      <Filter>Source Files\ViewManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashViewManager.cpp">
+      <Filter>Source Files\ViewManagers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MapView.h">
-      <Filter>Header Files\Views</Filter>
-    </ClInclude>
     <ClInclude Include="ShipView.h">
-      <Filter>Header Files\Views</Filter>
-    </ClInclude>
-    <ClInclude Include="IGameView.h">
-      <Filter>Header Files\Views</Filter>
+      <Filter>Source Files\____OLD_CODE\Views</Filter>
     </ClInclude>
     <ClInclude Include="BuyView.h">
-      <Filter>Header Files\Views</Filter>
+      <Filter>Source Files\____OLD_CODE\Views</Filter>
     </ClInclude>
-    <ClInclude Include="MapBlock.h">
-      <Filter>Header Files\Views\Helpers</Filter>
+    <ClInclude Include="IGameView.h">
+      <Filter>Source Files\____OLD_CODE\Views</Filter>
+    </ClInclude>
+    <ClInclude Include="MapView.h">
+      <Filter>Source Files\____OLD_CODE\Views</Filter>
     </ClInclude>
     <ClInclude Include="ShipBlock.h">
-      <Filter>Header Files\Views\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="LandEncounter.h">
-      <Filter>Header Files\Views\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="EncounterGenerator.h">
-      <Filter>Header Files\Views\Helpers</Filter>
+      <Filter>Source Files\____OLD_CODE\Views\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="CharacterMovement.h">
-      <Filter>Header Files\Views\Helpers</Filter>
+      <Filter>Source Files\____OLD_CODE\Views\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="CharacterMovementManager.h">
-      <Filter>Header Files\Views\Helpers</Filter>
+      <Filter>Source Files\____OLD_CODE\Views\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files\Objects</Filter>
+    <ClInclude Include="EncounterGenerator.h">
+      <Filter>Source Files\____OLD_CODE\Views\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="ShipActionObject.h">
-      <Filter>Header Files\Objects</Filter>
+    <ClInclude Include="LandEncounter.h">
+      <Filter>Source Files\____OLD_CODE\Views\Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Weapon.h">
-      <Filter>Header Files\Objects\Weapons</Filter>
-    </ClInclude>
-    <ClInclude Include="MeleeWeapon.h">
-      <Filter>Header Files\Objects\Weapons</Filter>
-    </ClInclude>
-    <ClInclude Include="Cannon.h">
-      <Filter>Header Files\Objects\Weapons</Filter>
-    </ClInclude>
-    <ClInclude Include="MovableObject.h">
-      <Filter>Header Files\Objects\MovableObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="CrewMember.h">
-      <Filter>Header Files\Objects\MovableObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Ship.h">
-      <Filter>Header Files\Objects\MovableObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Constants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MouseDragManager.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MapBlock.h">
+      <Filter>Source Files\____OLD_CODE\Views\Helpers</Filter>
     </ClInclude>
     <ClInclude Include="ShipCannonSlot.h">
-      <Filter>Header Files\Objects</Filter>
+      <Filter>Source Files\____OLD_CODE\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Source Files\____OLD_CODE\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ShipActionObject.h">
+      <Filter>Source Files\____OLD_CODE\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>Source Files\____OLD_CODE\Objects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Cannon.h">
+      <Filter>Source Files\____OLD_CODE\Objects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="MeleeWeapon.h">
+      <Filter>Source Files\____OLD_CODE\Objects\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship.h">
+      <Filter>Source Files\____OLD_CODE\Objects\MovableObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="CrewMember.h">
+      <Filter>Source Files\____OLD_CODE\Objects\MovableObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MovableObject.h">
+      <Filter>Source Files\____OLD_CODE\Objects\MovableObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>Source Files\____OLD_CODE</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseDragManager.h">
+      <Filter>Source Files\____OLD_CODE</Filter>
     </ClInclude>
     <ClInclude Include="ShipActionObjectManager.h">
-      <Filter>Header Files</Filter>
+      <Filter>Source Files\____OLD_CODE</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Source Files\____OLD_CODE</Filter>
+    </ClInclude>
+    <ClInclude Include="GameController.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="IDrawable.h">
+      <Filter>Source Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ShipViewManager.h">
+      <Filter>Source Files\ViewManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashViewManager.h">
+      <Filter>Source Files\ViewManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="IViewManager.h">
+      <Filter>Source Files\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="GameState.h">
+      <Filter>Source Files\Constants</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

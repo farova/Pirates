@@ -75,6 +75,7 @@
     <ClCompile Include="CrewMember.cpp" />
     <ClCompile Include="EncounterGenerator.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameController.cpp" />
     <ClCompile Include="LandEncounter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapBlock.cpp" />
@@ -90,9 +91,15 @@
     <ClCompile Include="CharacterMovementManager.cpp" />
     <ClCompile Include="ShipCannonSlot.cpp" />
     <ClCompile Include="ShipView.cpp" />
+    <ClCompile Include="ShipViewManager.cpp" />
+    <ClCompile Include="SplashViewManager.cpp" />
     <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="GameController.h" />
+    <ClInclude Include="GameState.h" />
+    <ClInclude Include="IDrawable.h" />
+    <ClInclude Include="IViewManager.h" />
     <ClInclude Include="ShipActionObjectManager.h" />
     <ClInclude Include="BuyView.h" />
     <ClInclude Include="Cannon.h" />
@@ -115,6 +122,8 @@
     <ClInclude Include="CharacterMovementManager.h" />
     <ClInclude Include="ShipCannonSlot.h" />
     <ClInclude Include="ShipView.h" />
+    <ClInclude Include="ShipViewManager.h" />
+    <ClInclude Include="SplashViewManager.h" />
     <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
