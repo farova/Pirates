@@ -28,15 +28,14 @@ void GameController::draw( sf::RenderWindow & window )
     switch( this->getGameState() )
     {
         case SplashScreenState:
-            drawSplashScreen( window );
+            _splashViewManager.drawView( window );
             break;
             
         case MapViewState:
-            drawMapView( window );
             break;
             
         case ShipViewState:
-            drawShipView( window );
+            _shipViewManager.drawView( window );
             break;
             
         default:
@@ -44,17 +43,38 @@ void GameController::draw( sf::RenderWindow & window )
     }
 }
 
-void GameController::drawSplashScreen( sf::RenderWindow & window )
+void GameController::handleKeyPress( sf::Keyboard::Key key )
 {
-    _splashViewManager.drawView( window );
+    switch( this->getGameState() )
+    {
+        case SplashScreenState:
+            _splashViewManager.handleKeyPress();
+            break;
+            
+        default:
+            break;
+    }
 }
 
-void GameController::drawMapView( sf::RenderWindow & window )
+void GameController::handleMouseClick( int x, int y, sf::Mouse::Button button )
+{
+    switch( this->getGameState() )
+    {
+        case SplashScreenState:
+            _splashViewManager.handleMouseClick();
+            break;
+            
+        default:
+            break;
+    }
+}
+
+void GameController::handleMouseRelease( int x, int y, sf::Mouse::Button button )
 {
 
 }
 
-void GameController::drawShipView( sf::RenderWindow & window )
+void GameController::handleMouseDrag( int x, int y )
 {
-    _shipViewManager.drawView( window );
+
 }

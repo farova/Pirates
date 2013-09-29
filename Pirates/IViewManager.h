@@ -12,28 +12,35 @@ class IViewManager
         
         virtual void fulfillStateChange()
         {
-            isStateChangeRequested = false;
-            requestState = baseState;
+            _isStateChangeRequested = false;
+            _requestState = _baseState;
         };
         
-        virtual bool requestStateChange( GameState & state )
+        virtual bool getRequestedStateChange( GameState & state )
         {
-            state = requestState;
-            return isStateChangeRequested;
+            state = _requestState;
+            return _isStateChangeRequested;
         };
         
-    private:
+    protected:
     
-        bool isStateChangeRequested;
-        GameState requestState;
-        GameState baseState;
+        bool _isStateChangeRequested;
+        GameState _requestState;
+        GameState _baseState;
+        
+        IViewManager( GameState baseState )
+        {
+            _baseState = baseState;
+            _requestState = baseState;
+            _isStateChangeRequested = false;
+        };
         
         virtual void setRequestState( GameState state )
         {
-            if( state != baseState )
+            if( state != _baseState )
             {
-                isStateChangeRequested = true;
-                requestState = state;
+                _isStateChangeRequested = true;
+                _requestState = state;
             }
         };
 };

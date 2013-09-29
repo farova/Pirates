@@ -8,15 +8,9 @@ class ShipViewManager : IViewManager
 
     public:
         ShipViewManager();
-        ~ShipViewManager();
         
         void drawView( sf::RenderWindow & );
         
-    private:
-    
-        bool isStateChangeRequested;
-        GameState requestState;
-        GameState baseState;
 };
 
 #endif

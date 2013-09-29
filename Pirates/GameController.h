@@ -12,29 +12,30 @@ class GameController : IDrawable
 
     public:
     
-
+    
         GameController();
         ~GameController();
         
-		// --- IDrawable
-		void draw( sf::RenderWindow & );
-		// --- IDrawable
+        // --- IDrawable
+        void draw( sf::RenderWindow & );
+        // --- IDrawable
         
         GameState getGameState();
         void setGameState( GameState state );
         
+        // event handling
+        void handleKeyPress( sf::Keyboard::Key );
+        void handleMouseClick( int, int, sf::Mouse::Button );
+        void handleMouseRelease( int, int, sf::Mouse::Button );
+        void handleMouseDrag( int, int );
         
     private:
     
         GameState _gameState;
-
-		// view managers
-		ShipViewManager _shipViewManager;
-		SplashViewManager _splashViewManager;
         
-        void drawShipView( sf::RenderWindow & );
-        void drawSplashScreen( sf::RenderWindow & );
-        void drawMapView( sf::RenderWindow & );
+        // view managers
+        ShipViewManager _shipViewManager;
+        SplashViewManager _splashViewManager;
         
 };
 

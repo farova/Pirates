@@ -7,16 +7,20 @@ class SplashViewManager : IViewManager
 {
 
     public:
+    
         SplashViewManager();
-        ~SplashViewManager();
         
         void drawView( sf::RenderWindow & );
         
+        // event handling
+        void handleMouseClick();
+        void handleKeyPress();
+        
     private:
     
-        bool isStateChangeRequested;
-        GameState requestState;
-        GameState baseState;
+        sf::Sprite _splashScreenSprite;
+        sf::Texture _splashScreenTexture;
+        
 };
 
 #endif
