@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "Game.h"
+#include "GameController.h"
 
 int main()
 {
@@ -9,13 +9,12 @@ int main()
     
     window.setFramerateLimit( 60 );
     
-    Pirates::Game *gameController = new Pirates::Game();
-    gameController->setWindowSize( windowWidth, windowHeight );
-    gameController->initialize();
+    GameController gameController = GameController( windowWidth, windowHeight );
     
-    bool mousePressed = false;;
+    bool mousePressed = false;
     
-    srand( time( NULL ) );
+	// seeds the random number generator with the current system time
+    srand( ( unsigned int )time( NULL ) );
     
     while ( window.isOpen() )
     {
@@ -31,29 +30,30 @@ int main()
                     
                 case sf::Event::MouseButtonReleased:
                     mousePressed = false;
-                    gameController->handleMouseRelease( event.mouseButton.x, event.mouseButton.y, event.mouseButton.button );
+                    gameController.handleMouseRelease( event.mouseButton.x, event.mouseButton.y, event.mouseButton.button );
                     break;
                     
                 case sf::Event::MouseMoved:
                     if( mousePressed )
                     {
-                        gameController->handleMouseDrag( event.mouseMove.x, event.mouseMove.y );
+                        gameController.handleMouseDrag( event.mouseMove.x, event.mouseMove.y );
                     }
+                    
                     break;
                     
                 case sf::Event::MouseButtonPressed:
                     mousePressed = true;
-                    gameController->handleMouseClick( event.mouseButton.x, event.mouseButton.y, event.mouseButton.button );
+                    gameController.handleMouseClick( event.mouseButton.x, event.mouseButton.y, event.mouseButton.button );
                     break;
                     
                 case sf::Event::KeyPressed:
-                    gameController->handleKeyPress( event.key.code );
+                    gameController.handleKeyPress( event.key.code );
                     break;
             }
         }
         
         window.clear();
-        gameController->drawAll( window );
+        gameController.draw( window );
         window.display();
     }
     

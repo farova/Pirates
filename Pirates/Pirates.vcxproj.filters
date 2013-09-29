@@ -36,6 +36,9 @@
     <Filter Include="Source Files\Constants">
       <UniqueIdentifier>{ebd83927-df7e-4f74-a736-3732eeeb84be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ViewManagers\ManagerHelpers">
+      <UniqueIdentifier>{3ec239e3-3bfe-4986-954f-f5886d529572}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ShipView.cpp">
@@ -105,6 +108,9 @@
       <Filter>Source Files\ViewManagers</Filter>
     </ClCompile>
     <ClCompile Include="SplashViewManager.cpp">
+      <Filter>Source Files\ViewManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="MapViewManager.cpp">
       <Filter>Source Files\ViewManagers</Filter>
     </ClCompile>
   </ItemGroup>
@@ -195,6 +201,9 @@
     </ClInclude>
     <ClInclude Include="GameState.h">
       <Filter>Source Files\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="MapViewManager.h">
+      <Filter>Source Files\ViewManagers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

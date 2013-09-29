@@ -3,14 +3,19 @@
 
 #include "IViewManager.h"
 
-class MapViewManager : IViewManager
+class MapViewManager : public IViewManager
 {
 
-public:
-	MapViewManager();
-
-	void drawView( sf::RenderWindow & );
-
+    public:
+    
+        MapViewManager();
+        
+        void drawView( sf::RenderWindow & );
+        
+        void handleMouseClick( int, int, sf::Mouse::Button );
+        
+        void getNextEncounter();
+        
 };
 
 #endif

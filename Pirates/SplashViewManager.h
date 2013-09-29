@@ -3,7 +3,7 @@
 
 #include "IViewManager.h"
 
-class SplashViewManager : IViewManager
+class SplashViewManager : public IViewManager
 {
 
     public:

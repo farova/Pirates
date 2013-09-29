@@ -10,13 +10,13 @@ class IViewManager
     
         virtual void drawView( sf::RenderWindow & ) = 0;
         
-        virtual void fulfillStateChange()
+        void fulfillStateChange()
         {
             _isStateChangeRequested = false;
             _requestState = _baseState;
         };
         
-        virtual bool getRequestedStateChange( GameState & state )
+        bool getRequestedStateChange( GameState & state )
         {
             state = _requestState;
             return _isStateChangeRequested;
@@ -35,7 +35,7 @@ class IViewManager
             _isStateChangeRequested = false;
         };
         
-        virtual void setRequestState( GameState state )
+        void setRequestState( GameState state )
         {
             if( state != _baseState )
             {

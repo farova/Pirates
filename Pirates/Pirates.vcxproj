@@ -80,6 +80,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapBlock.cpp" />
     <ClCompile Include="MapView.cpp" />
+    <ClCompile Include="MapViewManager.cpp" />
     <ClCompile Include="MouseDragManager.cpp" />
     <ClCompile Include="MovableObject.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="IDrawable.h" />
     <ClInclude Include="IViewManager.h" />
+    <ClInclude Include="MapViewManager.h" />
     <ClInclude Include="ShipActionObjectManager.h" />
     <ClInclude Include="BuyView.h" />
     <ClInclude Include="Cannon.h" />

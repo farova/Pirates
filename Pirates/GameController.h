@@ -5,6 +5,7 @@
 #include "IDrawable.h"
 #include "ShipViewManager.h"
 #include "SplashViewManager.h"
+#include "MapViewManager.h"
 #include "GameState.h"
 
 class GameController : IDrawable
@@ -12,8 +13,7 @@ class GameController : IDrawable
 
     public:
     
-    
-        GameController();
+        GameController( int, int );
         ~GameController();
         
         // --- IDrawable
@@ -36,6 +36,7 @@ class GameController : IDrawable
         // view managers
         ShipViewManager _shipViewManager;
         SplashViewManager _splashViewManager;
+        MapViewManager _mapViewManager;
         
 };
 

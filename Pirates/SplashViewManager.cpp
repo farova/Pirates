@@ -4,8 +4,10 @@ SplashViewManager::SplashViewManager()
     : IViewManager( SplashScreenState )
 {
     // no need for cache since only showing once
-    _splashScreenTexture.loadFromFile( "images/splash.jpg" );
-    _splashScreenSprite.setTexture( _splashScreenTexture );
+    if( _splashScreenTexture.loadFromFile( "images/splash.jpg" ) )
+    {
+        _splashScreenSprite.setTexture( _splashScreenTexture );
+    }
 }
 
 void SplashViewManager::drawView( sf::RenderWindow & window )
@@ -20,5 +22,5 @@ void SplashViewManager::handleMouseClick()
 
 void SplashViewManager::handleKeyPress()
 {
-	setRequestState( MapViewState );
+    setRequestState( MapViewState );
 }

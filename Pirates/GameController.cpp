@@ -1,11 +1,9 @@
 #include "GameController.h"
 
-GameController::GameController()
+GameController::GameController( int windowWidth, int windowHeight )
     : _gameState( SplashScreenState )
 {
-    // setup managers
-    _shipViewManager = ShipViewManager();
-    _splashViewManager = SplashViewManager();
+
 }
 
 GameController::~GameController()
@@ -25,23 +23,37 @@ void GameController::setGameState( GameState state )
 
 void GameController::draw( sf::RenderWindow & window )
 {
+    bool switchState;
+    GameState newState;
+    
     switch( this->getGameState() )
     {
         case SplashScreenState:
             _splashViewManager.drawView( window );
+            switchState = _splashViewManager.getRequestedStateChange( newState );
             break;
             
         case MapViewState:
+            _mapViewManager.drawView( window );
+            switchState = _mapViewManager.getRequestedStateChange( newState );
             break;
             
         case ShipViewState:
             _shipViewManager.drawView( window );
+            switchState = _shipViewManager.getRequestedStateChange( newState );
             break;
             
         default:
             break;
     }
+    
+    if( switchState )
+    {
+        setGameState( newState );
+    }    
 }
+
+
 
 void GameController::handleKeyPress( sf::Keyboard::Key key )
 {

@@ -3,7 +3,7 @@
 
 #include "IViewManager.h"
 
-class ShipViewManager : IViewManager
+class ShipViewManager : public IViewManager
 {
 
     public:
