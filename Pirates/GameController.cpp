@@ -1,7 +1,7 @@
 #include "GameController.h"
 
 GameController::GameController( int windowWidth, int windowHeight )
-    : _gameState( SplashScreenState )
+    : _gameState( Constants::SplashScreenState )
 {
 
 }
@@ -11,12 +11,12 @@ GameController::~GameController()
 
 }
 
-GameState GameController::getGameState()
+Constants::GameState GameController::getGameState()
 {
     return _gameState;
 }
 
-void GameController::setGameState( GameState state )
+void GameController::setGameState( Constants::GameState state )
 {
     this->_gameState = state;
 }
@@ -24,21 +24,21 @@ void GameController::setGameState( GameState state )
 void GameController::draw( sf::RenderWindow & window )
 {
     bool switchState;
-    GameState newState;
+    Constants::GameState newState;
     
     switch( this->getGameState() )
     {
-        case SplashScreenState:
+        case Constants::SplashScreenState:
             _splashViewManager.drawView( window );
             switchState = _splashViewManager.getRequestedStateChange( newState );
             break;
             
-        case MapViewState:
+        case Constants::MapViewState:
             _mapViewManager.drawView( window );
             switchState = _mapViewManager.getRequestedStateChange( newState );
             break;
             
-        case ShipViewState:
+        case Constants::ShipViewState:
             _shipViewManager.drawView( window );
             switchState = _shipViewManager.getRequestedStateChange( newState );
             break;
@@ -59,7 +59,7 @@ void GameController::handleKeyPress( sf::Keyboard::Key key )
 {
     switch( this->getGameState() )
     {
-        case SplashScreenState:
+        case Constants::SplashScreenState:
             _splashViewManager.handleKeyPress();
             break;
             
@@ -72,7 +72,7 @@ void GameController::handleMouseClick( int x, int y, sf::Mouse::Button button )
 {
     switch( this->getGameState() )
     {
-        case SplashScreenState:
+        case Constants::SplashScreenState:
             _splashViewManager.handleMouseClick();
             break;
             

@@ -20,8 +20,8 @@ class GameController : IDrawable
         void draw( sf::RenderWindow & );
         // --- IDrawable
         
-        GameState getGameState();
-        void setGameState( GameState state );
+        Constants::GameState getGameState();
+        void setGameState( Constants::GameState state );
         
         // event handling
         void handleKeyPress( sf::Keyboard::Key );
@@ -31,7 +31,7 @@ class GameController : IDrawable
         
     private:
     
-        GameState _gameState;
+        Constants::GameState _gameState;
         
         // view managers
         ShipViewManager _shipViewManager;

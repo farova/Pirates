@@ -1,7 +1,7 @@
 #include "ShipViewManager.h"
 
 ShipViewManager::ShipViewManager()
-	: IViewManager( ShipViewState )
+	: IViewManager( Constants::ShipViewState )
 {
 
 }

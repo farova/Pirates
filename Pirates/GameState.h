@@ -1,11 +1,14 @@
 #if !defined(_GAMESTATE_ENUM)
 #define _GAMESTATE_ENUM
 
-enum GameState
+namespace Constants
 {
-	ShipViewState,
-	SplashScreenState,
-	MapViewState
-};
+    enum GameState
+    {
+        ShipViewState,
+        SplashScreenState,
+        MapViewState
+    };
+}
 
 #endif

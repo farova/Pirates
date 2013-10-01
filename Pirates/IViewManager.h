@@ -16,7 +16,7 @@ class IViewManager
             _requestState = _baseState;
         };
         
-        bool getRequestedStateChange( GameState & state )
+        bool getRequestedStateChange( Constants::GameState & state )
         {
             state = _requestState;
             return _isStateChangeRequested;
@@ -25,17 +25,17 @@ class IViewManager
     protected:
     
         bool _isStateChangeRequested;
-        GameState _requestState;
-        GameState _baseState;
+        Constants::GameState _requestState;
+        Constants::GameState _baseState;
         
-        IViewManager( GameState baseState )
+        IViewManager( Constants::GameState baseState )
         {
             _baseState = baseState;
             _requestState = baseState;
             _isStateChangeRequested = false;
         };
         
-        void setRequestState( GameState state )
+        void setRequestState( Constants::GameState state )
         {
             if( state != _baseState )
             {

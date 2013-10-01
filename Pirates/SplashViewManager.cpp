@@ -1,7 +1,7 @@
 #include "SplashViewManager.h"
 
 SplashViewManager::SplashViewManager()
-    : IViewManager( SplashScreenState )
+    : IViewManager( Constants::SplashScreenState )
 {
     // no need for cache since only showing once
     if( _splashScreenTexture.loadFromFile( "images/splash.jpg" ) )
@@ -17,10 +17,10 @@ void SplashViewManager::drawView( sf::RenderWindow & window )
 
 void SplashViewManager::handleMouseClick()
 {
-    setRequestState( MapViewState );
+    setRequestState( Constants::MapViewState );
 }
 
 void SplashViewManager::handleKeyPress()
 {
-    setRequestState( MapViewState );
+    setRequestState( Constants::MapViewState );
 }

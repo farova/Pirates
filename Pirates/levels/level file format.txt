@@ -1,0 +1,11 @@
+#rows
+#columns
+starting row
+starting column
+square size
+[
+	MAP
+	L = land
+	W = water
+	S = sand
+]
