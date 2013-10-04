@@ -6,6 +6,8 @@
 #include "MapBlockType.h"
 #include "MapBlock.h"
 
+#include <iostream>
+
 class MapViewManager : public IViewManager
 {
 

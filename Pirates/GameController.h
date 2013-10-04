@@ -35,7 +35,7 @@ class GameController : IDrawable
     
         Constants::GameState _gameState;
     
-		thor::ResourceCache<sf::Texture> _textureCache;
+		thor::ResourceCache<sf::Texture>  _textureCache;
 
         // view managers
         ShipViewManager _shipViewManager;

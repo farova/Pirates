@@ -55,26 +55,31 @@ void MapViewManager::readMapFile()
         
         _mapBlocks = new MapBlock* [_numRows * _numColumns];
         
-        for ( int x = 0; x < _numRows; ++x )
+        for ( int y = 0; y < _numRows; ++y )
         {
             std::getline( levelFile, fileLine );
             
-            for ( int y = 0; y < _numColumns; ++y )
+            for ( int x = 0; x < _numColumns; ++x )
             {
             
                 if( fileLine[x] == 'L' )
                 {
-                    _mapBlocks[x * _numColumns + y] = generateBlockProperties( x, y, Constants::Land );
+                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::Land );
+					std::cout << "L";
                 }
                 else if( fileLine[x] == 'W' )
                 {
-                    _mapBlocks[x * _numColumns + y] = generateBlockProperties( x, y, Constants::Water );
+					_mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::Water );
+					std::cout << "W";
                 }
                 else if( fileLine[x] == 'S' )
                 {
-                    _mapBlocks[x * _numColumns + y] = generateBlockProperties( x, y, Constants::Sand );
+					_mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::Sand );
+					std::cout << "S";
                 }
             }
+
+			std::cout << "\n";
         }
         
         levelFile.close();
