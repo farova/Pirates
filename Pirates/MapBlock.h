@@ -1,6 +1,7 @@
 #if !defined(_MAPBLOCK_H)
 #define _MAPBLOCK_H
 
+#include <memory>
 #include <SFML/Graphics.hpp>
 #include "IDrawable.h"
 #include "Difficulty.h"
@@ -15,7 +16,7 @@ class MapBlock : IDrawable
 
         MapBlock(
 			Constants::MapBlockType,
-			sf::Texture,
+			std::shared_ptr<sf::Texture>,
 			float, float, // Positions
 			float, Constants::Difficulty, // Navy
             float, Constants::Difficulty, // Pirate

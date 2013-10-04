@@ -2,7 +2,7 @@
 
 MapBlock::MapBlock(
     Constants::MapBlockType blockType,
-    sf::Texture blockTexture,
+    std::shared_ptr<sf::Texture> blockTexture,
     float x, float y,
     float navySpawn, Constants::Difficulty navyDifficulty, // Navy
     float pirateSpawn, Constants::Difficulty pirateDifficulty, // Pirate
@@ -16,7 +16,7 @@ MapBlock::MapBlock(
       _navyMaxDifficulty( navyDifficulty )
 {
 
-    _blockSprite.setTexture( blockTexture );
+    _blockSprite.setTexture( *blockTexture );
     _blockSprite.setPosition( x, y );
 }
 

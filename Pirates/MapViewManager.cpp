@@ -83,26 +83,29 @@ void MapViewManager::readMapFile()
 
 MapBlock * MapViewManager::generateBlockProperties( int x, int y, Constants::MapBlockType type )
 {
-    sf::Texture texture;
+    std::string filePath;
     
     switch( type )
     {
         case Constants::Land:
-            texture.loadFromFile( "images/land.jpg" );
+            filePath = "images/land.jpg";
             break;
             
         case Constants::Sand:
-            texture.loadFromFile( "images/sand.jpg" );
+            filePath = "images/sand.jpg";
             break;
             
         case Constants::Water:
-            texture.loadFromFile( "images/water.jpg" );
+            filePath = "images/water.jpg";
             break;
     }
     
+    thor::ResourceKey<sf::Texture> blockTexture = thor::Resources::fromFile<sf::Texture>( filePath );
+    std::shared_ptr<sf::Texture> blockTexturePtr = _textureCache->acquire( blockTexture );
+    
     return new MapBlock(
                type,
-               texture,
+               blockTexturePtr,
                ( float ) x * _squareSize,
                ( float ) y * _squareSize,
                50, Constants::Medium, //Navy
