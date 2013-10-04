@@ -1,7 +1,10 @@
 #include "GameController.h"
 
 GameController::GameController( int windowWidth, int windowHeight )
-    : _gameState( Constants::SplashScreenState )
+    : _gameState( Constants::SplashScreenState ),
+      _mapViewManager( &_textureCache ),
+      _shipViewManager( &_textureCache ),
+      _splashViewManager( &_textureCache )
 {
 
 }
@@ -50,7 +53,7 @@ void GameController::draw( sf::RenderWindow & window )
     if( switchState )
     {
         setGameState( newState );
-    }    
+    }
 }
 
 

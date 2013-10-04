@@ -7,7 +7,8 @@ class ShipViewManager : public IViewManager
 {
 
     public:
-        ShipViewManager();
+
+        ShipViewManager(thor::ResourceCache<sf::Texture> * textureCache);
         
         void drawView( sf::RenderWindow & );
         

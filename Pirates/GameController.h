@@ -2,6 +2,8 @@
 #define _GAME_CONTROLLER
 
 #include <SFML/Graphics.hpp>
+#include <Thor/Resources.hpp>
+
 #include "IDrawable.h"
 #include "ShipViewManager.h"
 #include "SplashViewManager.h"
@@ -32,7 +34,9 @@ class GameController : IDrawable
     private:
     
         Constants::GameState _gameState;
-        
+    
+		thor::ResourceCache<sf::Texture> _textureCache;
+
         // view managers
         ShipViewManager _shipViewManager;
         SplashViewManager _splashViewManager;

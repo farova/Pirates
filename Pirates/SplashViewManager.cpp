@@ -1,7 +1,7 @@
 #include "SplashViewManager.h"
 
-SplashViewManager::SplashViewManager()
-    : IViewManager( Constants::SplashScreenState )
+SplashViewManager::SplashViewManager( thor::ResourceCache<sf::Texture> * textureCache )
+    : IViewManager( Constants::SplashScreenState, textureCache )
 {
     // no need for cache since only showing once
     if( _splashScreenTexture.loadFromFile( "images/splash.jpg" ) )

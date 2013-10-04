@@ -8,7 +8,7 @@ class SplashViewManager : public IViewManager
 
     public:
     
-        SplashViewManager();
+        SplashViewManager( thor::ResourceCache<sf::Texture> * textureCache );
         
         void drawView( sf::RenderWindow & );
         

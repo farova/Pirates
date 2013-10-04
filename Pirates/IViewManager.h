@@ -2,6 +2,8 @@
 #define _I_VIEWMANAGER
 
 #include <SFML/Graphics.hpp>
+#include <Thor/Resources.hpp>
+
 #include "GameState.h"
 
 class IViewManager
@@ -24,12 +26,18 @@ class IViewManager
         
     protected:
     
+        thor::ResourceCache<sf::Texture> * _textureCache;
+        
         bool _isStateChangeRequested;
         Constants::GameState _requestState;
         Constants::GameState _baseState;
         
-        IViewManager( Constants::GameState baseState )
+        IViewManager(
+            Constants::GameState baseState,
+            thor::ResourceCache<sf::Texture> * textureCache
+        )
         {
+            _textureCache = textureCache;
             _baseState = baseState;
             _requestState = baseState;
             _isStateChangeRequested = false;

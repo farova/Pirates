@@ -1,7 +1,7 @@
 #include "ShipViewManager.h"
 
-ShipViewManager::ShipViewManager()
-	: IViewManager( Constants::ShipViewState )
+ShipViewManager::ShipViewManager( thor::ResourceCache<sf::Texture> * textureCache )
+    : IViewManager( Constants::ShipViewState, textureCache )
 {
 
 }
