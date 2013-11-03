@@ -8,6 +8,7 @@
 #include "ShipViewManager.h"
 #include "SplashViewManager.h"
 #include "MapViewManager.h"
+#include "NewGameViewManager.h"
 #include "GameState.h"
 #include "Ship.h"
 
@@ -44,6 +45,7 @@ class GameController : IDrawable
         ShipViewManager _shipViewManager;
         SplashViewManager _splashViewManager;
         MapViewManager _mapViewManager;
+		NewGameViewManager _newGameViewManager;
         
 
 };

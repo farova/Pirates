@@ -119,6 +119,9 @@
     <ClCompile Include="Ship.cpp">
       <Filter>Source Files\Objects</Filter>
     </ClCompile>
+    <ClCompile Include="NewGameViewManager.cpp">
+      <Filter>Source Files\ViewManagers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameController.h">
@@ -222,6 +225,9 @@
     </ClInclude>
     <ClInclude Include="ImagePaths.h">
       <Filter>Source Files\Constants</Filter>
+    </ClInclude>
+    <ClInclude Include="NewGameViewManager.h">
+      <Filter>Source Files\ViewManagers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

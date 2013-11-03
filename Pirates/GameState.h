@@ -7,7 +7,8 @@ namespace Constants
     {
         ShipViewState,
         SplashScreenState,
-        MapViewState
+        MapViewState,
+		NewGameViewState
     };
 }
 

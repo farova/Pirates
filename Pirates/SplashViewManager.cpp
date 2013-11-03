@@ -17,10 +17,10 @@ void SplashViewManager::drawView( sf::RenderWindow & window )
 
 void SplashViewManager::handleMouseClick()
 {
-    setRequestState( Constants::MapViewState );
+    setRequestState( Constants::NewGameViewState );
 }
 
 void SplashViewManager::handleKeyPress()
 {
-    setRequestState( Constants::MapViewState );
+    setRequestState( Constants::NewGameViewState );
 }

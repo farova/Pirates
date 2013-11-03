@@ -4,7 +4,8 @@ GameController::GameController( int windowWidth, int windowHeight )
     : _gameState( Constants::SplashScreenState ),
       _mapViewManager( &_textureCache, &_playerShip ),
       _shipViewManager( &_textureCache, &_playerShip ),
-      _splashViewManager( &_textureCache )
+      _splashViewManager( &_textureCache ),
+      _newGameViewManager( &_textureCache, &_playerShip )
 {
 
 }
@@ -46,7 +47,13 @@ void GameController::draw( sf::RenderWindow & window )
             switchState = _shipViewManager.getRequestedStateChange( newState );
             break;
             
+        case Constants::NewGameViewState:
+            _newGameViewManager.drawView( window );
+            switchState = _newGameViewManager.getRequestedStateChange( newState );
+            break;
+            
         default:
+            switchState = false;
             break;
     }
     
@@ -77,6 +84,10 @@ void GameController::handleMouseClick( int x, int y, sf::Mouse::Button button )
     {
         case Constants::SplashScreenState:
             _splashViewManager.handleMouseClick();
+            break;
+            
+        case Constants::NewGameViewState:
+            _newGameViewManager.handleMouseClick();
             break;
             
         default:
