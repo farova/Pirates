@@ -6,13 +6,14 @@
 #include "MapBlockType.h"
 #include "MapBlock.h"
 #include "ImagePaths.h"
+#include "Ship.h"
 
 class MapViewManager : public IViewManager
 {
 
     public:
     
-        MapViewManager( thor::ResourceCache<sf::Texture> * textureCache );
+        MapViewManager( thor::ResourceCache<sf::Texture> * textureCache, Ship * playerShip );
         ~MapViewManager();
         
         void drawView( sf::RenderWindow & );
@@ -22,6 +23,7 @@ class MapViewManager : public IViewManager
         
     private:
     
+		Ship * _playerShip;
         MapBlock ** _mapBlocks;
         
         int _numRows;

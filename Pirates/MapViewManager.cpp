@@ -1,10 +1,11 @@
 #include "MapViewManager.h"
 
 
-MapViewManager::MapViewManager( thor::ResourceCache<sf::Texture> * textureCache )
+MapViewManager::MapViewManager( thor::ResourceCache<sf::Texture> * textureCache, Ship * playerShip )
     : IViewManager( Constants::MapViewState, textureCache )
 {
-    readMapFile();
+	readMapFile();
+	_playerShip = playerShip;
 }
 
 MapViewManager::~MapViewManager()

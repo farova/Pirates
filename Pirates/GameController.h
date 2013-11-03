@@ -9,6 +9,7 @@
 #include "SplashViewManager.h"
 #include "MapViewManager.h"
 #include "GameState.h"
+#include "Ship.h"
 
 class GameController : IDrawable
 {
@@ -33,6 +34,8 @@ class GameController : IDrawable
         
     private:
     
+		Ship _playerShip;
+
         Constants::GameState _gameState;
     
 		thor::ResourceCache<sf::Texture>  _textureCache;
@@ -42,6 +45,7 @@ class GameController : IDrawable
         SplashViewManager _splashViewManager;
         MapViewManager _mapViewManager;
         
+
 };
 
 #endif

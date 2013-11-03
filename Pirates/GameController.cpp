@@ -2,8 +2,8 @@
 
 GameController::GameController( int windowWidth, int windowHeight )
     : _gameState( Constants::SplashScreenState ),
-      _mapViewManager( &_textureCache ),
-      _shipViewManager( &_textureCache ),
+      _mapViewManager( &_textureCache, &_playerShip ),
+      _shipViewManager( &_textureCache, &_playerShip ),
       _splashViewManager( &_textureCache )
 {
 
