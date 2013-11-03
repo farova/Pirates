@@ -4,8 +4,10 @@
 MapViewManager::MapViewManager( thor::ResourceCache<sf::Texture> * textureCache, Ship * playerShip )
     : IViewManager( Constants::MapViewState, textureCache )
 {
-	readMapFile();
-	_playerShip = playerShip;
+    _playerShip = playerShip;
+    
+    readMapFile();
+    _playerShip->setMapPosition( _startingRow, _startingColumn, _squareSize );
 }
 
 MapViewManager::~MapViewManager()
@@ -24,6 +26,8 @@ void MapViewManager::drawView( sf::RenderWindow & window )
     {
         _mapBlocks[i]->draw( window );
     }
+    
+    _playerShip->drawSmallShip( window );
 }
 
 void MapViewManager::readMapFile()

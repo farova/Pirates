@@ -20,12 +20,19 @@ void NewGameViewManager::handleMouseClick()
 
 void NewGameViewManager::generateShip()
 {
-    // init ship
-    
-    
-    
-    
-    
-    
-    
+    // init ship based on users choices
+
+	thor::ResourceKey<sf::Texture> smallShipTexture = thor::Resources::fromFile<sf::Texture>( Constants::imageSmallShip );
+	thor::ResourceKey<sf::Texture> largeShipTexture = thor::Resources::fromFile<sf::Texture>( Constants::imageLargeShip);
+	thor::ResourceKey<sf::Texture> largeShipOverlayTexture = thor::Resources::fromFile<sf::Texture>( Constants::imageLargeShipOverlay );
+
+	std::shared_ptr<sf::Texture> smallShipTexturePtr = _textureCache->acquire( smallShipTexture );
+	std::shared_ptr<sf::Texture> largeShipTexturePtr = _textureCache->acquire( largeShipTexture );
+	std::shared_ptr<sf::Texture> largeShipOverlayTexturePtr = _textureCache->acquire( largeShipOverlayTexture );
+
+    _playerShip->initializeNewShip(
+        smallShipTexturePtr,
+        largeShipTexturePtr,
+        largeShipOverlayTexturePtr
+    );
 }

@@ -1,7 +1,3 @@
-﻿  NewGameViewManager.cpp
-  GameController.cpp
-  Generating Code...
-  Compiling...
-  main.cpp
-  Generating Code...
+﻿  Ship.cpp
+c:\users\mickey\documents\visual studio 2012\projects\pirates\pirates\ship.cpp(18): warning C4244: 'argument' : conversion from 'int' to 'float', possible loss of data
   Pirates.vcxproj -> C:\Users\Mickey\Documents\Visual Studio 2012\Projects\Pirates\Debug\Pirates.exe
