@@ -2,6 +2,7 @@
 #define _SPLASHVIEWMANAGER_H
 
 #include "IViewManager.h"
+#include "ImagePaths.h"
 
 class SplashViewManager : public IViewManager
 {

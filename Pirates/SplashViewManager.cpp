@@ -4,7 +4,7 @@ SplashViewManager::SplashViewManager( thor::ResourceCache<sf::Texture> * texture
     : IViewManager( Constants::SplashScreenState, textureCache )
 {
     // no need for cache since only showing once
-    if( _splashScreenTexture.loadFromFile( "images/splash.jpg" ) )
+    if( _splashScreenTexture.loadFromFile( Constants::imageSplashScreen ) )
     {
         _splashScreenSprite.setTexture( _splashScreenTexture );
     }

@@ -87,15 +87,15 @@ MapBlock * MapViewManager::generateBlockProperties( int x, int y, Constants::Map
     switch( type )
     {
         case Constants::Land:
-            filePath = Constants::imageLandPath;//"images/land.jpg";
+            filePath = Constants::imageLandPath;
             break;
             
         case Constants::Sand:
-            filePath = Constants::imageSandPath;//"images/sand.jpg";
+            filePath = Constants::imageSandPath;
             break;
             
         case Constants::Water:
-            filePath = Constants::imageWaterPath;//"images/water.jpg";
+            filePath = Constants::imageWaterPath;
             break;
     }
     
