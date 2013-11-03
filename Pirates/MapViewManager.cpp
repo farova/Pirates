@@ -61,25 +61,19 @@ void MapViewManager::readMapFile()
             
             for ( int x = 0; x < _numColumns; ++x )
             {
-            
                 if( fileLine[x] == 'L' )
                 {
                     _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::Land );
-					std::cout << "L";
                 }
                 else if( fileLine[x] == 'W' )
                 {
-					_mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::Water );
-					std::cout << "W";
+                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::Water );
                 }
                 else if( fileLine[x] == 'S' )
                 {
-					_mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::Sand );
-					std::cout << "S";
+                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::Sand );
                 }
             }
-
-			std::cout << "\n";
         }
         
         levelFile.close();
@@ -93,15 +87,15 @@ MapBlock * MapViewManager::generateBlockProperties( int x, int y, Constants::Map
     switch( type )
     {
         case Constants::Land:
-            filePath = "images/land.jpg";
+            filePath = Constants::imageLandPath;//"images/land.jpg";
             break;
             
         case Constants::Sand:
-            filePath = "images/sand.jpg";
+            filePath = Constants::imageSandPath;//"images/sand.jpg";
             break;
             
         case Constants::Water:
-            filePath = "images/water.jpg";
+            filePath = Constants::imageWaterPath;//"images/water.jpg";
             break;
     }
     

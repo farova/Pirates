@@ -5,8 +5,7 @@
 #include "IViewManager.h"
 #include "MapBlockType.h"
 #include "MapBlock.h"
-
-#include <iostream>
+#include "ImagePaths.h"
 
 class MapViewManager : public IViewManager
 {

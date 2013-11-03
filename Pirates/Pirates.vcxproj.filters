@@ -39,6 +39,9 @@
     <Filter Include="Source Files\ViewManagers\ManagerHelpers">
       <UniqueIdentifier>{3ec239e3-3bfe-4986-954f-f5886d529572}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{602d2e33-b34d-40d5-ae47-efb1c8abc2b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -112,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="_ShipCannonSlot.cpp">
       <Filter>Source Files\____OLD_CODE\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Ship.cpp">
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -210,6 +216,12 @@
     </ClInclude>
     <ClInclude Include="_ShipCannonSlot.h">
       <Filter>Source Files\____OLD_CODE\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Ship.h">
+      <Filter>Source Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="ImagePaths.h">
+      <Filter>Source Files\Constants</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

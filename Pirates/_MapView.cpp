@@ -40,7 +40,7 @@ namespace Pirates
         
         squareSize = 50;
         int size = 16;
-        /*
+        
         mapBlocks = new MapBlock*[size];
         
         for( int i = 0; i < size; i += 1 )
@@ -72,7 +72,7 @@ namespace Pirates
                 mapBlocks[i][j].initialize( i * squareSize, j * squareSize, Land, *landBLockPtr.get() );
         }
         
-        */
+        
         
         initialized = true;
     }
@@ -89,7 +89,7 @@ namespace Pirates
     
     void MapView::leftMouseClick( int x, int y )
     {
-        /*// reset validMove bool
+        // reset validMove bool
         validMove = false;
         
         if( !isInitialized() )
@@ -117,7 +117,7 @@ namespace Pirates
         {
             playerShip->setPosition( newXBlock * squareSize, newYBlock * squareSize );
             validMove = true;
-        }*/
+        }
     }
     
     MapBlock * MapView::getMapBlockMovedTo()
