@@ -71,6 +71,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="EncounterManager.cpp" />
     <ClCompile Include="NewGameViewManager.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="_Cannon.cpp">
@@ -148,6 +149,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Difficulty.h" />
+    <ClInclude Include="EncounterManager.h" />
+    <ClInclude Include="EncounterType.h" />
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GameState.h" />
     <ClInclude Include="IDrawable.h" />

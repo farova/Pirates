@@ -19,6 +19,12 @@ namespace Constants
 	const std::string imageSmallShip( imagePath + "ship.png" );
 	const std::string imageLargeShip( imagePath + "ship_1.png" );
 	const std::string imageLargeShipOverlay( imagePath + "ship_1_overlay.png" );
+
+	//Encounter Manager
+	const std::string imagePirateShip( imagePath + "ship_pirate.png" );
+	const std::string imageNavyShip( imagePath + "ship_navy.png" );
+	const std::string imageNeutralShip( imagePath + "ship_neutral.png" );
+
 }
 
 #endif

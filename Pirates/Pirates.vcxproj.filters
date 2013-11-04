@@ -122,6 +122,9 @@
     <ClCompile Include="NewGameViewManager.cpp">
       <Filter>Source Files\ViewManagers</Filter>
     </ClCompile>
+    <ClCompile Include="EncounterManager.cpp">
+      <Filter>Source Files\ViewManagers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameController.h">
@@ -228,6 +231,12 @@
     </ClInclude>
     <ClInclude Include="NewGameViewManager.h">
       <Filter>Source Files\ViewManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="EncounterManager.h">
+      <Filter>Source Files\ViewManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="EncounterType.h">
+      <Filter>Source Files\Constants</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

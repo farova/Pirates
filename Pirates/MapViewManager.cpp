@@ -75,15 +75,15 @@ void MapViewManager::readMapFile()
             {
                 if( fileLine[x] == 'L' )
                 {
-                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::Land );
+                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::LandBlock );
                 }
                 else if( fileLine[x] == 'W' )
                 {
-                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::Water );
+                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::WaterBlock );
                 }
                 else if( fileLine[x] == 'S' )
                 {
-                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::Sand );
+                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::SandBlock );
                 }
             }
         }
@@ -103,15 +103,15 @@ MapBlock * MapViewManager::generateBlockProperties( int x, int y, Constants::Map
     
     switch( type )
     {
-        case Constants::Land:
+        case Constants::LandBlock:
             filePath = Constants::imageLandPath;
             break;
             
-        case Constants::Sand:
+        case Constants::SandBlock:
             filePath = Constants::imageSandPath;
             break;
             
-        case Constants::Water:
+        case Constants::WaterBlock:
             filePath = Constants::imageWaterPath;
             break;
     }
@@ -142,6 +142,8 @@ void MapViewManager::handleMouseClick( int x, int y, sf::Mouse::Button button )
 
 void MapViewManager::leftMouseClick( int x, int y )
 {
+    _validMovement = false;
+    
     // ignore coordinates off screen
     if( x < 0 || y < 0 || x > _windowWidth || y > _windowHeight )
         return;
@@ -150,7 +152,7 @@ void MapViewManager::leftMouseClick( int x, int y )
     int newYBlock = floor( y / _squareSize );
     
     // ignore land
-    if( getMapBlock( newXBlock, newYBlock )->getMapBlockType() != Constants::Water )
+    if( getMapBlock( newXBlock, newYBlock )->getMapBlockType() != Constants::WaterBlock )
         return;
         
     sf::Vector2i position = _playerShip->getMapPosition();
@@ -160,5 +162,17 @@ void MapViewManager::leftMouseClick( int x, int y )
             ( abs( position.x - newXBlock ) == 0 && abs( position.y - newYBlock ) == 1 ) )
     {
         _playerShip->setMapPosition( newXBlock, newYBlock, _squareSize );
+        _validMovement = true;
     }
+}
+
+bool MapViewManager::validMovement()
+{
+    return _validMovement;
+}
+
+MapBlock * MapViewManager::getCurrentShipBlock()
+{
+    sf::Vector2i position = _playerShip->getMapPosition();
+    return getMapBlock(position.x, position.y);
 }

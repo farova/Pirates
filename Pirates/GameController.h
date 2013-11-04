@@ -9,6 +9,7 @@
 #include "SplashViewManager.h"
 #include "MapViewManager.h"
 #include "NewGameViewManager.h"
+#include "EncounterManager.h"
 #include "GameState.h"
 #include "Ship.h"
 
@@ -36,6 +37,7 @@ class GameController : IDrawable
     private:
     
 		Ship _playerShip;
+		Ship _enemyShip;
 
         Constants::GameState _gameState;
     
@@ -46,7 +48,11 @@ class GameController : IDrawable
         SplashViewManager _splashViewManager;
         MapViewManager _mapViewManager;
 		NewGameViewManager _newGameViewManager;
+
+		// other managers
+		EncounterManager _encounterManager;
         
+		void generateEncounter();
 
 };
 

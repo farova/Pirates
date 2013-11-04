@@ -5,7 +5,8 @@ GameController::GameController( int windowWidth, int windowHeight )
       _mapViewManager( &_textureCache, &_playerShip, windowWidth, windowHeight ),
       _shipViewManager( &_textureCache, &_playerShip ),
       _splashViewManager( &_textureCache ),
-      _newGameViewManager( &_textureCache, &_playerShip )
+      _newGameViewManager( &_textureCache, &_playerShip ),
+      _encounterManager( &_textureCache )
 {
 
 }
@@ -93,6 +94,12 @@ void GameController::handleMouseClick( int x, int y, sf::Mouse::Button button )
             
         case Constants::MapViewState:
             _mapViewManager.handleMouseClick( x, y, button );
+            
+            if( _mapViewManager.validMovement() )
+            {
+                generateEncounter();
+            }
+            
             break;
             
         default:
@@ -108,4 +115,22 @@ void GameController::handleMouseRelease( int x, int y, sf::Mouse::Button button 
 void GameController::handleMouseDrag( int x, int y )
 {
 
+}
+
+void GameController::generateEncounter()
+{
+    bool shipEncounter;
+    MapBlock* currentShipBlock = _mapViewManager.getCurrentShipBlock();
+    
+    switch( _encounterManager.getEncounterType( currentShipBlock ) )
+    {
+        case Constants::ShipEncounter:
+            shipEncounter = _encounterManager.tryGenerateShipEncounter( currentShipBlock, &_enemyShip );
+            break;
+    }
+    
+    if( shipEncounter )
+    {
+        setGameState( Constants::ShipViewState );
+    }
 }

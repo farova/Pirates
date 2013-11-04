@@ -24,10 +24,13 @@ class MapViewManager : public IViewManager
         void drawView( sf::RenderWindow & );
         void handleMouseClick( int, int, sf::Mouse::Button );
         
-        void getNextEncounter();
+        bool validMovement();
+		MapBlock* getCurrentShipBlock();
         
     private:
     
+        bool _validMovement;
+        
         Ship * _playerShip;
         MapBlock ** _mapBlocks;
         

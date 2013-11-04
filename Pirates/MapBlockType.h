@@ -5,9 +5,11 @@ namespace Constants
 {
 	enum MapBlockType
 	{
-		Land,
-		Water,
-		Sand
+		LandBlock,
+		WaterBlock,
+		SandBlock,
+		IslandBlock,
+		PortBlock
 	};
 }
 
