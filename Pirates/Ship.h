@@ -15,7 +15,9 @@ class Ship
         void drawSmallShip( sf::RenderWindow & );
         void drawLargeShip( sf::RenderWindow & );
 
-		void setMapPosition( int, int, int );
+		void setMapPosition( int, int, int ); //x, y, square size
+		sf::Vector2i getMapPosition();
+
 		void initializeNewShip(
 			std::shared_ptr<sf::Texture>, //small ship texture
 			std::shared_ptr<sf::Texture>, //large ship texture

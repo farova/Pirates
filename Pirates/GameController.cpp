@@ -2,7 +2,7 @@
 
 GameController::GameController( int windowWidth, int windowHeight )
     : _gameState( Constants::SplashScreenState ),
-      _mapViewManager( &_textureCache, &_playerShip ),
+      _mapViewManager( &_textureCache, &_playerShip, windowWidth, windowHeight ),
       _shipViewManager( &_textureCache, &_playerShip ),
       _splashViewManager( &_textureCache ),
       _newGameViewManager( &_textureCache, &_playerShip )
@@ -88,6 +88,11 @@ void GameController::handleMouseClick( int x, int y, sf::Mouse::Button button )
             
         case Constants::NewGameViewState:
             _newGameViewManager.handleMouseClick();
+            break;
+            
+            
+        case Constants::MapViewState:
+            _mapViewManager.handleMouseClick( x, y, button );
             break;
             
         default:

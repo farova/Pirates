@@ -18,6 +18,11 @@ void Ship::setMapPosition( int x, int y, int blockSize )
     _smallSprite.setPosition( ( int ) x * blockSize, ( int ) y * blockSize );
 }
 
+sf::Vector2i Ship::getMapPosition()
+{
+    return sf::Vector2i( _x, _y );
+}
+
 void Ship::initializeNewShip(
     std::shared_ptr<sf::Texture> smallShipTxtr, //small ship texture
     std::shared_ptr<sf::Texture> largeShipTxtr, //large ship texture

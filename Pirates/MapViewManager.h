@@ -13,7 +13,12 @@ class MapViewManager : public IViewManager
 
     public:
     
-        MapViewManager( thor::ResourceCache<sf::Texture> * textureCache, Ship * playerShip );
+        MapViewManager(
+            thor::ResourceCache<sf::Texture> * textureCache,
+            Ship * playerShip,
+            int windowWidth,
+            int windowHeight
+        );
         ~MapViewManager();
         
         void drawView( sf::RenderWindow & );
@@ -23,8 +28,11 @@ class MapViewManager : public IViewManager
         
     private:
     
-		Ship * _playerShip;
+        Ship * _playerShip;
         MapBlock ** _mapBlocks;
+        
+        int _windowWidth;
+        int _windowHeight;
         
         int _numRows;
         int _numColumns;
@@ -34,6 +42,7 @@ class MapViewManager : public IViewManager
         
         int _squareSize;
         
+        MapBlock* getMapBlock( int, int );
         void leftMouseClick( int, int );
         void readMapFile();
         MapBlock * generateBlockProperties( int, int, Constants::MapBlockType );

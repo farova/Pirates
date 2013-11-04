@@ -1,9 +1,16 @@
 #include "MapViewManager.h"
 
 
-MapViewManager::MapViewManager( thor::ResourceCache<sf::Texture> * textureCache, Ship * playerShip )
+MapViewManager::MapViewManager(
+    thor::ResourceCache<sf::Texture> * textureCache,
+    Ship * playerShip,
+    int windowWidth,
+    int windowHeight
+)
     : IViewManager( Constants::MapViewState, textureCache )
 {
+    _windowWidth = windowWidth;
+    _windowHeight = windowHeight;
     _playerShip = playerShip;
     
     readMapFile();
@@ -85,6 +92,11 @@ void MapViewManager::readMapFile()
     }
 }
 
+MapBlock * MapViewManager::getMapBlock( int x, int y )
+{
+    return _mapBlocks[y * _numColumns + x];
+}
+
 MapBlock * MapViewManager::generateBlockProperties( int x, int y, Constants::MapBlockType type )
 {
     std::string filePath;
@@ -130,5 +142,23 @@ void MapViewManager::handleMouseClick( int x, int y, sf::Mouse::Button button )
 
 void MapViewManager::leftMouseClick( int x, int y )
 {
-
+    // ignore coordinates off screen
+    if( x < 0 || y < 0 || x > _windowWidth || y > _windowHeight )
+        return;
+        
+    int newXBlock = floor( x / _squareSize );
+    int newYBlock = floor( y / _squareSize );
+    
+    // ignore land
+    if( getMapBlock( newXBlock, newYBlock )->getMapBlockType() != Constants::Water )
+        return;
+        
+    sf::Vector2i position = _playerShip->getMapPosition();
+    
+    // only travel to adjacent blocks (no diagonals)
+    if( ( abs( position.x - newXBlock ) == 1 && abs( position.y - newYBlock ) == 0 ) ||
+            ( abs( position.x - newXBlock ) == 0 && abs( position.y - newYBlock ) == 1 ) )
+    {
+        _playerShip->setMapPosition( newXBlock, newYBlock, _squareSize );
+    }
 }
