@@ -5,9 +5,9 @@ namespace Constants
 {
     enum Difficulty
     {
-        Easy,
-        Medium,
-        Hard
+        DifficultyEasy,
+        DifficultyMedium,
+        DifficultyHard
     };
 }
 

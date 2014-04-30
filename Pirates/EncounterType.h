@@ -5,9 +5,9 @@ namespace Constants
 {
 	enum EncounterType
 	{
-		ShipEncounter,
-		PortEncounter,
-		IslandEncounter
+		EncounterTypeShip,
+		EncounterTypePort,
+		EncounterTypeIsland
 	};
 }
 

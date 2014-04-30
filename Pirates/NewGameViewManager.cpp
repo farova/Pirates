@@ -2,7 +2,7 @@
 
 
 NewGameViewManager::NewGameViewManager( thor::ResourceCache<sf::Texture> * textureCache, Ship * playerShip )
-    : IViewManager( Constants::NewGameViewState, textureCache )
+    : IViewManager( Constants::GameStateNewGameView, textureCache )
 {
     _playerShip = playerShip;
 }
@@ -14,7 +14,7 @@ void NewGameViewManager::drawView( sf::RenderWindow & )
 
 void NewGameViewManager::handleMouseClick()
 {
-    setRequestState( Constants::MapViewState );
+    setRequestState( Constants::GameStateMapView );
     generateShip();
 }
 

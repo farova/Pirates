@@ -7,14 +7,14 @@ EncounterManager::EncounterManager( thor::ResourceCache<sf::Texture> * resourceC
 
 Constants::EncounterType EncounterManager::getEncounterType( MapBlock * mapBlock )
 {
-    if( mapBlock->getMapBlockType() == Constants::IslandBlock ||
-            mapBlock->getMapBlockType() == Constants::PortBlock )
+    if( mapBlock->getMapBlockType() == Constants::MapBlockTypeIsland ||
+            mapBlock->getMapBlockType() == Constants::MapBlockTypePort )
     {
-        return Constants::IslandEncounter;
+        return Constants::EncounterTypeIsland;
     }
     else
     {
-        return Constants::ShipEncounter;
+        return Constants::EncounterTypeShip;
     }
 }
 

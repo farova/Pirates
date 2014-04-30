@@ -1,7 +1,7 @@
 #include "ShipViewManager.h"
 
 ShipViewManager::ShipViewManager( thor::ResourceCache<sf::Texture> * textureCache, Ship * playerShip )
-    : IViewManager( Constants::ShipViewState, textureCache )
+    : IViewManager( Constants::GameStateShipView, textureCache )
 {
 	_playerShip = playerShip;
 }

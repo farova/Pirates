@@ -7,7 +7,7 @@ MapViewManager::MapViewManager(
     int windowWidth,
     int windowHeight
 )
-    : IViewManager( Constants::MapViewState, textureCache )
+    : IViewManager( Constants::GameStateMapView, textureCache )
 {
     _windowWidth = windowWidth;
     _windowHeight = windowHeight;
@@ -75,15 +75,15 @@ void MapViewManager::readMapFile()
             {
                 if( fileLine[x] == 'L' )
                 {
-                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::LandBlock );
+                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::MapBlockTypeLand );
                 }
                 else if( fileLine[x] == 'W' )
                 {
-                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::WaterBlock );
+                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::MapBlockTypeWater );
                 }
                 else if( fileLine[x] == 'S' )
                 {
-                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::SandBlock );
+                    _mapBlocks[y * _numColumns + x] = generateBlockProperties( x, y, Constants::MapBlockTypeSand );
                 }
             }
         }
@@ -103,15 +103,15 @@ MapBlock * MapViewManager::generateBlockProperties( int x, int y, Constants::Map
     
     switch( type )
     {
-        case Constants::LandBlock:
+        case Constants::MapBlockTypeLand:
             filePath = Constants::imageLandPath;
             break;
             
-        case Constants::SandBlock:
+        case Constants::MapBlockTypeSand:
             filePath = Constants::imageSandPath;
             break;
             
-        case Constants::WaterBlock:
+        case Constants::MapBlockTypeWater:
             filePath = Constants::imageWaterPath;
             break;
     }
@@ -124,8 +124,8 @@ MapBlock * MapViewManager::generateBlockProperties( int x, int y, Constants::Map
                blockTexturePtr,
                ( float ) x * _squareSize,
                ( float ) y * _squareSize,
-               50, Constants::Medium, //Navy
-               50, Constants::Medium, //Pirate
+               50, Constants::DifficultyMedium, //Navy
+               50, Constants::DifficultyMedium, //Pirate
                50 //Neutral
            );
 }
@@ -152,7 +152,7 @@ void MapViewManager::leftMouseClick( int x, int y )
     int newYBlock = floor( y / _squareSize );
     
     // ignore land
-    if( getMapBlock( newXBlock, newYBlock )->getMapBlockType() != Constants::WaterBlock )
+    if( getMapBlock( newXBlock, newYBlock )->getMapBlockType() != Constants::MapBlockTypeWater )
         return;
         
     sf::Vector2i position = _playerShip->getMapPosition();
@@ -174,5 +174,5 @@ bool MapViewManager::validMovement()
 MapBlock * MapViewManager::getCurrentShipBlock()
 {
     sf::Vector2i position = _playerShip->getMapPosition();
-    return getMapBlock(position.x, position.y);
+    return getMapBlock( position.x, position.y );
 }

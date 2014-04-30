@@ -5,10 +5,10 @@ namespace Constants
 {
     enum GameState
     {
-        ShipViewState,
-        SplashScreenState,
-        MapViewState,
-		NewGameViewState
+        GameStateShipView,
+        GameStateSplashScreen,
+        GameStateMapView,
+		GameStateNewGameView
     };
 }
 

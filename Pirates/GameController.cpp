@@ -1,7 +1,7 @@
 #include "GameController.h"
 
 GameController::GameController( int windowWidth, int windowHeight )
-    : _gameState( Constants::SplashScreenState ),
+    : _gameState( Constants::GameStateSplashScreen ),
       _mapViewManager( &_textureCache, &_playerShip, windowWidth, windowHeight ),
       _shipViewManager( &_textureCache, &_playerShip ),
       _splashViewManager( &_textureCache ),
@@ -33,22 +33,22 @@ void GameController::draw( sf::RenderWindow & window )
     
     switch( this->getGameState() )
     {
-        case Constants::SplashScreenState:
+        case Constants::GameStateSplashScreen:
             _splashViewManager.drawView( window );
             switchState = _splashViewManager.getRequestedStateChange( newState );
             break;
             
-        case Constants::MapViewState:
+        case Constants::GameStateMapView:
             _mapViewManager.drawView( window );
             switchState = _mapViewManager.getRequestedStateChange( newState );
             break;
             
-        case Constants::ShipViewState:
+        case Constants::GameStateShipView:
             _shipViewManager.drawView( window );
             switchState = _shipViewManager.getRequestedStateChange( newState );
             break;
             
-        case Constants::NewGameViewState:
+        case Constants::GameStateNewGameView:
             _newGameViewManager.drawView( window );
             switchState = _newGameViewManager.getRequestedStateChange( newState );
             break;
@@ -70,7 +70,7 @@ void GameController::handleKeyPress( sf::Keyboard::Key key )
 {
     switch( this->getGameState() )
     {
-        case Constants::SplashScreenState:
+        case Constants::GameStateSplashScreen:
             _splashViewManager.handleKeyPress();
             break;
             
@@ -83,16 +83,16 @@ void GameController::handleMouseClick( int x, int y, sf::Mouse::Button button )
 {
     switch( this->getGameState() )
     {
-        case Constants::SplashScreenState:
+        case Constants::GameStateSplashScreen:
             _splashViewManager.handleMouseClick();
             break;
             
-        case Constants::NewGameViewState:
+        case Constants::GameStateNewGameView:
             _newGameViewManager.handleMouseClick();
             break;
             
             
-        case Constants::MapViewState:
+        case Constants::GameStateMapView:
             _mapViewManager.handleMouseClick( x, y, button );
             
             if( _mapViewManager.validMovement() )
@@ -124,13 +124,13 @@ void GameController::generateEncounter()
     
     switch( _encounterManager.getEncounterType( currentShipBlock ) )
     {
-        case Constants::ShipEncounter:
+        case Constants::EncounterTypeShip:
             shipEncounter = _encounterManager.tryGenerateShipEncounter( currentShipBlock, &_enemyShip );
             break;
     }
     
     if( shipEncounter )
     {
-        setGameState( Constants::ShipViewState );
+        setGameState( Constants::GameStateShipView );
     }
 }

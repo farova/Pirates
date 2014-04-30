@@ -1,7 +1,7 @@
 #include "SplashViewManager.h"
 
 SplashViewManager::SplashViewManager( thor::ResourceCache<sf::Texture> * textureCache )
-    : IViewManager( Constants::SplashScreenState, textureCache )
+    : IViewManager( Constants::GameStateSplashScreen, textureCache )
 {
     // no need for cache since only showing once
     if( _splashScreenTexture.loadFromFile( Constants::imageSplashScreen ) )
@@ -17,10 +17,10 @@ void SplashViewManager::drawView( sf::RenderWindow & window )
 
 void SplashViewManager::handleMouseClick()
 {
-    setRequestState( Constants::NewGameViewState );
+    setRequestState( Constants::GameStateNewGameView );
 }
 
 void SplashViewManager::handleKeyPress()
 {
-    setRequestState( Constants::NewGameViewState );
+    setRequestState( Constants::GameStateNewGameView );
 }
